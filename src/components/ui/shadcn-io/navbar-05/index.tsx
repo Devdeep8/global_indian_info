@@ -276,9 +276,9 @@ export const Navbar05 = React.forwardRef<HTMLElement, Navbar05Props>(
 
     // Get user data from session
     const userId = session?.user?.id || '';
-    const userName = session?.user?.name || 'Doctor';
+    const userName = session?.user?.name || '';
     const userEmail = session?.user?.email || '';
-    const userAvatar = session?.user?.avatar;
+    const userAvatar = session?.user?.image;
     const userRole = session?.user?.role;
 
     useEffect(() => {

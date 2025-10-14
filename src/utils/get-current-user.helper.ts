@@ -1,11 +1,11 @@
 "use server"
 
-import { authOptions } from "@/lib/auth"
-import { getServerSession } from "next-auth"
+import { auth } from "@/lib/auth"
+
 
 
 export const currentUser = async () => {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     const user = session?.user
     if(!user) return undefined
     return user;
