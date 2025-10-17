@@ -4,6 +4,7 @@ import "./globals.css";
 // import { Toaster } from "sonner";
 import { ThemeProvider } from "@/provider/theme-provider";
 import { AuthProvider } from "@/provider/session-provider";
+import { ReactNode } from "react";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -26,20 +27,24 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
+  auth,
   children,
 }: Readonly<{
+  auth:ReactNode;
+
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning={true} >
+    <html lang="en" suppressHydrationWarning={true}>
       <body
         className={`${poppins.variable} ${montserrat.variable} antialiased`}
       >
         <AuthProvider>
-
-
           <ThemeProvider attribute="class" defaultTheme="light">
+            
+                 
             {children}
+            {auth}
             {/* <Toaster richColors closeButton position="bottom-right" /> */}
           </ThemeProvider>
         </AuthProvider>
