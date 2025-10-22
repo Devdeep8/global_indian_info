@@ -1,15 +1,13 @@
+import MainHeader from "@/components/layout/Header";
+import { buttonVariants } from "@/components/ui/button";
+import { auth } from "@/lib/auth";
 import Link from "next/link";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await auth();
   return (
-    <main className="flex flex-col items-center justify-center min-h-screen gap-4">
-      <h1 className="text-3xl font-bold">🏠 Home Page</h1>
-      <Link
-        href="/sign-in"
-        className="px-4 py-2 bg-blue-600 text-white rounded-lg"
-      >
-        Open Sign-In Modal
-      </Link>
-    </main>
+    <div>
+      <MainHeader />
+    </div>
   );
 }
