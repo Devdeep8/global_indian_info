@@ -178,7 +178,7 @@ model Post {
   revisions Revision[]
   media     PostMedia[]
   viewLogs  ViewLog[]
-}
+} 
 
 model PostTags {
   postId String @db.VarChar(191)
