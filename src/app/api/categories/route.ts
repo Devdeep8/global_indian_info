@@ -1,13 +1,11 @@
-import { PrismaClient, PostStatus, PostVisibility } from "@prisma/client";
+import { db } from "@/lib/db";
+import {PostStatus, PostVisibility } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
-
-const prisma = new PrismaClient();
-
 export async function GET(req: NextRequest) {
   try {
 
     // Fetch categories with article counts
-    const categories = await prisma.category.findMany({
+    const categories = await db.category.findMany({
       include: {
         _count: {
           select: {
@@ -43,7 +41,7 @@ export async function GET(req: NextRequest) {
   } catch (error) {
     console.error("Error fetching categories:", error);
 
-    // Handle specific Prisma errors
+    // Handle specific db errors
     if (error instanceof Error) {
       // Database connection errors
       if (
@@ -60,8 +58,8 @@ export async function GET(req: NextRequest) {
         );
       }
 
-      // Prisma known request errors
-      if (error.name === "PrismaClientKnownRequestError") {
+      // db known request errors
+      if (error.name === "dbClientKnownRequestError") {
         return NextResponse.json(
           {
             error: "Database operation failed",
@@ -71,8 +69,8 @@ export async function GET(req: NextRequest) {
         );
       }
 
-      // Prisma initialization errors
-      if (error.name === "PrismaClientInitializationError") {
+      // db initialization errors
+      if (error.name === "dbClientInitializationError") {
         return NextResponse.json(
           {
             error: "Database initialization error",
@@ -92,7 +90,7 @@ export async function GET(req: NextRequest) {
       { status: 500 }
     );
   } finally {
-    // Ensure Prisma connection is closed
-    await prisma.$disconnect();
+    // Ensure db connection is closed
+    await db.$disconnect();
   }
 }

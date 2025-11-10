@@ -78,9 +78,9 @@ export default function CategoriesTabs() {
   if (loading) {
     return (
       <div className="mt-4">
-        <div className="flex gap-2 overflow-x-auto pb-2">
-          {[...Array(6)].map((_, i) => (
-            <Skeleton key={i} className="h-9 w-24 rounded-full" />
+        <div className="flex gap-2 justify-center items-center overflow-x-auto pb-2">
+          {[...Array(10)].map((_, i) => (
+            <Skeleton key={i} className="h-9 w-32 rounded-full" />
           ))}
         </div>
       </div>
