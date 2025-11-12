@@ -79,7 +79,7 @@ export default function CategoriesTabs() {
     return (
       <div className="mt-4">
         <div className="flex gap-2 justify-center items-center overflow-x-auto pb-2">
-          {[...Array(10)].map((_, i) => (
+          {[...Array(9)].map((_, i) => (
             <Skeleton key={i} className="h-9 w-32 rounded-full" />
           ))}
         </div>

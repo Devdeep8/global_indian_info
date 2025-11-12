@@ -55,7 +55,7 @@ const MainHeader = () => {
   };
 
   return (
-    <header className="border-b bg-background sticky top-0 ">
+    <header className=" ">
       <div className="container mx-auto  px-4">
         <div className="flex h-16 items-center justify-between  gap-4">
           {/* Site Name/Logo */}

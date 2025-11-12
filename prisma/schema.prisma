@@ -5,9 +5,9 @@ datasource db {
 
 generator client {
   provider = "prisma-client-js"
-    // output        = "/src/app/generated/client" // it is better to include the generator inside `src/` or `app/` if `src/` not available.
-
+  output   = "../src/generated/client"
 }
+
 
 // ============================================================
 // AUTHENTICATION MODELS
