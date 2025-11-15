@@ -6,7 +6,7 @@ import type { Adapter } from "next-auth/adapters";
 import { db } from "./db";
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  adapter: PrismaAdapter(db) as Adapter,
+  adapter: PrismaAdapter(db as any) as Adapter,
   providers: [
     Google({
       clientId: process.env.GOOGLE_CLIENT_ID!,
@@ -31,32 +31,37 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     signIn: "/sign-in",
   },
   events: {
-    // This event is triggered when a new user is created
     async createUser({ user }) {
-      // For all new users, mark email as verified
-      if (user.email) {
-        await db.user.update({
-          where: { email: user.email },
-          data: { emailVerified: new Date() },
-        });
+      const slugify = (str: string) =>
+        str
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, "-")
+          .replace(/^-+|-+$/g, "");
+
+      const base = user.name
+        ? slugify(user.name)
+        : `user-${(user.id || "unknown").substring(0, 5)}`;
+
+      // ensure uniqueness by appending last 4 characters of id (skip if id missing)
+      if (!user.id) {
+        console.warn(
+          `createUser: missing user.id for ${user.email}, skipping username creation.`
+        );
+        return;
       }
-    },
-    // This event is triggered when a user signs in
-    async signIn({ user, account, profile }) {
-      // For Google users, ensure emailVerified is set
-      if (account?.provider === "google" && profile?.email_verified && user.email) {
-        try {
-          await db.user.update({
-            where: { email: user.email },
-            data: { emailVerified: new Date() },
-          });
-        } catch (error) {
-          // User might not exist yet, which is fine
-          console.error("Error updating emailVerified:", error);
-        }
-      }
+
+      const idSuffix = user.id.slice(-4);
+      const username: string = `${base}-${idSuffix}`;
+
+      await db.user.update({
+        where: { id: user.id },
+        data: { username },
+      });
+
+      console.log(`Username created for ${user.email}: ${username}`);
     },
   },
+
   callbacks: {
     async signIn({ account, profile }) {
       if (account?.provider === "google") {
@@ -85,17 +90,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token.id) {
         const dbUser = await db.user.findUnique({
           where: { id: token.id as string },
-          select: { 
-            id: true, 
-            email: true, 
-            name: true, 
+          select: {
+            email: true,
+            name: true,
             role: true,
-            emailVerified: true
+            username: true,
+
           },
         });
 
         if (dbUser) {
-          token.id = dbUser.id;
+          token.username = dbUser.username;
           token.email = dbUser.email;
           token.name = dbUser.name;
           token.role = dbUser.role;
@@ -106,7 +111,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token }) {
       if (token && session.user) {
-        session.user.id = token.id as string;
+        session.user.username = token.username as string;
         session.user.email = token.email as string;
         session.user.name = token.name as string;
         session.user.role = token.role as string;

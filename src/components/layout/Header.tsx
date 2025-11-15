@@ -137,8 +137,8 @@ const MainHeader = () => {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem className="cursor-pointer">
-                    <UserCircle className="mr-2 h-4 w-4" />
+                  <DropdownMenuItem onClick={ () => window.location.href= `/profile/${user?.username}`} className="cursor-pointer">
+                    <UserCircle  className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                   </DropdownMenuItem>
                   <DropdownMenuItem className="cursor-pointer">
