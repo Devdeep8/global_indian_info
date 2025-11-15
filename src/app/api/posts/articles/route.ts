@@ -1,5 +1,5 @@
 // src/app/api/posts/route.ts
-import { postService } from "@/services/posts.service";
+import { postService } from "@/services/posts/posts.service";
 import { NextResponse } from "next/server";
 export async function GET(req: Request) {
   try {

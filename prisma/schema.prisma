@@ -8,7 +8,6 @@ generator client {
   output   = "../src/generated/client"
 }
 
-
 // ============================================================
 // AUTHENTICATION MODELS
 // ============================================================
@@ -21,8 +20,10 @@ enum UserRole {
 }
 
 model User {
-  id            String    @id @default(cuid()) @db.VarChar(191)
-  name          String?   @db.VarChar(255)
+  id       String  @id @default(cuid()) @db.VarChar(191)
+  name     String? @db.VarChar(255)
+  username String? @unique @db.VarChar(255)
+
   email         String?   @unique @db.VarChar(255)
   emailVerified DateTime?
   image         String?   @db.VarChar(255)
@@ -33,12 +34,12 @@ model User {
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
 
-  accounts      Account[]
-  sessions      Session[]
-  posts         Post[]
-  comments      Comment[]
-  revisions     Revision[]
-  media         Media[]
+  accounts        Account[]
+  sessions        Session[]
+  posts           Post[]
+  comments        Comment[]
+  revisions       Revision[]
+  media           Media[]
   editedMagazines Magazine[]
 }
 
@@ -94,9 +95,9 @@ model Category {
 }
 
 model Tag {
-  id    String @id @default(cuid()) @db.VarChar(191)
-  name  String @unique @db.VarChar(191)
-  slug  String @unique @db.VarChar(191)
+  id   String @id @default(cuid()) @db.VarChar(191)
+  name String @unique @db.VarChar(191)
+  slug String @unique @db.VarChar(191)
 
   posts PostTags[]
 }
@@ -109,17 +110,17 @@ enum MagazineStatus {
 }
 
 model Magazine {
-  id            String          @id @default(cuid()) @db.VarChar(191)
-  title         String?         @db.VarChar(255)
-  slug          String          @unique @db.VarChar(191)
-  description   String?         @db.Text
-  coverImageUrl String?         @db.VarChar(255)
+  id            String         @id @default(cuid()) @db.VarChar(191)
+  title         String?        @db.VarChar(255)
+  slug          String         @unique @db.VarChar(191)
+  description   String?        @db.Text
+  coverImageUrl String?        @db.VarChar(255)
   issueNumber   Int?
   publishedAt   DateTime?
-  status        MagazineStatus  @default(DRAFT)
-  editorId      String?         @db.VarChar(191)
-  createdAt     DateTime        @default(now())
-  updatedAt     DateTime        @updatedAt
+  status        MagazineStatus @default(DRAFT)
+  editorId      String?        @db.VarChar(191)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 
   editor User?  @relation(fields: [editorId], references: [id], onDelete: SetNull)
   posts  Post[]
@@ -146,41 +147,41 @@ enum PostVisibility {
 }
 
 model Post {
-  id              String          @id @default(cuid()) @db.VarChar(191)
-  title           String          @db.VarChar(255)
-  slug            String          @unique @db.VarChar(191)
-  excerpt         String?         @db.Text
-  content         String          @db.LongText
-  type            PostType        @default(BLOG)
-  coverImageUrl   String?         @db.VarChar(255)
-  status          PostStatus      @default(DRAFT)
-  visibility      PostVisibility  @default(PUBLIC)
-  isFeatured      Boolean         @default(false)
+  id              String         @id @default(cuid()) @db.VarChar(191)
+  title           String         @db.VarChar(255)
+  slug            String         @unique @db.VarChar(191)
+  excerpt         String?        @db.Text
+  content         String         @db.LongText
+  type            PostType       @default(BLOG)
+  coverImageUrl   String?        @db.VarChar(255)
+  status          PostStatus     @default(DRAFT)
+  visibility      PostVisibility @default(PUBLIC)
+  isFeatured      Boolean        @default(false)
   scheduledAt     DateTime?
   publishedAt     DateTime?
-  authorId        String          @db.VarChar(191)
-  magazineId      String?         @db.VarChar(191)
-  categoryId      String?         @db.VarChar(191)
-  views           Int             @default(0)
-  likes           Int             @default(0)
-  metaTitle       String?         @db.VarChar(255)
-  metaDescription String?         @db.Text
-  metaKeywords    String?         @db.Text
+  authorId        String         @db.VarChar(191)
+  magazineId      String?        @db.VarChar(191)
+  categoryId      String?        @db.VarChar(191)
+  views           Int            @default(0)
+  likes           Int            @default(0)
+  metaTitle       String?        @db.VarChar(255)
+  metaDescription String?        @db.Text
+  metaKeywords    String?        @db.Text
   slugHistory     Json?
   seoSchema       Json?
   settings        Json?
-  createdAt       DateTime        @default(now())
-  updatedAt       DateTime        @updatedAt
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
 
-  author    User       @relation(fields: [authorId], references: [id], onDelete: Cascade)
-  magazine  Magazine?  @relation(fields: [magazineId], references: [id], onDelete: SetNull)
-  category  Category?  @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  author    User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  magazine  Magazine?   @relation(fields: [magazineId], references: [id], onDelete: SetNull)
+  category  Category?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
   tags      PostTags[]
   comments  Comment[]
   revisions Revision[]
   media     PostMedia[]
   viewLogs  ViewLog[]
-} 
+}
 
 model PostTags {
   postId String @db.VarChar(191)

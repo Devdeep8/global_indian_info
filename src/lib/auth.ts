@@ -28,7 +28,34 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     strategy: "jwt",
   },
   pages: {
-    signIn: "/sign-in", // ✅ your own custom page
+    signIn: "/sign-in",
+  },
+  events: {
+    // This event is triggered when a new user is created
+    async createUser({ user }) {
+      // For all new users, mark email as verified
+      if (user.email) {
+        await db.user.update({
+          where: { email: user.email },
+          data: { emailVerified: new Date() },
+        });
+      }
+    },
+    // This event is triggered when a user signs in
+    async signIn({ user, account, profile }) {
+      // For Google users, ensure emailVerified is set
+      if (account?.provider === "google" && profile?.email_verified && user.email) {
+        try {
+          await db.user.update({
+            where: { email: user.email },
+            data: { emailVerified: new Date() },
+          });
+        } catch (error) {
+          // User might not exist yet, which is fine
+          console.error("Error updating emailVerified:", error);
+        }
+      }
+    },
   },
   callbacks: {
     async signIn({ account, profile }) {
@@ -58,7 +85,13 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (token.id) {
         const dbUser = await db.user.findUnique({
           where: { id: token.id as string },
-          select: { id: true, email: true, name: true, role: true },
+          select: { 
+            id: true, 
+            email: true, 
+            name: true, 
+            role: true,
+            emailVerified: true
+          },
         });
 
         if (dbUser) {
