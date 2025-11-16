@@ -6,7 +6,7 @@ class UsersService {
     try {
       return await db.user.findUnique({
         where: {
-          username: userId,
+          id: userId,
         },
         select: {
           id: true,

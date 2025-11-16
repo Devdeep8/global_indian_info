@@ -1,6 +1,5 @@
 import { PrismaClient } from '@prisma/client';
 import { UserRole, PostType, PostStatus, PostVisibility, MagazineStatus, MediaType, CommentStatus } from '@prisma/client';
-import { read } from 'fs';
 
 const prisma = new PrismaClient();
 

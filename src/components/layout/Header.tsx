@@ -25,6 +25,7 @@ import { useSession, signOut } from "next-auth/react";
 import { ModeToggle } from "./mode-toggle";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { Separator } from "../ui/separator";
 
 const MainHeader = () => {
   const { data: session, status } = useSession();
@@ -167,10 +168,11 @@ const MainHeader = () => {
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
             </Button>
-            {/* <ModeToggle/> */}
+            <ModeToggle/>
           </div>
         </div>
       </div>
+      <Separator/>
     </header>
   );
 };
