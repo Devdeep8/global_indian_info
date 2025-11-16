@@ -1,9 +1,12 @@
+import { auth } from "@/lib/auth";
 import { usersService } from "@/services/users/users.service";
+import { getUserIdByUsername } from "@/utils/get-current-user.helper";
 import { NextRequest, NextResponse } from "next/server";
 
 // Example service class
 export async function GET(req: NextRequest , {params} : {params : Promise<{userId : string}>}) {
   try {
+
     const {userId} = await params;
     if (!userId || typeof userId !== "string") {
       return NextResponse.json(
@@ -12,6 +15,7 @@ export async function GET(req: NextRequest , {params} : {params : Promise<{userI
       );
     }
     const userProfile = await usersService.getCurrentUserProfile(userId);
+
 
     if (!userProfile) {
       return NextResponse.json(

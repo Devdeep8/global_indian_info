@@ -1,26 +1,31 @@
 import { db } from "@/lib/db";
 
 class UsersService {
-  // User service methods would go here
   async getCurrentUserProfile(userId: string) {
     try {
-      return await db.user.findUnique({
-        where: {
-          id: userId,
-        },
+      const dbData = await db.user.findUnique({
+        where: { id: userId },
         select: {
           id: true,
+          name: true,
+          username: true,
           email: true,
           emailVerified: true,
           image: true,
           role: true,
           bio: true,
           avatarUrl: true,
-          socialLinks: true,
+          socialLinks: true, // stored JSON
         },
       });
+
+      if (!dbData) {
+        throw new Error("User not found");
+      }
+      return dbData
+
     } catch (error) {
-      console.log("Error in fetching user profile : ", error);
+      console.error("Error fetching user profile:", error);
       throw new Error("Failed to fetch user profile");
     }
   }
