@@ -9,6 +9,7 @@ import {
   Settings,
   UserCircle,
   NewspaperIcon,
+  Globe,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -58,40 +59,38 @@ const MainHeader = () => {
   return (
     <header className=" ">
       <div className="container mx-auto  px-4">
-        <div className="flex h-16 items-center justify-between  gap-4">
-          {/* Site Name/Logo */}
-          <div className="flex items-center gap-4">
-            <NewspaperIcon className=" w-8 h-8" />
-            <Link
-              href="/"
-              className="text-[21px] font-bold text-foreground hover:text-foreground/80 transition-colors"
-            >
-              {siteName}
-            </Link>
+           {/* Site Name/Logo */}
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <Link href="/" className="flex items-center space-x-2">
+            <Globe className="h-8 w-8 text-primary" />
+            <span className="text-xl font-bold">Global Indian</span>
+          </Link>
 
-            {/* Navigation Items - Desktop */}
-          </div>
-          <div>
-            <nav className="hidden md:flex gap-6 md:text-sm">
-              {navItems.map((item, index) => {
-                const isActive = isActiveTab(item.href);
-                return (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className={cn(
-                      "text-sm font-medium transition-colors relative py-1",
-                      isActive
-                        ? "text-foreground after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-primary"
-                        : "text-muted-foreground hover:text-foreground"
-                    )}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center space-x-6">
+            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
+              Home
+            </Link>
+            <Link href="/news" className="text-sm font-medium hover:text-primary transition-colors">
+              News
+            </Link>
+            <Link href="/business" className="text-sm font-medium hover:text-primary transition-colors">
+              Business
+            </Link>
+            <Link href="/culture" className="text-sm font-medium hover:text-primary transition-colors">
+              Culture
+            </Link>
+            <Link href="/diaspora" className="text-sm font-medium hover:text-primary transition-colors">
+              Diaspora
+            </Link>
+            <Link href="/success-stories" className="text-sm font-medium hover:text-primary transition-colors">
+              Success Stories
+            </Link>
+          </nav>
+
+
+
           {/* Right Section: Search + User Nav */}
           <div className="flex items-center gap-4 justify-end">
             {/* Search Bar */}
