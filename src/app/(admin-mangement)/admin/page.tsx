@@ -3,7 +3,7 @@ export default async function AdminPage() {
 
   return (
     <main className="p-4">
-      <h1 className="text-xl font-bold">Server Component</h1>
+      <h1 className="text-xl font-bold">Admin Pannal</h1>
       
     </main>
   );

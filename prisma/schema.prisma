@@ -151,6 +151,7 @@ model Post {
   slug            String         @unique @db.VarChar(191)
   excerpt         String?        @db.Text
   content         String         @db.LongText
+  readMinutes     Int? 
   type            PostType       @default(BLOG)
   coverImageUrl   String?        @db.VarChar(255)
   status          PostStatus     @default(DRAFT)

@@ -213,7 +213,7 @@ export default function ProfileComponent({
                   ([icon, url], index) => (
                     <a
                       key={index}
-                      href={url as string}
+                      href={url as any}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
