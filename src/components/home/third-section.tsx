@@ -2,10 +2,10 @@ import { Button } from "../ui/button";
 import { SectionLayout } from "./section-layout";
 import ViewCard from "./view-list";
 
-export default function SecondSection({items}:{items : any}) {
+export default function ThirdSection({items}:{items : any}) {
   return (
     <SectionLayout
-      title="GLOBAL INDIAN | COVER STORIES"
+      title="GLOBAL INDIAN YOUTH | COVER STORIES"
       subtitle="Stories that are researched and written by our editorial team"
       showSeparator
       center ={true}

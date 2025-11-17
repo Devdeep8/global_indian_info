@@ -39,6 +39,8 @@ import { toast } from "sonner";
 import { useSearchParams } from "next/navigation";
 import { FeaturedCarousel } from "./hero-section";
 import SecondSection from "./second-section";
+import ThirdSection from "./third-section";
+import ForthSection from "./forth-section";
 
 interface FeaturedArticle {
   id: string;
@@ -111,7 +113,9 @@ export default function HomeContent() {
       <FeaturedCarousel items={featuredArticles}/>
       </section>
 
-      <SecondSection/>
+      <SecondSection items={featuredArticles}/>
+      <ThirdSection items={featuredArticles}/>
+      <ForthSection items={featuredArticles}/> 
 
     </div>
   );
