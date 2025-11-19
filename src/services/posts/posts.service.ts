@@ -78,36 +78,7 @@ class PostService {
       throw new Error(`Database Error : ${error}`);
     }
   }
-  
-async updateArticle(slug: string, data: any) {
-  try {
-    const { tagIds, ...rest } = data;
 
-    console.log("Updating article with data:", tagIds , rest);
-
-    const cleanedData = Object.fromEntries(
-      Object.entries(rest).filter(([_, v]) => v !== undefined)
-    );
-
-    return await db.post.update({
-      where: { slug },
-      data: {
-        ...cleanedData,
-        ...(Array.isArray(tagIds)
-          ? {
-              tags: {
-                deleteMany: {}, // remove existing tags
-                create: tagIds.map((tagId: string) => ({ tagId })),
-              },
-            }
-          : {}),
-      },
-    });
-  } catch (error: any) {
-    console.error("Error updating article:", error);
-    throw new Error(`Database Error: ${error.message}`);
-  }
-}
 
 }
 

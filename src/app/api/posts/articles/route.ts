@@ -1,9 +1,12 @@
 // src/app/api/posts/route.ts
+import { triggerPostWorkflows } from "@/lib/workflows/triggerPostWorkflows";
 import { validate } from "@/lib/zod";
 import { createPostSchema } from "@/services/posts/post.zod.schema";
 import { postService } from "@/services/posts/posts.service";
+import { tagService } from "@/services/posts/tags/tags.service";
 import { NextResponse, NextRequest } from "next/server";
 import { ZodError } from "zod";
+
 export async function GET(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -28,21 +31,39 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
 
     // 🔥 Validate input
-    const validatedData = validate(createPostSchema, body);
+    const validatedDataData = validate(createPostSchema, body);
 
     // 🔥 Create post
-    const newPost = await postService.createArticle(validatedData);
+    const tagRecords = await tagService.findOrCreateTags(
+      validatedDataData.tags
+    );
+    const prismaData = {
+      ...validatedDataData,
+
+      scheduledAt: validatedDataData.scheduledAt
+        ? new Date(validatedDataData.scheduledAt)
+        : undefined,
+
+      publishedAt: validatedDataData.publishedAt
+        ? new Date(validatedDataData.publishedAt)
+        : undefined,
+
+      tags: {
+        create: tagRecords.map((tag) => ({
+          tagId: tag.id,
+        })),
+      },
+    };
+
+    const newPost = await postService.createArticle(prismaData);
 
     // 🔥 Trigger async workflows (not blocking)
-    // triggerPostWorkflows(newPost.id);
 
-    return NextResponse.json(
-      { success: true, data: newPost },
-      { status: 201 }
-    );
-  } 
-  catch (error: any) {
-
+    setTimeout(() => {
+      triggerPostWorkflows(newPost.id);
+    }, 0);
+    return NextResponse.json({ success: true, data: newPost }, { status: 201 });
+  } catch (error: any) {
     // ❗ Validation error (Client error, NOT server error)
     if (error instanceof ZodError) {
       return NextResponse.json(
@@ -59,6 +80,3 @@ export async function POST(req: NextRequest) {
     );
   }
 }
-
-
-
