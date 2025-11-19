@@ -28,7 +28,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
 import { cn } from '@/lib/utils';
 import type { ComponentProps } from 'react';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 // Simple logo component for the navbar
 const Logo = (props: React.SVGAttributes<SVGElement>) => {
@@ -211,17 +211,9 @@ const UserMenu = ({
       <DropdownMenuItem onClick={() => onItemClick?.('settings')}>
         Settings
       </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => onItemClick?.('billing')}>
-        Billing
-      </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => onItemClick?.('appointments')}>
-        Appointments
-      </DropdownMenuItem>
-      <DropdownMenuItem onClick={() => onItemClick?.('patients')}>
-        Patients
-      </DropdownMenuItem>
+
       <DropdownMenuSeparator />
-      <DropdownMenuItem onClick={() => onItemClick?.('logout')}>
+      <DropdownMenuItem onClick={() => signOut()}>
         Log out
       </DropdownMenuItem>
     </DropdownMenuContent>
@@ -258,7 +250,7 @@ export const Navbar05 = React.forwardRef<HTMLElement, Navbar05Props>(
     {
       className,
       logo = <Logo />,
-      logoHref = '/doctors',
+      logoHref = '/',
       navigationLinks = doctorNavigationLinks,
       notificationCount = 3,
       onNavItemClick,
@@ -407,7 +399,7 @@ export const Navbar05 = React.forwardRef<HTMLElement, Navbar05Props>(
                 <div className="text-2xl">
                   {logo}
                 </div>
-                <span className="hidden font-bold text-xl sm:inline-block">RTM</span>
+                <span className="hidden font-bold text-xl sm:inline-block">Global Indian Info</span>
               </button>
               {/* Navigation menu */}
               {/* {!isMobile && (

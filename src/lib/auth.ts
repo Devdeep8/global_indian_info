@@ -91,6 +91,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         const dbUser = await db.user.findUnique({
           where: { id: token.id as string },
           select: {
+            id : true,
             email: true,
             name: true,
             role: true,
@@ -99,6 +100,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         });
 
         if (dbUser) {
+          token.id = dbUser.id;
           token.username = dbUser.username;
           token.email = dbUser.email;
           token.name = dbUser.name;
@@ -110,6 +112,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     },
     async session({ session, token }) {
       if (token && session.user) {
+        session.user.id = token.id as string;
         session.user.username = token.username as string;
         session.user.email = token.email as string;
         session.user.name = token.name as string;
