@@ -49,10 +49,7 @@ navMain: [
         title: "Write a Post",
         url: "/writer/posts/create",
       },
-      {
-        title: "My Drafts",
-        url: "/writer/posts/drafts",
-      },
+
       {
         title: "My Published Posts",
         url: "/writer/posts/published",
