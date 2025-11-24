@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/select";
 
 import { toast } from "sonner";
+import { MDXEditor } from "@/components/tiptap-templates/simple/simple-editor";
 
 // ------------------------------
 // ZOD SCHEMA
@@ -82,9 +83,7 @@ export default function CreatePostForm({
   // ------------------------------
   // IMAGE UPLOAD HANDLER (2MB limit + mime check)
   // ------------------------------
-  async function handleImageUpload(
-    event: React.ChangeEvent<HTMLInputElement>
-  ) {
+  async function handleImageUpload(event: React.ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
     if (!file) return;
 
@@ -230,23 +229,9 @@ export default function CreatePostForm({
           )}
         />
 
-        {/* CONTENT */}
-        <FormField
-          control={form.control}
-          name="content"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Content (MDX supported)</FormLabel>
-              <FormControl>
-                <Textarea
-                  className="h-60"
-                  placeholder="Write MDX content here..."
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
+        <MDXEditor
+          content={form.watch("content")}
+          onChange={(mdx) => form.setValue("content", mdx)}
         />
 
         {/* COVER IMAGE */}
@@ -266,7 +251,11 @@ export default function CreatePostForm({
               )}
 
               <FormControl>
-                <Input type="file" accept="image/*" onChange={handleImageUpload} />
+                <Input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                />
               </FormControl>
 
               <FormMessage />

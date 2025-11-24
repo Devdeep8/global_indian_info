@@ -1,6 +1,7 @@
+import { PostStatus, PostVisibility } from "@/generated/client/enums";
 import { db } from "@/lib/db";
-import {PostStatus, PostVisibility } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+
 export async function GET(req: NextRequest) {
   try {
 

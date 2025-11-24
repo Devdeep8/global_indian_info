@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { uploadImage } from "@/lib/imagekit";
+import { db } from "@/lib/db";
 
 export async function POST(req: Request) {
   try {
@@ -10,9 +11,18 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
     }
 
-    const url = await uploadImage(file, "posts/covers");
+    // Upload to ImageKit (or S3/CDN)
+    const url = await uploadImage(file, "global_indians/images");
 
-    return NextResponse.json({ url });
+    // Save to DB
+    const media = await db.media.create({
+      data: {
+        url,
+        type: "IMAGE",
+      },
+    });
+
+    return NextResponse.json({ url: media.url, mediaId: media.id });
   } catch (error: any) {
     console.error("Upload error:", error);
     return NextResponse.json({ error: error.message }, { status: 500 });

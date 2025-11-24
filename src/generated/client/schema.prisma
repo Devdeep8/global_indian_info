@@ -1,0 +1,276 @@
+datasource db {
+  provider = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+// ============================================================
+// AUTHENTICATION MODELS
+// ============================================================
+
+enum UserRole {
+  ADMIN
+  EDITOR
+  WRITER
+  READER
+}
+
+model User {
+  id            String    @id @default(cuid()) @db.VarChar(191)
+  name          String?   @db.VarChar(255)
+  username      String?   @unique @db.VarChar(255)
+  email         String?   @unique @db.VarChar(255)
+  emailVerified DateTime?
+  image         String?   @db.VarChar(255)
+  role          UserRole  @default(READER)
+  bio           String?   @db.Text
+  avatarUrl     String?   @db.VarChar(255)
+  socialLinks   Json?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts        Account[]
+  sessions        Session[]
+  posts           Post[]
+  comments        Comment[]
+  revisions       Revision[]
+  media           Media[]
+  editedMagazines Magazine[]
+}
+
+model Account {
+  id                String  @id @default(cuid()) @db.VarChar(191)
+  userId            String  @db.VarChar(191)
+  type              String? @db.VarChar(100)
+  provider          String  @db.VarChar(100)
+  providerAccountId String  @db.VarChar(191)
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String? @db.VarChar(50)
+  scope             String? @db.VarChar(255)
+  id_token          String? @db.Text
+  session_state     String? @db.VarChar(191)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid()) @db.VarChar(191)
+  sessionToken String   @unique @db.VarChar(191)
+  userId       String   @db.VarChar(191)
+  expires      DateTime
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String   @db.VarChar(191)
+  token      String   @unique @db.VarChar(191)
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+// ============================================================
+// CMS MODELS (Blog + Article + Magazine)
+// ============================================================
+
+model Category {
+  id       String  @id @default(cuid()) @db.VarChar(191)
+  name     String  @unique @db.VarChar(191)
+  slug     String  @unique @db.VarChar(191)
+  parentId String? @db.VarChar(191)
+
+  parent   Category?  @relation("CategoryToCategory", fields: [parentId], references: [id], onDelete: SetNull)
+  children Category[] @relation("CategoryToCategory")
+  posts    Post[]
+}
+
+model Tag {
+  id   String @id @default(cuid()) @db.VarChar(191)
+  name String @unique @db.VarChar(191)
+  slug String @unique @db.VarChar(191)
+
+  posts PostTags[]
+}
+
+enum MagazineStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+model Magazine {
+  id            String         @id @default(cuid()) @db.VarChar(191)
+  title         String?        @db.VarChar(255)
+  slug          String         @unique @db.VarChar(191)
+  description   String?        @db.Text
+  coverImageUrl String?        @db.VarChar(255)
+  issueNumber   Int?
+  publishedAt   DateTime?
+  status        MagazineStatus @default(DRAFT)
+  editorId      String?        @db.VarChar(191)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  editor User?  @relation(fields: [editorId], references: [id], onDelete: SetNull)
+  posts  Post[]
+}
+
+enum PostType {
+  BLOG
+  ARTICLE
+  FEATURE
+  INTERVIEW
+}
+
+enum PostStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  ARCHIVED
+}
+
+enum PostVisibility {
+  PUBLIC
+  PRIVATE
+  SUBSCRIBERS_ONLY
+}
+
+model Post {
+  id              String         @id @default(cuid()) @db.VarChar(191)
+  title           String         @db.VarChar(255)
+  slug            String         @unique @db.VarChar(191)
+  excerpt         String?        @db.Text
+  content         String         @db.LongText
+  readMinutes     Int?
+  type            PostType       @default(BLOG)
+  coverImageUrl   String?        @db.VarChar(255)
+  status          PostStatus     @default(DRAFT)
+  visibility      PostVisibility @default(PUBLIC)
+  isFeatured      Boolean        @default(false)
+  scheduledAt     DateTime?
+  publishedAt     DateTime?
+  authorId        String         @db.VarChar(191)
+  magazineId      String?        @db.VarChar(191)
+  categoryId      String?        @db.VarChar(191)
+  views           Int            @default(0)
+  likes           Int            @default(0)
+  metaTitle       String?        @db.VarChar(255)
+  metaDescription String?        @db.Text
+  metaKeywords    String?        @db.Text
+  slugHistory     Json?
+  seoSchema       Json?
+  settings        Json?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  author    User        @relation(fields: [authorId], references: [id], onDelete: Cascade)
+  magazine  Magazine?   @relation(fields: [magazineId], references: [id], onDelete: SetNull)
+  category  Category?   @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  tags      PostTags[]
+  comments  Comment[]
+  revisions Revision[]
+  media     PostMedia[]
+  viewLogs  ViewLog[]
+}
+
+model PostTags {
+  postId String @db.VarChar(191)
+  tagId  String @db.VarChar(191)
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([postId, tagId])
+}
+
+enum CommentStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Comment {
+  id        String        @id @default(cuid()) @db.VarChar(191)
+  postId    String        @db.VarChar(191)
+  authorId  String?       @db.VarChar(191)
+  content   String        @db.Text
+  parentId  String?       @db.VarChar(191)
+  status    CommentStatus @default(APPROVED)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  post     Post      @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author   User?     @relation(fields: [authorId], references: [id], onDelete: SetNull)
+  parent   Comment?  @relation("CommentToComment", fields: [parentId], references: [id], onDelete: SetNull)
+  children Comment[] @relation("CommentToComment")
+}
+
+model Revision {
+  id        String   @id @default(cuid()) @db.VarChar(191)
+  postId    String   @db.VarChar(191)
+  authorId  String   @db.VarChar(191)
+  content   String   @db.LongText
+  title     String?  @db.VarChar(255)
+  createdAt DateTime @default(now())
+
+  post   Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+}
+
+enum MediaType {
+  IMAGE
+  VIDEO
+  AUDIO
+  DOCUMENT
+}
+
+model Media {
+  id           String    @id @default(cuid()) @db.VarChar(191)
+  url          String    @db.VarChar(255)
+  altText      String?   @db.VarChar(255)
+  caption      String?   @db.VarChar(255)
+  type         MediaType
+  uploadedById String?   @db.VarChar(191)
+  createdAt    DateTime  @default(now())
+
+  uploadedBy User?       @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  posts      PostMedia[]
+}
+
+model PostMedia {
+  postId  String @db.VarChar(191)
+  mediaId String @db.VarChar(191)
+
+  post  Post  @relation(fields: [postId], references: [id], onDelete: Cascade)
+  media Media @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+
+  @@id([postId, mediaId])
+}
+
+model Subscriber {
+  id             String    @id @default(cuid()) @db.VarChar(191)
+  email          String    @unique @db.VarChar(191)
+  name           String?   @db.VarChar(255)
+  verified       Boolean   @default(false)
+  subscribedAt   DateTime  @default(now())
+  unsubscribedAt DateTime?
+}
+
+model ViewLog {
+  id        String   @id @default(cuid()) @db.VarChar(191)
+  postId    String   @db.VarChar(191)
+  viewerIp  String?  @db.VarChar(191)
+  userAgent String?  @db.VarChar(255)
+  viewedAt  DateTime @default(now())
+
+  post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
+}
