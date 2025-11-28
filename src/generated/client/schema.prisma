@@ -238,7 +238,7 @@ model Media {
   url          String    @db.VarChar(255)
   altText      String?   @db.VarChar(255)
   caption      String?   @db.VarChar(255)
-  type         MediaType
+  type         MediaType @default(IMAGE)
   uploadedById String?   @db.VarChar(191)
   createdAt    DateTime  @default(now())
 

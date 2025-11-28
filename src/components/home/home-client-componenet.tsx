@@ -105,7 +105,7 @@ export default function HomeContent() {
       <div className="border-b bg-background sticky top-0 z-50">
         <MainHeader />
         <Separator />
-        <CategoriesTabs />
+        {/* <CategoriesTabs /> */}
       </div>
 
       {/* Hero Section with Featured Story */}

@@ -1,7 +1,18 @@
-import { PrismaClient } from '@prisma/client';
-import { UserRole, PostType, PostStatus, PostVisibility, MagazineStatus, MediaType, CommentStatus } from '@prisma/client';
+import "dotenv/config";
+import { PrismaMariaDb } from "@prisma/adapter-mariadb";
+import { PrismaClient, UserRole, PostType, PostStatus, PostVisibility, MediaType, CommentStatus, MagazineStatus } from "@/generated/client";
 
-const prisma = new PrismaClient();
+// MariaDB Adapter Connection
+const adapter = new PrismaMariaDb({
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
+  connectionLimit: 5,
+});
+
+// Prisma Client
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   // Create Users
