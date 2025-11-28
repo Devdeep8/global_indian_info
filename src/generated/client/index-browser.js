@@ -182,6 +182,7 @@ exports.Prisma.MagazineScalarFieldEnum = {
   slug: 'slug',
   description: 'description',
   coverImageUrl: 'coverImageUrl',
+  pdfUrl: 'pdfUrl',
   issueNumber: 'issueNumber',
   publishedAt: 'publishedAt',
   status: 'status',
@@ -356,6 +357,7 @@ exports.Prisma.MagazineOrderByRelevanceFieldEnum = {
   slug: 'slug',
   description: 'description',
   coverImageUrl: 'coverImageUrl',
+  pdfUrl: 'pdfUrl',
   editorId: 'editorId'
 };
 

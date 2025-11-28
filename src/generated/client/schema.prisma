@@ -113,6 +113,7 @@ model Magazine {
   slug          String         @unique @db.VarChar(191)
   description   String?        @db.Text
   coverImageUrl String?        @db.VarChar(255)
+  pdfUrl        String?        @db.VarChar(255)
   issueNumber   Int?
   publishedAt   DateTime?
   status        MagazineStatus @default(DRAFT)

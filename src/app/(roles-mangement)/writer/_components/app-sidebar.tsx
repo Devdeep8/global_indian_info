@@ -100,6 +100,10 @@ navMain: [
         title: "SEO Tools",
         url: "/seo",
       },
+      {
+        title: "Magazines",
+        url: "/writer/magazine",
+      },
     ],
   },
   {

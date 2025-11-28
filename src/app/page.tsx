@@ -3,6 +3,7 @@
 import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import HomeContent from "@/components/home/home-client-componenet";
+import { MagazineSection } from "@/components/home/MagazineSection";
 
 export default function Home() {
   return (
@@ -30,7 +31,10 @@ export default function Home() {
         </div>
       </div>
     </div>}>
-      <HomeContent />
+      <div className="space-y-12">
+        <MagazineSection />
+        <HomeContent />
+      </div>
     </Suspense>
   );
 }

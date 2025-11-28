@@ -14,11 +14,16 @@ export async function POST(req: Request) {
     // Upload to ImageKit (or S3/CDN)
     const url = await uploadImage(file, "global_indians/images");
 
+    let type = "IMAGE";
+    if (file.type === "application/pdf") {
+      type = "DOCUMENT";
+    }
+
     // Save to DB
     const media = await db.media.create({
       data: {
         url,
-        type: "IMAGE",
+        type: type as any, // Cast to any to avoid type issues if enum isn't updated in client yet
       },
     });
 

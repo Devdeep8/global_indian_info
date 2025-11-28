@@ -8384,6 +8384,7 @@ export namespace Prisma {
     slug: string | null
     description: string | null
     coverImageUrl: string | null
+    pdfUrl: string | null
     issueNumber: number | null
     publishedAt: Date | null
     status: $Enums.MagazineStatus | null
@@ -8398,6 +8399,7 @@ export namespace Prisma {
     slug: string | null
     description: string | null
     coverImageUrl: string | null
+    pdfUrl: string | null
     issueNumber: number | null
     publishedAt: Date | null
     status: $Enums.MagazineStatus | null
@@ -8412,6 +8414,7 @@ export namespace Prisma {
     slug: number
     description: number
     coverImageUrl: number
+    pdfUrl: number
     issueNumber: number
     publishedAt: number
     status: number
@@ -8436,6 +8439,7 @@ export namespace Prisma {
     slug?: true
     description?: true
     coverImageUrl?: true
+    pdfUrl?: true
     issueNumber?: true
     publishedAt?: true
     status?: true
@@ -8450,6 +8454,7 @@ export namespace Prisma {
     slug?: true
     description?: true
     coverImageUrl?: true
+    pdfUrl?: true
     issueNumber?: true
     publishedAt?: true
     status?: true
@@ -8464,6 +8469,7 @@ export namespace Prisma {
     slug?: true
     description?: true
     coverImageUrl?: true
+    pdfUrl?: true
     issueNumber?: true
     publishedAt?: true
     status?: true
@@ -8565,6 +8571,7 @@ export namespace Prisma {
     slug: string
     description: string | null
     coverImageUrl: string | null
+    pdfUrl: string | null
     issueNumber: number | null
     publishedAt: Date | null
     status: $Enums.MagazineStatus
@@ -8598,6 +8605,7 @@ export namespace Prisma {
     slug?: boolean
     description?: boolean
     coverImageUrl?: boolean
+    pdfUrl?: boolean
     issueNumber?: boolean
     publishedAt?: boolean
     status?: boolean
@@ -8617,6 +8625,7 @@ export namespace Prisma {
     slug?: boolean
     description?: boolean
     coverImageUrl?: boolean
+    pdfUrl?: boolean
     issueNumber?: boolean
     publishedAt?: boolean
     status?: boolean
@@ -8625,7 +8634,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type MagazineOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "coverImageUrl" | "issueNumber" | "publishedAt" | "status" | "editorId" | "createdAt" | "updatedAt", ExtArgs["result"]["magazine"]>
+  export type MagazineOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "coverImageUrl" | "pdfUrl" | "issueNumber" | "publishedAt" | "status" | "editorId" | "createdAt" | "updatedAt", ExtArgs["result"]["magazine"]>
   export type MagazineInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     editor?: boolean | Magazine$editorArgs<ExtArgs>
     posts?: boolean | Magazine$postsArgs<ExtArgs>
@@ -8644,6 +8653,7 @@ export namespace Prisma {
       slug: string
       description: string | null
       coverImageUrl: string | null
+      pdfUrl: string | null
       issueNumber: number | null
       publishedAt: Date | null
       status: $Enums.MagazineStatus
@@ -9026,6 +9036,7 @@ export namespace Prisma {
     readonly slug: FieldRef<"Magazine", 'String'>
     readonly description: FieldRef<"Magazine", 'String'>
     readonly coverImageUrl: FieldRef<"Magazine", 'String'>
+    readonly pdfUrl: FieldRef<"Magazine", 'String'>
     readonly issueNumber: FieldRef<"Magazine", 'Int'>
     readonly publishedAt: FieldRef<"Magazine", 'DateTime'>
     readonly status: FieldRef<"Magazine", 'MagazineStatus'>
@@ -17512,6 +17523,7 @@ export namespace Prisma {
     slug: 'slug',
     description: 'description',
     coverImageUrl: 'coverImageUrl',
+    pdfUrl: 'pdfUrl',
     issueNumber: 'issueNumber',
     publishedAt: 'publishedAt',
     status: 'status',
@@ -17746,6 +17758,7 @@ export namespace Prisma {
     slug: 'slug',
     description: 'description',
     coverImageUrl: 'coverImageUrl',
+    pdfUrl: 'pdfUrl',
     editorId: 'editorId'
   };
 
@@ -18354,6 +18367,7 @@ export namespace Prisma {
     slug?: StringFilter<"Magazine"> | string
     description?: StringNullableFilter<"Magazine"> | string | null
     coverImageUrl?: StringNullableFilter<"Magazine"> | string | null
+    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
     issueNumber?: IntNullableFilter<"Magazine"> | number | null
     publishedAt?: DateTimeNullableFilter<"Magazine"> | Date | string | null
     status?: EnumMagazineStatusFilter<"Magazine"> | $Enums.MagazineStatus
@@ -18370,6 +18384,7 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     coverImageUrl?: SortOrderInput | SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
     issueNumber?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -18390,6 +18405,7 @@ export namespace Prisma {
     title?: StringNullableFilter<"Magazine"> | string | null
     description?: StringNullableFilter<"Magazine"> | string | null
     coverImageUrl?: StringNullableFilter<"Magazine"> | string | null
+    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
     issueNumber?: IntNullableFilter<"Magazine"> | number | null
     publishedAt?: DateTimeNullableFilter<"Magazine"> | Date | string | null
     status?: EnumMagazineStatusFilter<"Magazine"> | $Enums.MagazineStatus
@@ -18406,6 +18422,7 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     coverImageUrl?: SortOrderInput | SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
     issueNumber?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -18428,6 +18445,7 @@ export namespace Prisma {
     slug?: StringWithAggregatesFilter<"Magazine"> | string
     description?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
     coverImageUrl?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
+    pdfUrl?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
     issueNumber?: IntNullableWithAggregatesFilter<"Magazine"> | number | null
     publishedAt?: DateTimeNullableWithAggregatesFilter<"Magazine"> | Date | string | null
     status?: EnumMagazineStatusWithAggregatesFilter<"Magazine"> | $Enums.MagazineStatus
@@ -19472,6 +19490,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -19487,6 +19506,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -19502,6 +19522,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -19517,6 +19538,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -19532,6 +19554,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -19546,6 +19569,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -19559,6 +19583,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -20743,6 +20768,7 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrder
     coverImageUrl?: SortOrder
+    pdfUrl?: SortOrder
     issueNumber?: SortOrder
     publishedAt?: SortOrder
     status?: SortOrder
@@ -20761,6 +20787,7 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrder
     coverImageUrl?: SortOrder
+    pdfUrl?: SortOrder
     issueNumber?: SortOrder
     publishedAt?: SortOrder
     status?: SortOrder
@@ -20775,6 +20802,7 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrder
     coverImageUrl?: SortOrder
+    pdfUrl?: SortOrder
     issueNumber?: SortOrder
     publishedAt?: SortOrder
     status?: SortOrder
@@ -22952,6 +22980,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -22966,6 +22995,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -23204,6 +23234,7 @@ export namespace Prisma {
     slug?: StringFilter<"Magazine"> | string
     description?: StringNullableFilter<"Magazine"> | string | null
     coverImageUrl?: StringNullableFilter<"Magazine"> | string | null
+    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
     issueNumber?: IntNullableFilter<"Magazine"> | number | null
     publishedAt?: DateTimeNullableFilter<"Magazine"> | Date | string | null
     status?: EnumMagazineStatusFilter<"Magazine"> | $Enums.MagazineStatus
@@ -23891,6 +23922,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -23905,6 +23937,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -24127,6 +24160,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -24141,6 +24175,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -25634,6 +25669,7 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
+    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
@@ -25886,6 +25922,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -25900,6 +25937,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
@@ -25914,6 +25952,7 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
