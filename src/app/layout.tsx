@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/provider/theme-provider";
 import { AuthProvider } from "@/provider/session-provider";
 import { ReactNode } from "react";
+import { Footer } from "@/components/layout/Footer";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -48,6 +49,7 @@ export default async function RootLayout({
           >
 
             {children}
+            <Footer />
             {auth}
             {/* <Toaster richColors closeButton position="bottom-right" /> */}
           </ThemeProvider>

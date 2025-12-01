@@ -11,7 +11,7 @@ export default function MainLayout({
   return (
     <div>
       <MainHeader />
-      <CategoriesTabs />
+      {/* <CategoriesTabs /> */}
       <div className="p-6">{children}</div>
 
       {/* Name prompt dialog - will only show if user has no name */}

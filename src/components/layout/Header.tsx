@@ -75,6 +75,9 @@ const MainHeader = () => {
             <Link href="/news" className="text-sm font-medium hover:text-primary transition-colors">
               News
             </Link>
+            <Link href="/category/global-indians" className="text-sm font-medium hover:text-primary transition-colors">
+              Global Indians
+            </Link>
             <Link href="/business" className="text-sm font-medium hover:text-primary transition-colors">
               Business
             </Link>
@@ -145,6 +148,19 @@ const MainHeader = () => {
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                   </DropdownMenuItem>
+                  <DropdownMenuSeparator />
+                  {(user as any).role === "ADMIN" && (
+                    <DropdownMenuItem onClick={() => window.location.href = "/admin"} className="cursor-pointer">
+                      <Settings className="mr-2 h-4 w-4" />
+                      <span>Admin Panel</span>
+                    </DropdownMenuItem>
+                  )}
+                  {((user as any).role === "WRITER" || (user as any).role === "ADMIN") && (
+                    <DropdownMenuItem onClick={() => window.location.href = "/writer"} className="cursor-pointer">
+                      <NewspaperIcon className="mr-2 h-4 w-4" />
+                      <span>Writer Panel</span>
+                    </DropdownMenuItem>
+                  )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onClick={handleSignOut}

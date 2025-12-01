@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 
 interface ViewCardProps {
   items: Array<{
@@ -12,6 +13,7 @@ interface ViewCardProps {
     title: string;
     description?: string;
     image?: string;
+    slug: string;
   }>;
 }
 
@@ -41,27 +43,29 @@ export default function ViewCard({ items }: ViewCardProps) {
       {/* Cards Wrapper */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {visibleItems.map((item) => (
-          <Card key={item.id} className="shadow-md">
-            {item.coverImageUrl && (
-              <img
-                src={item.coverImageUrl}
-                alt={item.title}
-                className="w-full h-48 object-cover rounded-t-md"
-              />
-            )}
+          <Link href={`/articles/${item.slug}`} key={item.id} className="block h-full">
+            <Card className="shadow-md h-full hover:shadow-lg transition-shadow">
+              {item.coverImageUrl && (
+                <img
+                  src={item.coverImageUrl}
+                  alt={item.title}
+                  className="w-full h-48 object-cover rounded-t-md"
+                />
+              )}
 
-            <CardHeader>
-              <CardTitle className="text-lg">{item.title}</CardTitle>
-            </CardHeader>
+              <CardHeader>
+                <CardTitle className="text-lg line-clamp-2">{item.title}</CardTitle>
+              </CardHeader>
 
-            {item.description && (
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  {item.description}
-                </p>
-              </CardContent>
-            )}
-          </Card>
+              {item.description && (
+                <CardContent>
+                  <p className="text-sm text-muted-foreground line-clamp-3">
+                    {item.description}
+                  </p>
+                </CardContent>
+              )}
+            </Card>
+          </Link>
         ))}
       </div>
 

@@ -4,6 +4,7 @@ import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import {
   Carousel,
   CarouselContent,
@@ -115,9 +116,11 @@ export function FeaturedCarousel({ items }: { items: Article[] }) {
                         )}
                       </div>
 
-                      <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium rounded-none px-8 py-3 mt-4 w-fit">
-                        READ
-                      </Button>
+                      <Link href={`/articles/${item.slug}`}>
+                        <Button className="bg-yellow-500 hover:bg-yellow-600 text-black font-medium rounded-none px-8 py-3 mt-4 w-fit">
+                          READ
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
