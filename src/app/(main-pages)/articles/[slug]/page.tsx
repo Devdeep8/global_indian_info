@@ -2,7 +2,6 @@ import { ArticleService } from "@/services/article.service";
 import { notFound } from "next/navigation";
 import { format } from "date-fns";
 import { MDXRemote } from "next-mdx-remote/rsc";
-import { db } from "@/lib/db";
 
 // Custom components for MDX
 const components = {

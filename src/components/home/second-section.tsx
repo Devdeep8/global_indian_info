@@ -1,6 +1,6 @@
 import { Button } from "../ui/button";
 import { SectionLayout } from "./section-layout";
-import ViewCard from "./view-list";
+import { HighlightSection } from "./highlight-section";
 
 export default function SecondSection({items}:{items : any}) {
   return (
@@ -10,11 +10,10 @@ export default function SecondSection({items}:{items : any}) {
       showSeparator
       center ={true}
     >
-        <ViewCard items={items}/>
-
+        <HighlightSection items={items}/>
 
         <div>
-            <Button variant="outline" className="mx-auto mt-6 block cursor-pointer">
+            <Button variant="outline" className="mx-auto mt-8 block cursor-pointer rounded-full px-8">
                 View All Stories
             </Button>
         </div>

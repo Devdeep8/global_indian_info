@@ -1,20 +1,19 @@
 import { Button } from "../ui/button";
 import { SectionLayout } from "./section-layout";
-import ViewCard from "./view-list";
+import { GridSection } from "./grid-section";
 
 export default function ThirdSection({items}:{items : any}) {
   return (
     <SectionLayout
       title="GLOBAL INDIAN YOUTH | COVER STORIES"
-      subtitle="Stories that are researched and written by our editorial team"
+      subtitle="Inspiring the next generation of leaders"
       showSeparator
       center ={true}
     >
-        <ViewCard items={items}/>
-
+        <GridSection items={items}/>
 
         <div>
-            <Button variant="outline" className="mx-auto mt-6 block cursor-pointer">
+            <Button variant="outline" className="mx-auto mt-8 block cursor-pointer rounded-full px-8">
                 View All Stories
             </Button>
         </div>
