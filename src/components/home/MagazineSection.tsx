@@ -2,14 +2,11 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getLatestMagazine } from "@/services/magazine";
 import { ArrowRight, BookOpen } from "lucide-react";
-
 export async function MagazineSection() {
   const magazine = await getLatestMagazine();
-
   if (!magazine) {
     return null;
   }
-
   return (
     <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -22,7 +19,8 @@ export async function MagazineSection() {
               {magazine.title}
             </h2>
             <p className="text-lg text-muted-foreground">
-              {magazine.description || "Read our latest magazine issue featuring exclusive stories and interviews."}
+              {magazine.description ||
+                "Read our latest magazine issue featuring exclusive stories and interviews."}
             </p>
             <div className="flex gap-4">
               <Link href={`/magazine/${magazine.slug}`}>
@@ -39,25 +37,32 @@ export async function MagazineSection() {
               </Link>
             </div>
           </div>
-          
           <div className="flex-1 relative group">
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto rounded-lg shadow-2xl overflow-hidden transform transition-transform duration-300 group-hover:scale-[1.02]">
               {magazine.coverImageUrl ? (
-                <img
-                  src={magazine.coverImageUrl}
-                  alt={magazine.title || "Magazine Cover"}
-                  className="object-cover w-full h-full"
-                />
+                <>
+                  <img
+                    src={magazine.coverImageUrl}
+                    alt={magazine.title || "Magazine Cover"}
+                    className="object-cover w-full h-full"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-end justify-end p-6">
+                    <div className="text-white text-right">
+                      <p className="text-sm font-medium mb-2">
+                        Issue #{magazine.issueNumber}
+                      </p>
+                      <h3 className="font-bold text-lg line-clamp-2">
+                        {magazine.title}
+                      </h3>
+                    </div>
+                  </div>
+                </>
               ) : (
                 <div className="w-full h-full bg-muted flex items-center justify-center">
                   <BookOpen className="w-16 h-16 text-muted-foreground/50" />
                 </div>
               )}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <p className="text-white font-medium">Issue #{magazine.issueNumber}</p>
-              </div>
             </div>
-            {/* Decorative elements */}
             <div className="absolute -z-10 top-10 -right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
             <div className="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-decorative-blue rounded-full blur-3xl" />
           </div>
