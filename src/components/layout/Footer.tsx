@@ -9,7 +9,7 @@ export function Footer() {
           <div className="space-y-4">
             <Link href="/" className="flex items-center space-x-2">
               <img 
-                src="https://globalindiansinfo.com/_next/image?url=%2Fuploads%2Fimages%2Fsite-logo4.png&w=640&q=75"
+                src="/global_indians.png"
                 alt="Global Indian Info Logo"
                 className="h-10 w-auto"
               />
@@ -56,8 +56,8 @@ export function Footer() {
           <div>
             <h3 className="text-sm font-semibold mb-4">Contact</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>Email: info@globalindians.info</li>
-              <li>Phone: +91 123 456 7890</li>
+              <li>Email: info@prabisha.com</li>
+              <li>Phone: +44-7867090363</li>
             </ul>
           </div>
         </div>

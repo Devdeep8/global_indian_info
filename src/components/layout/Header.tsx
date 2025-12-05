@@ -64,7 +64,7 @@ const MainHeader = () => {
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
             <img 
-              src="https://globalindiansinfo.com/_next/image?url=%2Fuploads%2Fimages%2Fsite-logo4.png&w=640&q=75"
+              src="/global_indians.png"
               alt="Global Indian Info Logo"
               className="h-10 w-auto"
             />
