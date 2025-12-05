@@ -1,40 +1,37 @@
-import React from "react";
-import Link from "next/link";
+
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-
+import { FaWhatsapp } from 'react-icons/fa';
 type GroupItem = {
   title: string;
   subtitle?: string;
   href: string; // whatsapp invite link or phone link
+  icon?: React.ComponentType<{ className?: string , style?: React.CSSProperties}>;
 };
 
 const groups: GroupItem[] = [
   {
     title: "UK Jobs Group",
     subtitle: "Jobs and opportunities — UK",
-    href: "https://chat.whatsapp.com/REPLACE_WITH_UK_GROUP_LINK",
+    href: "https://chat.whatsapp.com/H2kjm74Dao9FNT0xWn6P9s",
+       icon: FaWhatsapp,
   },
   {
     title: "India Jobs Group",
     subtitle: "Jobs and opportunities — India",
-    href: "https://chat.whatsapp.com/REPLACE_WITH_INDIA_GROUP_LINK",
+    href: "https://chat.whatsapp.com/KGbEPtFJF76D8yQkN2iGC2",
+     icon: FaWhatsapp,
   },
   {
     title: "Recycle UK Group",
     subtitle: "Community recycling & local support",
-    href: "https://chat.whatsapp.com/REPLACE_WITH_RECYCLE_LINK",
+    href: "https://chat.whatsapp.com/EJcrwn2WfuFK51UjazLlNp",
+    icon: FaWhatsapp,
   },
 ];
 
 export default function WhatsappCommunity() {
-  const whatsappIcon = (
-    <img
-      src="/social/icons8-whatsapp.svg"
-      alt="whatsapp"
-      className="h-10 w-10"
-    />
-  );
+  
 
   return (
     <section className="container mx-auto px-4 py-12">
@@ -50,7 +47,7 @@ export default function WhatsappCommunity() {
             className="bg-card text-card-foreground rounded-lg p-6 drop-shadow-lg flex flex-col items-center justify-between"
           >
             <div className="flex flex-col items-center text-center">
-              <div className="mb-4">{whatsappIcon}</div>
+             {g.icon && <g.icon className="text-center mx-auto mb-2" style={{ fontSize: '3rem', color: '#25D366' }} />}
               <h3 className="text-xl font-semibold">{g.title}</h3>
               {g.subtitle && <p className="text-sm text-muted-foreground mt-2">{g.subtitle}</p>}
             </div>
@@ -63,7 +60,7 @@ export default function WhatsappCommunity() {
                 aria-label={`Join ${g.title} on WhatsApp`}
                 className="w-full"
               >
-                <Button className="w-full rounded-md bg-cta text-cta-foreground hover-bg-cta">
+                <Button className="w-full cursor-pointer rounded-md bg-cta text-cta-foreground hover-bg-cta">
                   Join Group
                 </Button>
               </a>
