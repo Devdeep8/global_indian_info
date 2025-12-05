@@ -63,8 +63,11 @@ const MainHeader = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <Globe className="h-8 w-8 text-primary" />
-            <span className="text-xl font-bold">Global Indian</span>
+            <img 
+              src="https://globalindiansinfo.com/_next/image?url=%2Fuploads%2Fimages%2Fsite-logo4.png&w=640&q=75"
+              alt="Global Indian Info Logo"
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Navigation */}

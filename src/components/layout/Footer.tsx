@@ -7,7 +7,13 @@ export function Footer() {
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-bold">Global Indians</h3>
+            <Link href="/" className="flex items-center space-x-2">
+              <img 
+                src="https://globalindiansinfo.com/_next/image?url=%2Fuploads%2Fimages%2Fsite-logo4.png&w=640&q=75"
+                alt="Global Indian Info Logo"
+                className="h-10 w-auto"
+              />
+            </Link>
             <p className="text-sm text-muted-foreground">
               Connecting and celebrating the achievements of Indians worldwide.
             </p>
