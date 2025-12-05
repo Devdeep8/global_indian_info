@@ -1,6 +1,5 @@
 import { getUserIdByUsername } from "@/utils/get-current-user.helper";
 import ProfileComponent from "../_components/profile-client";
-import { unstable_serialize } from "swr"; // ✅ Available in server components
 
 export default async function ProfilePage({
   params,
@@ -15,7 +14,7 @@ export default async function ProfilePage({
     return <div>User not found</div>;
   }
   const profileData = await fetch(
-    `http://localhost:3000/api/users/profile/${userId}`
+    `${process.env.NEXT_PUBLIC_BASE_URL}api/users/profile/${userId}`
   ).then((res) => res.json());
 
   if (!profileData || profileData.success === false) {
