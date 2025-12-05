@@ -100,14 +100,14 @@ const MainHeader = () => {
           {/* Right Section: Search + User Nav */}
           <div className="flex items-center gap-4 justify-end">
             {/* Search Bar */}
-            <div className="relative hidden sm:block">
+            {/* <div className="relative hidden sm:block">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
                 placeholder="Search News..."
                 className="w-[100px] lg:w-[200px] pl-8 bg-background"
               />
-            </div>
+            </div> */}
 
             {/* User Navigation */}
             {isLoading ? (
