@@ -59,7 +59,7 @@ export async function MagazineSection() {
             </div>
             {/* Decorative elements */}
             <div className="absolute -z-10 top-10 -right-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl" />
+            <div className="absolute -z-10 -bottom-10 -left-10 w-72 h-72 bg-decorative-blue rounded-full blur-3xl" />
           </div>
         </div>
       </div>

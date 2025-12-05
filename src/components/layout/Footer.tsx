@@ -225,8 +225,7 @@ export  function Footer() {
                 href="https://prabisha.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold"
-                style={{ color: "orange" }}
+                className="font-semibold text-primary"
               >
                 Prabisha Consulting
               </a>
@@ -244,7 +243,7 @@ export  function Footer() {
             rel="noopener noreferrer"
             aria-label="Contact us on WhatsApp"
           >
-            <Button className="rounded-full hover:bg-green-700 p-3 shadow-lg">
+            <Button className="rounded-full p-3 shadow-lg bg-cta text-cta-foreground hover-bg-cta">
               <img
                 src="/social-media-icons/whatsapp-icon.svg"
                 alt="WhatsApp"

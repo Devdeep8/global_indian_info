@@ -123,7 +123,6 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  username: 'username',
   email: 'email',
   emailVerified: 'emailVerified',
   image: 'image',
@@ -132,7 +131,8 @@ exports.Prisma.UserScalarFieldEnum = {
   avatarUrl: 'avatarUrl',
   socialLinks: 'socialLinks',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  username: 'username'
 };
 
 exports.Prisma.AccountScalarFieldEnum = {
@@ -182,13 +182,13 @@ exports.Prisma.MagazineScalarFieldEnum = {
   slug: 'slug',
   description: 'description',
   coverImageUrl: 'coverImageUrl',
-  pdfUrl: 'pdfUrl',
   issueNumber: 'issueNumber',
   publishedAt: 'publishedAt',
   status: 'status',
   editorId: 'editorId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  pdfUrl: 'pdfUrl'
 };
 
 exports.Prisma.PostScalarFieldEnum = {
@@ -197,7 +197,6 @@ exports.Prisma.PostScalarFieldEnum = {
   slug: 'slug',
   excerpt: 'excerpt',
   content: 'content',
-  readMinutes: 'readMinutes',
   type: 'type',
   coverImageUrl: 'coverImageUrl',
   status: 'status',
@@ -217,7 +216,8 @@ exports.Prisma.PostScalarFieldEnum = {
   seoSchema: 'seoSchema',
   settings: 'settings',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  readMinutes: 'readMinutes'
 };
 
 exports.Prisma.PostTagsScalarFieldEnum = {
@@ -282,22 +282,6 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull
-};
-
-exports.Prisma.JsonNullValueFilter = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull,
-  AnyNull: Prisma.AnyNull
-};
-
-exports.Prisma.QueryMode = {
-  default: 'default',
-  insensitive: 'insensitive'
-};
-
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
@@ -306,11 +290,12 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
-  username: 'username',
   email: 'email',
   image: 'image',
   bio: 'bio',
-  avatarUrl: 'avatarUrl'
+  avatarUrl: 'avatarUrl',
+  socialLinks: 'socialLinks',
+  username: 'username'
 };
 
 exports.Prisma.AccountOrderByRelevanceFieldEnum = {
@@ -357,8 +342,8 @@ exports.Prisma.MagazineOrderByRelevanceFieldEnum = {
   slug: 'slug',
   description: 'description',
   coverImageUrl: 'coverImageUrl',
-  pdfUrl: 'pdfUrl',
-  editorId: 'editorId'
+  editorId: 'editorId',
+  pdfUrl: 'pdfUrl'
 };
 
 exports.Prisma.PostOrderByRelevanceFieldEnum = {
@@ -373,7 +358,10 @@ exports.Prisma.PostOrderByRelevanceFieldEnum = {
   categoryId: 'categoryId',
   metaTitle: 'metaTitle',
   metaDescription: 'metaDescription',
-  metaKeywords: 'metaKeywords'
+  metaKeywords: 'metaKeywords',
+  slugHistory: 'slugHistory',
+  seoSchema: 'seoSchema',
+  settings: 'settings'
 };
 
 exports.Prisma.PostTagsOrderByRelevanceFieldEnum = {

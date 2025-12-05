@@ -41,6 +41,7 @@ import { FeaturedCarousel } from "./hero-section";
 import SecondSection from "./second-section";
 import ThirdSection from "./third-section";
 import ForthSection from "./forth-section";
+import WhatsappCommunity from "./whatsapp-community";
 
 interface FeaturedArticle {
   id: string;
@@ -114,6 +115,7 @@ export default function HomeContent() {
       </section>
 
       <SecondSection items={featuredArticles}/>
+      <WhatsappCommunity/>
       <ThirdSection items={featuredArticles}/>
       <ForthSection items={featuredArticles}/> 
 

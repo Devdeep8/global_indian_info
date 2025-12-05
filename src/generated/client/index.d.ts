@@ -2102,22 +2102,22 @@ export namespace Prisma {
 
   export type UserCountOutputType = {
     accounts: number
-    sessions: number
-    posts: number
     comments: number
-    revisions: number
-    media: number
     editedMagazines: number
+    media: number
+    posts: number
+    revisions: number
+    sessions: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | UserCountOutputTypeCountAccountsArgs
-    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
-    posts?: boolean | UserCountOutputTypeCountPostsArgs
     comments?: boolean | UserCountOutputTypeCountCommentsArgs
-    revisions?: boolean | UserCountOutputTypeCountRevisionsArgs
-    media?: boolean | UserCountOutputTypeCountMediaArgs
     editedMagazines?: boolean | UserCountOutputTypeCountEditedMagazinesArgs
+    media?: boolean | UserCountOutputTypeCountMediaArgs
+    posts?: boolean | UserCountOutputTypeCountPostsArgs
+    revisions?: boolean | UserCountOutputTypeCountRevisionsArgs
+    sessions?: boolean | UserCountOutputTypeCountSessionsArgs
   }
 
   // Custom InputTypes
@@ -2141,20 +2141,6 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SessionWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostWhereInput
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
   export type UserCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CommentWhereInput
   }
@@ -2162,8 +2148,8 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountRevisionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RevisionWhereInput
+  export type UserCountOutputTypeCountEditedMagazinesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MagazineWhereInput
   }
 
   /**
@@ -2176,8 +2162,22 @@ export namespace Prisma {
   /**
    * UserCountOutputType without action
    */
-  export type UserCountOutputTypeCountEditedMagazinesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: MagazineWhereInput
+  export type UserCountOutputTypeCountPostsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountRevisionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RevisionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountSessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SessionWhereInput
   }
 
 
@@ -2288,18 +2288,18 @@ export namespace Prisma {
    */
 
   export type PostCountOutputType = {
-    tags: number
     comments: number
-    revisions: number
     media: number
+    tags: number
+    revisions: number
     viewLogs: number
   }
 
   export type PostCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tags?: boolean | PostCountOutputTypeCountTagsArgs
     comments?: boolean | PostCountOutputTypeCountCommentsArgs
-    revisions?: boolean | PostCountOutputTypeCountRevisionsArgs
     media?: boolean | PostCountOutputTypeCountMediaArgs
+    tags?: boolean | PostCountOutputTypeCountTagsArgs
+    revisions?: boolean | PostCountOutputTypeCountRevisionsArgs
     viewLogs?: boolean | PostCountOutputTypeCountViewLogsArgs
   }
 
@@ -2317,13 +2317,6 @@ export namespace Prisma {
   /**
    * PostCountOutputType without action
    */
-  export type PostCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostTagsWhereInput
-  }
-
-  /**
-   * PostCountOutputType without action
-   */
   export type PostCountOutputTypeCountCommentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: CommentWhereInput
   }
@@ -2331,15 +2324,22 @@ export namespace Prisma {
   /**
    * PostCountOutputType without action
    */
-  export type PostCountOutputTypeCountRevisionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: RevisionWhereInput
+  export type PostCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostMediaWhereInput
   }
 
   /**
    * PostCountOutputType without action
    */
-  export type PostCountOutputTypeCountMediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PostMediaWhereInput
+  export type PostCountOutputTypeCountTagsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PostTagsWhereInput
+  }
+
+  /**
+   * PostCountOutputType without action
+   */
+  export type PostCountOutputTypeCountRevisionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RevisionWhereInput
   }
 
   /**
@@ -2429,35 +2429,36 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: string | null
     name: string | null
-    username: string | null
     email: string | null
     emailVerified: Date | null
     image: string | null
     role: $Enums.UserRole | null
     bio: string | null
     avatarUrl: string | null
+    socialLinks: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    username: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: string | null
     name: string | null
-    username: string | null
     email: string | null
     emailVerified: Date | null
     image: string | null
     role: $Enums.UserRole | null
     bio: string | null
     avatarUrl: string | null
+    socialLinks: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    username: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     name: number
-    username: number
     email: number
     emailVerified: number
     image: number
@@ -2467,6 +2468,7 @@ export namespace Prisma {
     socialLinks: number
     createdAt: number
     updatedAt: number
+    username: number
     _all: number
   }
 
@@ -2474,35 +2476,6 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     name?: true
-    username?: true
-    email?: true
-    emailVerified?: true
-    image?: true
-    role?: true
-    bio?: true
-    avatarUrl?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type UserMaxAggregateInputType = {
-    id?: true
-    name?: true
-    username?: true
-    email?: true
-    emailVerified?: true
-    image?: true
-    role?: true
-    bio?: true
-    avatarUrl?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type UserCountAggregateInputType = {
-    id?: true
-    name?: true
-    username?: true
     email?: true
     emailVerified?: true
     image?: true
@@ -2512,6 +2485,37 @@ export namespace Prisma {
     socialLinks?: true
     createdAt?: true
     updatedAt?: true
+    username?: true
+  }
+
+  export type UserMaxAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    emailVerified?: true
+    image?: true
+    role?: true
+    bio?: true
+    avatarUrl?: true
+    socialLinks?: true
+    createdAt?: true
+    updatedAt?: true
+    username?: true
+  }
+
+  export type UserCountAggregateInputType = {
+    id?: true
+    name?: true
+    email?: true
+    emailVerified?: true
+    image?: true
+    role?: true
+    bio?: true
+    avatarUrl?: true
+    socialLinks?: true
+    createdAt?: true
+    updatedAt?: true
+    username?: true
     _all?: true
   }
 
@@ -2590,16 +2594,16 @@ export namespace Prisma {
   export type UserGroupByOutputType = {
     id: string
     name: string | null
-    username: string | null
     email: string | null
     emailVerified: Date | null
     image: string | null
     role: $Enums.UserRole
     bio: string | null
     avatarUrl: string | null
-    socialLinks: JsonValue | null
+    socialLinks: string | null
     createdAt: Date
     updatedAt: Date
+    username: string | null
     _count: UserCountAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
@@ -2622,7 +2626,6 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    username?: boolean
     email?: boolean
     emailVerified?: boolean
     image?: boolean
@@ -2632,13 +2635,14 @@ export namespace Prisma {
     socialLinks?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    username?: boolean
     accounts?: boolean | User$accountsArgs<ExtArgs>
-    sessions?: boolean | User$sessionsArgs<ExtArgs>
-    posts?: boolean | User$postsArgs<ExtArgs>
     comments?: boolean | User$commentsArgs<ExtArgs>
-    revisions?: boolean | User$revisionsArgs<ExtArgs>
-    media?: boolean | User$mediaArgs<ExtArgs>
     editedMagazines?: boolean | User$editedMagazinesArgs<ExtArgs>
+    media?: boolean | User$mediaArgs<ExtArgs>
+    posts?: boolean | User$postsArgs<ExtArgs>
+    revisions?: boolean | User$revisionsArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -2647,7 +2651,6 @@ export namespace Prisma {
   export type UserSelectScalar = {
     id?: boolean
     name?: boolean
-    username?: boolean
     email?: boolean
     emailVerified?: boolean
     image?: boolean
@@ -2657,17 +2660,18 @@ export namespace Prisma {
     socialLinks?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    username?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "username" | "email" | "emailVerified" | "image" | "role" | "bio" | "avatarUrl" | "socialLinks" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "emailVerified" | "image" | "role" | "bio" | "avatarUrl" | "socialLinks" | "createdAt" | "updatedAt" | "username", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     accounts?: boolean | User$accountsArgs<ExtArgs>
-    sessions?: boolean | User$sessionsArgs<ExtArgs>
-    posts?: boolean | User$postsArgs<ExtArgs>
     comments?: boolean | User$commentsArgs<ExtArgs>
-    revisions?: boolean | User$revisionsArgs<ExtArgs>
-    media?: boolean | User$mediaArgs<ExtArgs>
     editedMagazines?: boolean | User$editedMagazinesArgs<ExtArgs>
+    media?: boolean | User$mediaArgs<ExtArgs>
+    posts?: boolean | User$postsArgs<ExtArgs>
+    revisions?: boolean | User$revisionsArgs<ExtArgs>
+    sessions?: boolean | User$sessionsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -2675,26 +2679,26 @@ export namespace Prisma {
     name: "User"
     objects: {
       accounts: Prisma.$AccountPayload<ExtArgs>[]
-      sessions: Prisma.$SessionPayload<ExtArgs>[]
-      posts: Prisma.$PostPayload<ExtArgs>[]
       comments: Prisma.$CommentPayload<ExtArgs>[]
-      revisions: Prisma.$RevisionPayload<ExtArgs>[]
-      media: Prisma.$MediaPayload<ExtArgs>[]
       editedMagazines: Prisma.$MagazinePayload<ExtArgs>[]
+      media: Prisma.$MediaPayload<ExtArgs>[]
+      posts: Prisma.$PostPayload<ExtArgs>[]
+      revisions: Prisma.$RevisionPayload<ExtArgs>[]
+      sessions: Prisma.$SessionPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string | null
-      username: string | null
       email: string | null
       emailVerified: Date | null
       image: string | null
       role: $Enums.UserRole
       bio: string | null
       avatarUrl: string | null
-      socialLinks: Prisma.JsonValue | null
+      socialLinks: string | null
       createdAt: Date
       updatedAt: Date
+      username: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -3036,12 +3040,12 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     accounts<T extends User$accountsArgs<ExtArgs> = {}>(args?: Subset<T, User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     comments<T extends User$commentsArgs<ExtArgs> = {}>(args?: Subset<T, User$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    revisions<T extends User$revisionsArgs<ExtArgs> = {}>(args?: Subset<T, User$revisionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    media<T extends User$mediaArgs<ExtArgs> = {}>(args?: Subset<T, User$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     editedMagazines<T extends User$editedMagazinesArgs<ExtArgs> = {}>(args?: Subset<T, User$editedMagazinesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MagazinePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    media<T extends User$mediaArgs<ExtArgs> = {}>(args?: Subset<T, User$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    posts<T extends User$postsArgs<ExtArgs> = {}>(args?: Subset<T, User$postsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    revisions<T extends User$revisionsArgs<ExtArgs> = {}>(args?: Subset<T, User$revisionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    sessions<T extends User$sessionsArgs<ExtArgs> = {}>(args?: Subset<T, User$sessionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3073,16 +3077,16 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
-    readonly username: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'DateTime'>
     readonly image: FieldRef<"User", 'String'>
     readonly role: FieldRef<"User", 'UserRole'>
     readonly bio: FieldRef<"User", 'String'>
     readonly avatarUrl: FieldRef<"User", 'String'>
-    readonly socialLinks: FieldRef<"User", 'Json'>
+    readonly socialLinks: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
+    readonly username: FieldRef<"User", 'String'>
   }
     
 
@@ -3450,54 +3454,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.sessions
-   */
-  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Session
-     */
-    select?: SessionSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Session
-     */
-    omit?: SessionOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SessionInclude<ExtArgs> | null
-    where?: SessionWhereInput
-    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
-    cursor?: SessionWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
-  }
-
-  /**
-   * User.posts
-   */
-  export type User$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Post
-     */
-    select?: PostSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Post
-     */
-    omit?: PostOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostInclude<ExtArgs> | null
-    where?: PostWhereInput
-    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
-    cursor?: PostWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
-  }
-
-  /**
    * User.comments
    */
   export type User$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3522,27 +3478,27 @@ export namespace Prisma {
   }
 
   /**
-   * User.revisions
+   * User.editedMagazines
    */
-  export type User$revisionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$editedMagazinesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Revision
+     * Select specific fields to fetch from the Magazine
      */
-    select?: RevisionSelect<ExtArgs> | null
+    select?: MagazineSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Revision
+     * Omit specific fields from the Magazine
      */
-    omit?: RevisionOmit<ExtArgs> | null
+    omit?: MagazineOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: RevisionInclude<ExtArgs> | null
-    where?: RevisionWhereInput
-    orderBy?: RevisionOrderByWithRelationInput | RevisionOrderByWithRelationInput[]
-    cursor?: RevisionWhereUniqueInput
+    include?: MagazineInclude<ExtArgs> | null
+    where?: MagazineWhereInput
+    orderBy?: MagazineOrderByWithRelationInput | MagazineOrderByWithRelationInput[]
+    cursor?: MagazineWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: RevisionScalarFieldEnum | RevisionScalarFieldEnum[]
+    distinct?: MagazineScalarFieldEnum | MagazineScalarFieldEnum[]
   }
 
   /**
@@ -3570,27 +3526,75 @@ export namespace Prisma {
   }
 
   /**
-   * User.editedMagazines
+   * User.posts
    */
-  export type User$editedMagazinesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$postsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Magazine
+     * Select specific fields to fetch from the Post
      */
-    select?: MagazineSelect<ExtArgs> | null
+    select?: PostSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Magazine
+     * Omit specific fields from the Post
      */
-    omit?: MagazineOmit<ExtArgs> | null
+    omit?: PostOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MagazineInclude<ExtArgs> | null
-    where?: MagazineWhereInput
-    orderBy?: MagazineOrderByWithRelationInput | MagazineOrderByWithRelationInput[]
-    cursor?: MagazineWhereUniqueInput
+    include?: PostInclude<ExtArgs> | null
+    where?: PostWhereInput
+    orderBy?: PostOrderByWithRelationInput | PostOrderByWithRelationInput[]
+    cursor?: PostWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: MagazineScalarFieldEnum | MagazineScalarFieldEnum[]
+    distinct?: PostScalarFieldEnum | PostScalarFieldEnum[]
+  }
+
+  /**
+   * User.revisions
+   */
+  export type User$revisionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Revision
+     */
+    select?: RevisionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Revision
+     */
+    omit?: RevisionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RevisionInclude<ExtArgs> | null
+    where?: RevisionWhereInput
+    orderBy?: RevisionOrderByWithRelationInput | RevisionOrderByWithRelationInput[]
+    cursor?: RevisionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: RevisionScalarFieldEnum | RevisionScalarFieldEnum[]
+  }
+
+  /**
+   * User.sessions
+   */
+  export type User$sessionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Session
+     */
+    select?: SessionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Session
+     */
+    omit?: SessionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SessionInclude<ExtArgs> | null
+    where?: SessionWhereInput
+    orderBy?: SessionOrderByWithRelationInput | SessionOrderByWithRelationInput[]
+    cursor?: SessionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SessionScalarFieldEnum | SessionScalarFieldEnum[]
   }
 
   /**
@@ -8384,13 +8388,13 @@ export namespace Prisma {
     slug: string | null
     description: string | null
     coverImageUrl: string | null
-    pdfUrl: string | null
     issueNumber: number | null
     publishedAt: Date | null
     status: $Enums.MagazineStatus | null
     editorId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    pdfUrl: string | null
   }
 
   export type MagazineMaxAggregateOutputType = {
@@ -8399,13 +8403,13 @@ export namespace Prisma {
     slug: string | null
     description: string | null
     coverImageUrl: string | null
-    pdfUrl: string | null
     issueNumber: number | null
     publishedAt: Date | null
     status: $Enums.MagazineStatus | null
     editorId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    pdfUrl: string | null
   }
 
   export type MagazineCountAggregateOutputType = {
@@ -8414,13 +8418,13 @@ export namespace Prisma {
     slug: number
     description: number
     coverImageUrl: number
-    pdfUrl: number
     issueNumber: number
     publishedAt: number
     status: number
     editorId: number
     createdAt: number
     updatedAt: number
+    pdfUrl: number
     _all: number
   }
 
@@ -8439,13 +8443,13 @@ export namespace Prisma {
     slug?: true
     description?: true
     coverImageUrl?: true
-    pdfUrl?: true
     issueNumber?: true
     publishedAt?: true
     status?: true
     editorId?: true
     createdAt?: true
     updatedAt?: true
+    pdfUrl?: true
   }
 
   export type MagazineMaxAggregateInputType = {
@@ -8454,13 +8458,13 @@ export namespace Prisma {
     slug?: true
     description?: true
     coverImageUrl?: true
-    pdfUrl?: true
     issueNumber?: true
     publishedAt?: true
     status?: true
     editorId?: true
     createdAt?: true
     updatedAt?: true
+    pdfUrl?: true
   }
 
   export type MagazineCountAggregateInputType = {
@@ -8469,13 +8473,13 @@ export namespace Prisma {
     slug?: true
     description?: true
     coverImageUrl?: true
-    pdfUrl?: true
     issueNumber?: true
     publishedAt?: true
     status?: true
     editorId?: true
     createdAt?: true
     updatedAt?: true
+    pdfUrl?: true
     _all?: true
   }
 
@@ -8571,13 +8575,13 @@ export namespace Prisma {
     slug: string
     description: string | null
     coverImageUrl: string | null
-    pdfUrl: string | null
     issueNumber: number | null
     publishedAt: Date | null
     status: $Enums.MagazineStatus
     editorId: string | null
     createdAt: Date
     updatedAt: Date
+    pdfUrl: string | null
     _count: MagazineCountAggregateOutputType | null
     _avg: MagazineAvgAggregateOutputType | null
     _sum: MagazineSumAggregateOutputType | null
@@ -8605,13 +8609,13 @@ export namespace Prisma {
     slug?: boolean
     description?: boolean
     coverImageUrl?: boolean
-    pdfUrl?: boolean
     issueNumber?: boolean
     publishedAt?: boolean
     status?: boolean
     editorId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    pdfUrl?: boolean
     editor?: boolean | Magazine$editorArgs<ExtArgs>
     posts?: boolean | Magazine$postsArgs<ExtArgs>
     _count?: boolean | MagazineCountOutputTypeDefaultArgs<ExtArgs>
@@ -8625,16 +8629,16 @@ export namespace Prisma {
     slug?: boolean
     description?: boolean
     coverImageUrl?: boolean
-    pdfUrl?: boolean
     issueNumber?: boolean
     publishedAt?: boolean
     status?: boolean
     editorId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    pdfUrl?: boolean
   }
 
-  export type MagazineOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "coverImageUrl" | "pdfUrl" | "issueNumber" | "publishedAt" | "status" | "editorId" | "createdAt" | "updatedAt", ExtArgs["result"]["magazine"]>
+  export type MagazineOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "description" | "coverImageUrl" | "issueNumber" | "publishedAt" | "status" | "editorId" | "createdAt" | "updatedAt" | "pdfUrl", ExtArgs["result"]["magazine"]>
   export type MagazineInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     editor?: boolean | Magazine$editorArgs<ExtArgs>
     posts?: boolean | Magazine$postsArgs<ExtArgs>
@@ -8653,13 +8657,13 @@ export namespace Prisma {
       slug: string
       description: string | null
       coverImageUrl: string | null
-      pdfUrl: string | null
       issueNumber: number | null
       publishedAt: Date | null
       status: $Enums.MagazineStatus
       editorId: string | null
       createdAt: Date
       updatedAt: Date
+      pdfUrl: string | null
     }, ExtArgs["result"]["magazine"]>
     composites: {}
   }
@@ -9036,13 +9040,13 @@ export namespace Prisma {
     readonly slug: FieldRef<"Magazine", 'String'>
     readonly description: FieldRef<"Magazine", 'String'>
     readonly coverImageUrl: FieldRef<"Magazine", 'String'>
-    readonly pdfUrl: FieldRef<"Magazine", 'String'>
     readonly issueNumber: FieldRef<"Magazine", 'Int'>
     readonly publishedAt: FieldRef<"Magazine", 'DateTime'>
     readonly status: FieldRef<"Magazine", 'MagazineStatus'>
     readonly editorId: FieldRef<"Magazine", 'String'>
     readonly createdAt: FieldRef<"Magazine", 'DateTime'>
     readonly updatedAt: FieldRef<"Magazine", 'DateTime'>
+    readonly pdfUrl: FieldRef<"Magazine", 'String'>
   }
     
 
@@ -9460,15 +9464,15 @@ export namespace Prisma {
   }
 
   export type PostAvgAggregateOutputType = {
-    readMinutes: number | null
     views: number | null
     likes: number | null
+    readMinutes: number | null
   }
 
   export type PostSumAggregateOutputType = {
-    readMinutes: number | null
     views: number | null
     likes: number | null
+    readMinutes: number | null
   }
 
   export type PostMinAggregateOutputType = {
@@ -9477,7 +9481,6 @@ export namespace Prisma {
     slug: string | null
     excerpt: string | null
     content: string | null
-    readMinutes: number | null
     type: $Enums.PostType | null
     coverImageUrl: string | null
     status: $Enums.PostStatus | null
@@ -9493,8 +9496,12 @@ export namespace Prisma {
     metaTitle: string | null
     metaDescription: string | null
     metaKeywords: string | null
+    slugHistory: string | null
+    seoSchema: string | null
+    settings: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    readMinutes: number | null
   }
 
   export type PostMaxAggregateOutputType = {
@@ -9503,7 +9510,6 @@ export namespace Prisma {
     slug: string | null
     excerpt: string | null
     content: string | null
-    readMinutes: number | null
     type: $Enums.PostType | null
     coverImageUrl: string | null
     status: $Enums.PostStatus | null
@@ -9519,8 +9525,12 @@ export namespace Prisma {
     metaTitle: string | null
     metaDescription: string | null
     metaKeywords: string | null
+    slugHistory: string | null
+    seoSchema: string | null
+    settings: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    readMinutes: number | null
   }
 
   export type PostCountAggregateOutputType = {
@@ -9529,7 +9539,6 @@ export namespace Prisma {
     slug: number
     excerpt: number
     content: number
-    readMinutes: number
     type: number
     coverImageUrl: number
     status: number
@@ -9550,20 +9559,21 @@ export namespace Prisma {
     settings: number
     createdAt: number
     updatedAt: number
+    readMinutes: number
     _all: number
   }
 
 
   export type PostAvgAggregateInputType = {
-    readMinutes?: true
     views?: true
     likes?: true
+    readMinutes?: true
   }
 
   export type PostSumAggregateInputType = {
-    readMinutes?: true
     views?: true
     likes?: true
+    readMinutes?: true
   }
 
   export type PostMinAggregateInputType = {
@@ -9572,59 +9582,6 @@ export namespace Prisma {
     slug?: true
     excerpt?: true
     content?: true
-    readMinutes?: true
-    type?: true
-    coverImageUrl?: true
-    status?: true
-    visibility?: true
-    isFeatured?: true
-    scheduledAt?: true
-    publishedAt?: true
-    authorId?: true
-    magazineId?: true
-    categoryId?: true
-    views?: true
-    likes?: true
-    metaTitle?: true
-    metaDescription?: true
-    metaKeywords?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PostMaxAggregateInputType = {
-    id?: true
-    title?: true
-    slug?: true
-    excerpt?: true
-    content?: true
-    readMinutes?: true
-    type?: true
-    coverImageUrl?: true
-    status?: true
-    visibility?: true
-    isFeatured?: true
-    scheduledAt?: true
-    publishedAt?: true
-    authorId?: true
-    magazineId?: true
-    categoryId?: true
-    views?: true
-    likes?: true
-    metaTitle?: true
-    metaDescription?: true
-    metaKeywords?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type PostCountAggregateInputType = {
-    id?: true
-    title?: true
-    slug?: true
-    excerpt?: true
-    content?: true
-    readMinutes?: true
     type?: true
     coverImageUrl?: true
     status?: true
@@ -9645,6 +9602,65 @@ export namespace Prisma {
     settings?: true
     createdAt?: true
     updatedAt?: true
+    readMinutes?: true
+  }
+
+  export type PostMaxAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    excerpt?: true
+    content?: true
+    type?: true
+    coverImageUrl?: true
+    status?: true
+    visibility?: true
+    isFeatured?: true
+    scheduledAt?: true
+    publishedAt?: true
+    authorId?: true
+    magazineId?: true
+    categoryId?: true
+    views?: true
+    likes?: true
+    metaTitle?: true
+    metaDescription?: true
+    metaKeywords?: true
+    slugHistory?: true
+    seoSchema?: true
+    settings?: true
+    createdAt?: true
+    updatedAt?: true
+    readMinutes?: true
+  }
+
+  export type PostCountAggregateInputType = {
+    id?: true
+    title?: true
+    slug?: true
+    excerpt?: true
+    content?: true
+    type?: true
+    coverImageUrl?: true
+    status?: true
+    visibility?: true
+    isFeatured?: true
+    scheduledAt?: true
+    publishedAt?: true
+    authorId?: true
+    magazineId?: true
+    categoryId?: true
+    views?: true
+    likes?: true
+    metaTitle?: true
+    metaDescription?: true
+    metaKeywords?: true
+    slugHistory?: true
+    seoSchema?: true
+    settings?: true
+    createdAt?: true
+    updatedAt?: true
+    readMinutes?: true
     _all?: true
   }
 
@@ -9740,7 +9756,6 @@ export namespace Prisma {
     slug: string
     excerpt: string | null
     content: string
-    readMinutes: number | null
     type: $Enums.PostType
     coverImageUrl: string | null
     status: $Enums.PostStatus
@@ -9756,11 +9771,12 @@ export namespace Prisma {
     metaTitle: string | null
     metaDescription: string | null
     metaKeywords: string | null
-    slugHistory: JsonValue | null
-    seoSchema: JsonValue | null
-    settings: JsonValue | null
+    slugHistory: string | null
+    seoSchema: string | null
+    settings: string | null
     createdAt: Date
     updatedAt: Date
+    readMinutes: number | null
     _count: PostCountAggregateOutputType | null
     _avg: PostAvgAggregateOutputType | null
     _sum: PostSumAggregateOutputType | null
@@ -9788,7 +9804,6 @@ export namespace Prisma {
     slug?: boolean
     excerpt?: boolean
     content?: boolean
-    readMinutes?: boolean
     type?: boolean
     coverImageUrl?: boolean
     status?: boolean
@@ -9809,13 +9824,14 @@ export namespace Prisma {
     settings?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    author?: boolean | UserDefaultArgs<ExtArgs>
-    magazine?: boolean | Post$magazineArgs<ExtArgs>
-    category?: boolean | Post$categoryArgs<ExtArgs>
-    tags?: boolean | Post$tagsArgs<ExtArgs>
+    readMinutes?: boolean
     comments?: boolean | Post$commentsArgs<ExtArgs>
-    revisions?: boolean | Post$revisionsArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
+    magazine?: boolean | Post$magazineArgs<ExtArgs>
     media?: boolean | Post$mediaArgs<ExtArgs>
+    tags?: boolean | Post$tagsArgs<ExtArgs>
+    revisions?: boolean | Post$revisionsArgs<ExtArgs>
     viewLogs?: boolean | Post$viewLogsArgs<ExtArgs>
     _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["post"]>
@@ -9828,7 +9844,6 @@ export namespace Prisma {
     slug?: boolean
     excerpt?: boolean
     content?: boolean
-    readMinutes?: boolean
     type?: boolean
     coverImageUrl?: boolean
     status?: boolean
@@ -9849,17 +9864,18 @@ export namespace Prisma {
     settings?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    readMinutes?: boolean
   }
 
-  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "excerpt" | "content" | "readMinutes" | "type" | "coverImageUrl" | "status" | "visibility" | "isFeatured" | "scheduledAt" | "publishedAt" | "authorId" | "magazineId" | "categoryId" | "views" | "likes" | "metaTitle" | "metaDescription" | "metaKeywords" | "slugHistory" | "seoSchema" | "settings" | "createdAt" | "updatedAt", ExtArgs["result"]["post"]>
+  export type PostOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "slug" | "excerpt" | "content" | "type" | "coverImageUrl" | "status" | "visibility" | "isFeatured" | "scheduledAt" | "publishedAt" | "authorId" | "magazineId" | "categoryId" | "views" | "likes" | "metaTitle" | "metaDescription" | "metaKeywords" | "slugHistory" | "seoSchema" | "settings" | "createdAt" | "updatedAt" | "readMinutes", ExtArgs["result"]["post"]>
   export type PostInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    author?: boolean | UserDefaultArgs<ExtArgs>
-    magazine?: boolean | Post$magazineArgs<ExtArgs>
-    category?: boolean | Post$categoryArgs<ExtArgs>
-    tags?: boolean | Post$tagsArgs<ExtArgs>
     comments?: boolean | Post$commentsArgs<ExtArgs>
-    revisions?: boolean | Post$revisionsArgs<ExtArgs>
+    author?: boolean | UserDefaultArgs<ExtArgs>
+    category?: boolean | Post$categoryArgs<ExtArgs>
+    magazine?: boolean | Post$magazineArgs<ExtArgs>
     media?: boolean | Post$mediaArgs<ExtArgs>
+    tags?: boolean | Post$tagsArgs<ExtArgs>
+    revisions?: boolean | Post$revisionsArgs<ExtArgs>
     viewLogs?: boolean | Post$viewLogsArgs<ExtArgs>
     _count?: boolean | PostCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -9867,13 +9883,13 @@ export namespace Prisma {
   export type $PostPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Post"
     objects: {
-      author: Prisma.$UserPayload<ExtArgs>
-      magazine: Prisma.$MagazinePayload<ExtArgs> | null
-      category: Prisma.$CategoryPayload<ExtArgs> | null
-      tags: Prisma.$PostTagsPayload<ExtArgs>[]
       comments: Prisma.$CommentPayload<ExtArgs>[]
-      revisions: Prisma.$RevisionPayload<ExtArgs>[]
+      author: Prisma.$UserPayload<ExtArgs>
+      category: Prisma.$CategoryPayload<ExtArgs> | null
+      magazine: Prisma.$MagazinePayload<ExtArgs> | null
       media: Prisma.$PostMediaPayload<ExtArgs>[]
+      tags: Prisma.$PostTagsPayload<ExtArgs>[]
+      revisions: Prisma.$RevisionPayload<ExtArgs>[]
       viewLogs: Prisma.$ViewLogPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -9882,7 +9898,6 @@ export namespace Prisma {
       slug: string
       excerpt: string | null
       content: string
-      readMinutes: number | null
       type: $Enums.PostType
       coverImageUrl: string | null
       status: $Enums.PostStatus
@@ -9898,11 +9913,12 @@ export namespace Prisma {
       metaTitle: string | null
       metaDescription: string | null
       metaKeywords: string | null
-      slugHistory: Prisma.JsonValue | null
-      seoSchema: Prisma.JsonValue | null
-      settings: Prisma.JsonValue | null
+      slugHistory: string | null
+      seoSchema: string | null
+      settings: string | null
       createdAt: Date
       updatedAt: Date
+      readMinutes: number | null
     }, ExtArgs["result"]["post"]>
     composites: {}
   }
@@ -10243,13 +10259,13 @@ export namespace Prisma {
    */
   export interface Prisma__PostClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    magazine<T extends Post$magazineArgs<ExtArgs> = {}>(args?: Subset<T, Post$magazineArgs<ExtArgs>>): Prisma__MagazineClient<$Result.GetResult<Prisma.$MagazinePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    category<T extends Post$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Post$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    tags<T extends Post$tagsArgs<ExtArgs> = {}>(args?: Subset<T, Post$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostTagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     comments<T extends Post$commentsArgs<ExtArgs> = {}>(args?: Subset<T, Post$commentsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    revisions<T extends Post$revisionsArgs<ExtArgs> = {}>(args?: Subset<T, Post$revisionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends Post$categoryArgs<ExtArgs> = {}>(args?: Subset<T, Post$categoryArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    magazine<T extends Post$magazineArgs<ExtArgs> = {}>(args?: Subset<T, Post$magazineArgs<ExtArgs>>): Prisma__MagazineClient<$Result.GetResult<Prisma.$MagazinePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     media<T extends Post$mediaArgs<ExtArgs> = {}>(args?: Subset<T, Post$mediaArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostMediaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tags<T extends Post$tagsArgs<ExtArgs> = {}>(args?: Subset<T, Post$tagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PostTagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    revisions<T extends Post$revisionsArgs<ExtArgs> = {}>(args?: Subset<T, Post$revisionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RevisionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     viewLogs<T extends Post$viewLogsArgs<ExtArgs> = {}>(args?: Subset<T, Post$viewLogsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ViewLogPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -10285,7 +10301,6 @@ export namespace Prisma {
     readonly slug: FieldRef<"Post", 'String'>
     readonly excerpt: FieldRef<"Post", 'String'>
     readonly content: FieldRef<"Post", 'String'>
-    readonly readMinutes: FieldRef<"Post", 'Int'>
     readonly type: FieldRef<"Post", 'PostType'>
     readonly coverImageUrl: FieldRef<"Post", 'String'>
     readonly status: FieldRef<"Post", 'PostStatus'>
@@ -10301,11 +10316,12 @@ export namespace Prisma {
     readonly metaTitle: FieldRef<"Post", 'String'>
     readonly metaDescription: FieldRef<"Post", 'String'>
     readonly metaKeywords: FieldRef<"Post", 'String'>
-    readonly slugHistory: FieldRef<"Post", 'Json'>
-    readonly seoSchema: FieldRef<"Post", 'Json'>
-    readonly settings: FieldRef<"Post", 'Json'>
+    readonly slugHistory: FieldRef<"Post", 'String'>
+    readonly seoSchema: FieldRef<"Post", 'String'>
+    readonly settings: FieldRef<"Post", 'String'>
     readonly createdAt: FieldRef<"Post", 'DateTime'>
     readonly updatedAt: FieldRef<"Post", 'DateTime'>
+    readonly readMinutes: FieldRef<"Post", 'Int'>
   }
     
 
@@ -10649,22 +10665,27 @@ export namespace Prisma {
   }
 
   /**
-   * Post.magazine
+   * Post.comments
    */
-  export type Post$magazineArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Post$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Magazine
+     * Select specific fields to fetch from the Comment
      */
-    select?: MagazineSelect<ExtArgs> | null
+    select?: CommentSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Magazine
+     * Omit specific fields from the Comment
      */
-    omit?: MagazineOmit<ExtArgs> | null
+    omit?: CommentOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: MagazineInclude<ExtArgs> | null
-    where?: MagazineWhereInput
+    include?: CommentInclude<ExtArgs> | null
+    where?: CommentWhereInput
+    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
+    cursor?: CommentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
   }
 
   /**
@@ -10684,6 +10705,49 @@ export namespace Prisma {
      */
     include?: CategoryInclude<ExtArgs> | null
     where?: CategoryWhereInput
+  }
+
+  /**
+   * Post.magazine
+   */
+  export type Post$magazineArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Magazine
+     */
+    select?: MagazineSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Magazine
+     */
+    omit?: MagazineOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MagazineInclude<ExtArgs> | null
+    where?: MagazineWhereInput
+  }
+
+  /**
+   * Post.media
+   */
+  export type Post$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PostMedia
+     */
+    select?: PostMediaSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PostMedia
+     */
+    omit?: PostMediaOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PostMediaInclude<ExtArgs> | null
+    where?: PostMediaWhereInput
+    orderBy?: PostMediaOrderByWithRelationInput | PostMediaOrderByWithRelationInput[]
+    cursor?: PostMediaWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PostMediaScalarFieldEnum | PostMediaScalarFieldEnum[]
   }
 
   /**
@@ -10711,30 +10775,6 @@ export namespace Prisma {
   }
 
   /**
-   * Post.comments
-   */
-  export type Post$commentsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Comment
-     */
-    select?: CommentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Comment
-     */
-    omit?: CommentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: CommentInclude<ExtArgs> | null
-    where?: CommentWhereInput
-    orderBy?: CommentOrderByWithRelationInput | CommentOrderByWithRelationInput[]
-    cursor?: CommentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: CommentScalarFieldEnum | CommentScalarFieldEnum[]
-  }
-
-  /**
    * Post.revisions
    */
   export type Post$revisionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10756,30 +10796,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: RevisionScalarFieldEnum | RevisionScalarFieldEnum[]
-  }
-
-  /**
-   * Post.media
-   */
-  export type Post$mediaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the PostMedia
-     */
-    select?: PostMediaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the PostMedia
-     */
-    omit?: PostMediaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PostMediaInclude<ExtArgs> | null
-    where?: PostMediaWhereInput
-    orderBy?: PostMediaOrderByWithRelationInput | PostMediaOrderByWithRelationInput[]
-    cursor?: PostMediaWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PostMediaScalarFieldEnum | PostMediaScalarFieldEnum[]
   }
 
   /**
@@ -11913,10 +11929,10 @@ export namespace Prisma {
     status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    post?: boolean | PostDefaultArgs<ExtArgs>
     author?: boolean | Comment$authorArgs<ExtArgs>
     parent?: boolean | Comment$parentArgs<ExtArgs>
     children?: boolean | Comment$childrenArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
     _count?: boolean | CommentCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["comment"]>
 
@@ -11935,20 +11951,20 @@ export namespace Prisma {
 
   export type CommentOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "authorId" | "content" | "parentId" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["comment"]>
   export type CommentInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    post?: boolean | PostDefaultArgs<ExtArgs>
     author?: boolean | Comment$authorArgs<ExtArgs>
     parent?: boolean | Comment$parentArgs<ExtArgs>
     children?: boolean | Comment$childrenArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
     _count?: boolean | CommentCountOutputTypeDefaultArgs<ExtArgs>
   }
 
   export type $CommentPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Comment"
     objects: {
-      post: Prisma.$PostPayload<ExtArgs>
       author: Prisma.$UserPayload<ExtArgs> | null
       parent: Prisma.$CommentPayload<ExtArgs> | null
       children: Prisma.$CommentPayload<ExtArgs>[]
+      post: Prisma.$PostPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -12299,10 +12315,10 @@ export namespace Prisma {
    */
   export interface Prisma__CommentClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     author<T extends Comment$authorArgs<ExtArgs> = {}>(args?: Subset<T, Comment$authorArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     parent<T extends Comment$parentArgs<ExtArgs> = {}>(args?: Subset<T, Comment$parentArgs<ExtArgs>>): Prisma__CommentClient<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     children<T extends Comment$childrenArgs<ExtArgs> = {}>(args?: Subset<T, Comment$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12935,8 +12951,8 @@ export namespace Prisma {
     content?: boolean
     title?: boolean
     createdAt?: boolean
-    post?: boolean | PostDefaultArgs<ExtArgs>
     author?: boolean | UserDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["revision"]>
 
 
@@ -12952,15 +12968,15 @@ export namespace Prisma {
 
   export type RevisionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "postId" | "authorId" | "content" | "title" | "createdAt", ExtArgs["result"]["revision"]>
   export type RevisionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    post?: boolean | PostDefaultArgs<ExtArgs>
     author?: boolean | UserDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }
 
   export type $RevisionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Revision"
     objects: {
-      post: Prisma.$PostPayload<ExtArgs>
       author: Prisma.$UserPayload<ExtArgs>
+      post: Prisma.$PostPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -13309,8 +13325,8 @@ export namespace Prisma {
    */
   export interface Prisma__RevisionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     author<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14847,8 +14863,8 @@ export namespace Prisma {
   export type PostMediaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     postId?: boolean
     mediaId?: boolean
-    post?: boolean | PostDefaultArgs<ExtArgs>
     media?: boolean | MediaDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["postMedia"]>
 
 
@@ -14860,15 +14876,15 @@ export namespace Prisma {
 
   export type PostMediaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"postId" | "mediaId", ExtArgs["result"]["postMedia"]>
   export type PostMediaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    post?: boolean | PostDefaultArgs<ExtArgs>
     media?: boolean | MediaDefaultArgs<ExtArgs>
+    post?: boolean | PostDefaultArgs<ExtArgs>
   }
 
   export type $PostMediaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PostMedia"
     objects: {
-      post: Prisma.$PostPayload<ExtArgs>
       media: Prisma.$MediaPayload<ExtArgs>
+      post: Prisma.$PostPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       postId: string
@@ -15213,8 +15229,8 @@ export namespace Prisma {
    */
   export interface Prisma__PostMediaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     media<T extends MediaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, MediaDefaultArgs<ExtArgs>>): Prisma__MediaClient<$Result.GetResult<Prisma.$MediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    post<T extends PostDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PostDefaultArgs<ExtArgs>>): Prisma__PostClient<$Result.GetResult<Prisma.$PostPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17446,7 +17462,6 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     name: 'name',
-    username: 'username',
     email: 'email',
     emailVerified: 'emailVerified',
     image: 'image',
@@ -17455,7 +17470,8 @@ export namespace Prisma {
     avatarUrl: 'avatarUrl',
     socialLinks: 'socialLinks',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    username: 'username'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -17523,13 +17539,13 @@ export namespace Prisma {
     slug: 'slug',
     description: 'description',
     coverImageUrl: 'coverImageUrl',
-    pdfUrl: 'pdfUrl',
     issueNumber: 'issueNumber',
     publishedAt: 'publishedAt',
     status: 'status',
     editorId: 'editorId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    pdfUrl: 'pdfUrl'
   };
 
   export type MagazineScalarFieldEnum = (typeof MagazineScalarFieldEnum)[keyof typeof MagazineScalarFieldEnum]
@@ -17541,7 +17557,6 @@ export namespace Prisma {
     slug: 'slug',
     excerpt: 'excerpt',
     content: 'content',
-    readMinutes: 'readMinutes',
     type: 'type',
     coverImageUrl: 'coverImageUrl',
     status: 'status',
@@ -17561,7 +17576,8 @@ export namespace Prisma {
     seoSchema: 'seoSchema',
     settings: 'settings',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    readMinutes: 'readMinutes'
   };
 
   export type PostScalarFieldEnum = (typeof PostScalarFieldEnum)[keyof typeof PostScalarFieldEnum]
@@ -17653,31 +17669,6 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull
-  };
-
-  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
-
-
-  export const JsonNullValueFilter: {
-    DbNull: typeof DbNull,
-    JsonNull: typeof JsonNull,
-    AnyNull: typeof AnyNull
-  };
-
-  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
-
-
-  export const QueryMode: {
-    default: 'default',
-    insensitive: 'insensitive'
-  };
-
-  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
   export const NullsOrder: {
     first: 'first',
     last: 'last'
@@ -17689,11 +17680,12 @@ export namespace Prisma {
   export const UserOrderByRelevanceFieldEnum: {
     id: 'id',
     name: 'name',
-    username: 'username',
     email: 'email',
     image: 'image',
     bio: 'bio',
-    avatarUrl: 'avatarUrl'
+    avatarUrl: 'avatarUrl',
+    socialLinks: 'socialLinks',
+    username: 'username'
   };
 
   export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
@@ -17758,8 +17750,8 @@ export namespace Prisma {
     slug: 'slug',
     description: 'description',
     coverImageUrl: 'coverImageUrl',
-    pdfUrl: 'pdfUrl',
-    editorId: 'editorId'
+    editorId: 'editorId',
+    pdfUrl: 'pdfUrl'
   };
 
   export type MagazineOrderByRelevanceFieldEnum = (typeof MagazineOrderByRelevanceFieldEnum)[keyof typeof MagazineOrderByRelevanceFieldEnum]
@@ -17777,7 +17769,10 @@ export namespace Prisma {
     categoryId: 'categoryId',
     metaTitle: 'metaTitle',
     metaDescription: 'metaDescription',
-    metaKeywords: 'metaKeywords'
+    metaKeywords: 'metaKeywords',
+    slugHistory: 'slugHistory',
+    seoSchema: 'seoSchema',
+    settings: 'settings'
   };
 
   export type PostOrderByRelevanceFieldEnum = (typeof PostOrderByRelevanceFieldEnum)[keyof typeof PostOrderByRelevanceFieldEnum]
@@ -17878,20 +17873,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
-    
-
-
-  /**
-   * Reference to a field of type 'QueryMode'
-   */
-  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
-    
-
-
-  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -17963,29 +17944,28 @@ export namespace Prisma {
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
-    username?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
     emailVerified?: DateTimeNullableFilter<"User"> | Date | string | null
     image?: StringNullableFilter<"User"> | string | null
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     bio?: StringNullableFilter<"User"> | string | null
     avatarUrl?: StringNullableFilter<"User"> | string | null
-    socialLinks?: JsonNullableFilter<"User">
+    socialLinks?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
+    username?: StringNullableFilter<"User"> | string | null
     accounts?: AccountListRelationFilter
-    sessions?: SessionListRelationFilter
-    posts?: PostListRelationFilter
     comments?: CommentListRelationFilter
-    revisions?: RevisionListRelationFilter
-    media?: MediaListRelationFilter
     editedMagazines?: MagazineListRelationFilter
+    media?: MediaListRelationFilter
+    posts?: PostListRelationFilter
+    revisions?: RevisionListRelationFilter
+    sessions?: SessionListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    username?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
@@ -17995,20 +17975,21 @@ export namespace Prisma {
     socialLinks?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    username?: SortOrderInput | SortOrder
     accounts?: AccountOrderByRelationAggregateInput
-    sessions?: SessionOrderByRelationAggregateInput
-    posts?: PostOrderByRelationAggregateInput
     comments?: CommentOrderByRelationAggregateInput
-    revisions?: RevisionOrderByRelationAggregateInput
-    media?: MediaOrderByRelationAggregateInput
     editedMagazines?: MagazineOrderByRelationAggregateInput
+    media?: MediaOrderByRelationAggregateInput
+    posts?: PostOrderByRelationAggregateInput
+    revisions?: RevisionOrderByRelationAggregateInput
+    sessions?: SessionOrderByRelationAggregateInput
     _relevance?: UserOrderByRelevanceInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    username?: string
     email?: string
+    username?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -18018,22 +17999,21 @@ export namespace Prisma {
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     bio?: StringNullableFilter<"User"> | string | null
     avatarUrl?: StringNullableFilter<"User"> | string | null
-    socialLinks?: JsonNullableFilter<"User">
+    socialLinks?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
     accounts?: AccountListRelationFilter
-    sessions?: SessionListRelationFilter
-    posts?: PostListRelationFilter
     comments?: CommentListRelationFilter
-    revisions?: RevisionListRelationFilter
-    media?: MediaListRelationFilter
     editedMagazines?: MagazineListRelationFilter
-  }, "id" | "username" | "email">
+    media?: MediaListRelationFilter
+    posts?: PostListRelationFilter
+    revisions?: RevisionListRelationFilter
+    sessions?: SessionListRelationFilter
+  }, "id" | "email" | "username">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
-    username?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
     emailVerified?: SortOrderInput | SortOrder
     image?: SortOrderInput | SortOrder
@@ -18043,6 +18023,7 @@ export namespace Prisma {
     socialLinks?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    username?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
@@ -18054,16 +18035,16 @@ export namespace Prisma {
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    username?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
     emailVerified?: DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
     image?: StringNullableWithAggregatesFilter<"User"> | string | null
     role?: EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
     avatarUrl?: StringNullableWithAggregatesFilter<"User"> | string | null
-    socialLinks?: JsonNullableWithAggregatesFilter<"User">
+    socialLinks?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+    username?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
   export type AccountWhereInput = {
@@ -18367,13 +18348,13 @@ export namespace Prisma {
     slug?: StringFilter<"Magazine"> | string
     description?: StringNullableFilter<"Magazine"> | string | null
     coverImageUrl?: StringNullableFilter<"Magazine"> | string | null
-    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
     issueNumber?: IntNullableFilter<"Magazine"> | number | null
     publishedAt?: DateTimeNullableFilter<"Magazine"> | Date | string | null
     status?: EnumMagazineStatusFilter<"Magazine"> | $Enums.MagazineStatus
     editorId?: StringNullableFilter<"Magazine"> | string | null
     createdAt?: DateTimeFilter<"Magazine"> | Date | string
     updatedAt?: DateTimeFilter<"Magazine"> | Date | string
+    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
     editor?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     posts?: PostListRelationFilter
   }
@@ -18384,13 +18365,13 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     coverImageUrl?: SortOrderInput | SortOrder
-    pdfUrl?: SortOrderInput | SortOrder
     issueNumber?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     status?: SortOrder
     editorId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
     editor?: UserOrderByWithRelationInput
     posts?: PostOrderByRelationAggregateInput
     _relevance?: MagazineOrderByRelevanceInput
@@ -18405,13 +18386,13 @@ export namespace Prisma {
     title?: StringNullableFilter<"Magazine"> | string | null
     description?: StringNullableFilter<"Magazine"> | string | null
     coverImageUrl?: StringNullableFilter<"Magazine"> | string | null
-    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
     issueNumber?: IntNullableFilter<"Magazine"> | number | null
     publishedAt?: DateTimeNullableFilter<"Magazine"> | Date | string | null
     status?: EnumMagazineStatusFilter<"Magazine"> | $Enums.MagazineStatus
     editorId?: StringNullableFilter<"Magazine"> | string | null
     createdAt?: DateTimeFilter<"Magazine"> | Date | string
     updatedAt?: DateTimeFilter<"Magazine"> | Date | string
+    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
     editor?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     posts?: PostListRelationFilter
   }, "id" | "slug">
@@ -18422,13 +18403,13 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrderInput | SortOrder
     coverImageUrl?: SortOrderInput | SortOrder
-    pdfUrl?: SortOrderInput | SortOrder
     issueNumber?: SortOrderInput | SortOrder
     publishedAt?: SortOrderInput | SortOrder
     status?: SortOrder
     editorId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pdfUrl?: SortOrderInput | SortOrder
     _count?: MagazineCountOrderByAggregateInput
     _avg?: MagazineAvgOrderByAggregateInput
     _max?: MagazineMaxOrderByAggregateInput
@@ -18445,13 +18426,13 @@ export namespace Prisma {
     slug?: StringWithAggregatesFilter<"Magazine"> | string
     description?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
     coverImageUrl?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
-    pdfUrl?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
     issueNumber?: IntNullableWithAggregatesFilter<"Magazine"> | number | null
     publishedAt?: DateTimeNullableWithAggregatesFilter<"Magazine"> | Date | string | null
     status?: EnumMagazineStatusWithAggregatesFilter<"Magazine"> | $Enums.MagazineStatus
     editorId?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Magazine"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Magazine"> | Date | string
+    pdfUrl?: StringNullableWithAggregatesFilter<"Magazine"> | string | null
   }
 
   export type PostWhereInput = {
@@ -18463,7 +18444,6 @@ export namespace Prisma {
     slug?: StringFilter<"Post"> | string
     excerpt?: StringNullableFilter<"Post"> | string | null
     content?: StringFilter<"Post"> | string
-    readMinutes?: IntNullableFilter<"Post"> | number | null
     type?: EnumPostTypeFilter<"Post"> | $Enums.PostType
     coverImageUrl?: StringNullableFilter<"Post"> | string | null
     status?: EnumPostStatusFilter<"Post"> | $Enums.PostStatus
@@ -18479,18 +18459,19 @@ export namespace Prisma {
     metaTitle?: StringNullableFilter<"Post"> | string | null
     metaDescription?: StringNullableFilter<"Post"> | string | null
     metaKeywords?: StringNullableFilter<"Post"> | string | null
-    slugHistory?: JsonNullableFilter<"Post">
-    seoSchema?: JsonNullableFilter<"Post">
-    settings?: JsonNullableFilter<"Post">
+    slugHistory?: StringNullableFilter<"Post"> | string | null
+    seoSchema?: StringNullableFilter<"Post"> | string | null
+    settings?: StringNullableFilter<"Post"> | string | null
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
-    author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    magazine?: XOR<MagazineNullableScalarRelationFilter, MagazineWhereInput> | null
-    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
-    tags?: PostTagsListRelationFilter
+    readMinutes?: IntNullableFilter<"Post"> | number | null
     comments?: CommentListRelationFilter
-    revisions?: RevisionListRelationFilter
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
+    magazine?: XOR<MagazineNullableScalarRelationFilter, MagazineWhereInput> | null
     media?: PostMediaListRelationFilter
+    tags?: PostTagsListRelationFilter
+    revisions?: RevisionListRelationFilter
     viewLogs?: ViewLogListRelationFilter
   }
 
@@ -18500,7 +18481,6 @@ export namespace Prisma {
     slug?: SortOrder
     excerpt?: SortOrderInput | SortOrder
     content?: SortOrder
-    readMinutes?: SortOrderInput | SortOrder
     type?: SortOrder
     coverImageUrl?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -18521,13 +18501,14 @@ export namespace Prisma {
     settings?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    author?: UserOrderByWithRelationInput
-    magazine?: MagazineOrderByWithRelationInput
-    category?: CategoryOrderByWithRelationInput
-    tags?: PostTagsOrderByRelationAggregateInput
+    readMinutes?: SortOrderInput | SortOrder
     comments?: CommentOrderByRelationAggregateInput
-    revisions?: RevisionOrderByRelationAggregateInput
+    author?: UserOrderByWithRelationInput
+    category?: CategoryOrderByWithRelationInput
+    magazine?: MagazineOrderByWithRelationInput
     media?: PostMediaOrderByRelationAggregateInput
+    tags?: PostTagsOrderByRelationAggregateInput
+    revisions?: RevisionOrderByRelationAggregateInput
     viewLogs?: ViewLogOrderByRelationAggregateInput
     _relevance?: PostOrderByRelevanceInput
   }
@@ -18541,7 +18522,6 @@ export namespace Prisma {
     title?: StringFilter<"Post"> | string
     excerpt?: StringNullableFilter<"Post"> | string | null
     content?: StringFilter<"Post"> | string
-    readMinutes?: IntNullableFilter<"Post"> | number | null
     type?: EnumPostTypeFilter<"Post"> | $Enums.PostType
     coverImageUrl?: StringNullableFilter<"Post"> | string | null
     status?: EnumPostStatusFilter<"Post"> | $Enums.PostStatus
@@ -18557,18 +18537,19 @@ export namespace Prisma {
     metaTitle?: StringNullableFilter<"Post"> | string | null
     metaDescription?: StringNullableFilter<"Post"> | string | null
     metaKeywords?: StringNullableFilter<"Post"> | string | null
-    slugHistory?: JsonNullableFilter<"Post">
-    seoSchema?: JsonNullableFilter<"Post">
-    settings?: JsonNullableFilter<"Post">
+    slugHistory?: StringNullableFilter<"Post"> | string | null
+    seoSchema?: StringNullableFilter<"Post"> | string | null
+    settings?: StringNullableFilter<"Post"> | string | null
     createdAt?: DateTimeFilter<"Post"> | Date | string
     updatedAt?: DateTimeFilter<"Post"> | Date | string
-    author?: XOR<UserScalarRelationFilter, UserWhereInput>
-    magazine?: XOR<MagazineNullableScalarRelationFilter, MagazineWhereInput> | null
-    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
-    tags?: PostTagsListRelationFilter
+    readMinutes?: IntNullableFilter<"Post"> | number | null
     comments?: CommentListRelationFilter
-    revisions?: RevisionListRelationFilter
+    author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    category?: XOR<CategoryNullableScalarRelationFilter, CategoryWhereInput> | null
+    magazine?: XOR<MagazineNullableScalarRelationFilter, MagazineWhereInput> | null
     media?: PostMediaListRelationFilter
+    tags?: PostTagsListRelationFilter
+    revisions?: RevisionListRelationFilter
     viewLogs?: ViewLogListRelationFilter
   }, "id" | "slug">
 
@@ -18578,7 +18559,6 @@ export namespace Prisma {
     slug?: SortOrder
     excerpt?: SortOrderInput | SortOrder
     content?: SortOrder
-    readMinutes?: SortOrderInput | SortOrder
     type?: SortOrder
     coverImageUrl?: SortOrderInput | SortOrder
     status?: SortOrder
@@ -18599,6 +18579,7 @@ export namespace Prisma {
     settings?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    readMinutes?: SortOrderInput | SortOrder
     _count?: PostCountOrderByAggregateInput
     _avg?: PostAvgOrderByAggregateInput
     _max?: PostMaxOrderByAggregateInput
@@ -18615,7 +18596,6 @@ export namespace Prisma {
     slug?: StringWithAggregatesFilter<"Post"> | string
     excerpt?: StringNullableWithAggregatesFilter<"Post"> | string | null
     content?: StringWithAggregatesFilter<"Post"> | string
-    readMinutes?: IntNullableWithAggregatesFilter<"Post"> | number | null
     type?: EnumPostTypeWithAggregatesFilter<"Post"> | $Enums.PostType
     coverImageUrl?: StringNullableWithAggregatesFilter<"Post"> | string | null
     status?: EnumPostStatusWithAggregatesFilter<"Post"> | $Enums.PostStatus
@@ -18631,11 +18611,12 @@ export namespace Prisma {
     metaTitle?: StringNullableWithAggregatesFilter<"Post"> | string | null
     metaDescription?: StringNullableWithAggregatesFilter<"Post"> | string | null
     metaKeywords?: StringNullableWithAggregatesFilter<"Post"> | string | null
-    slugHistory?: JsonNullableWithAggregatesFilter<"Post">
-    seoSchema?: JsonNullableWithAggregatesFilter<"Post">
-    settings?: JsonNullableWithAggregatesFilter<"Post">
+    slugHistory?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    seoSchema?: StringNullableWithAggregatesFilter<"Post"> | string | null
+    settings?: StringNullableWithAggregatesFilter<"Post"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Post"> | Date | string
+    readMinutes?: IntNullableWithAggregatesFilter<"Post"> | number | null
   }
 
   export type PostTagsWhereInput = {
@@ -18695,10 +18676,10 @@ export namespace Prisma {
     status?: EnumCommentStatusFilter<"Comment"> | $Enums.CommentStatus
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
-    post?: XOR<PostScalarRelationFilter, PostWhereInput>
     author?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     parent?: XOR<CommentNullableScalarRelationFilter, CommentWhereInput> | null
     children?: CommentListRelationFilter
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
 
   export type CommentOrderByWithRelationInput = {
@@ -18710,10 +18691,10 @@ export namespace Prisma {
     status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    post?: PostOrderByWithRelationInput
     author?: UserOrderByWithRelationInput
     parent?: CommentOrderByWithRelationInput
     children?: CommentOrderByRelationAggregateInput
+    post?: PostOrderByWithRelationInput
     _relevance?: CommentOrderByRelevanceInput
   }
 
@@ -18729,10 +18710,10 @@ export namespace Prisma {
     status?: EnumCommentStatusFilter<"Comment"> | $Enums.CommentStatus
     createdAt?: DateTimeFilter<"Comment"> | Date | string
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
-    post?: XOR<PostScalarRelationFilter, PostWhereInput>
     author?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     parent?: XOR<CommentNullableScalarRelationFilter, CommentWhereInput> | null
     children?: CommentListRelationFilter
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "id">
 
   export type CommentOrderByWithAggregationInput = {
@@ -18773,8 +18754,8 @@ export namespace Prisma {
     content?: StringFilter<"Revision"> | string
     title?: StringNullableFilter<"Revision"> | string | null
     createdAt?: DateTimeFilter<"Revision"> | Date | string
-    post?: XOR<PostScalarRelationFilter, PostWhereInput>
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
 
   export type RevisionOrderByWithRelationInput = {
@@ -18784,8 +18765,8 @@ export namespace Prisma {
     content?: SortOrder
     title?: SortOrderInput | SortOrder
     createdAt?: SortOrder
-    post?: PostOrderByWithRelationInput
     author?: UserOrderByWithRelationInput
+    post?: PostOrderByWithRelationInput
     _relevance?: RevisionOrderByRelevanceInput
   }
 
@@ -18799,8 +18780,8 @@ export namespace Prisma {
     content?: StringFilter<"Revision"> | string
     title?: StringNullableFilter<"Revision"> | string | null
     createdAt?: DateTimeFilter<"Revision"> | Date | string
-    post?: XOR<PostScalarRelationFilter, PostWhereInput>
     author?: XOR<UserScalarRelationFilter, UserWhereInput>
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "id">
 
   export type RevisionOrderByWithAggregationInput = {
@@ -18902,15 +18883,15 @@ export namespace Prisma {
     NOT?: PostMediaWhereInput | PostMediaWhereInput[]
     postId?: StringFilter<"PostMedia"> | string
     mediaId?: StringFilter<"PostMedia"> | string
-    post?: XOR<PostScalarRelationFilter, PostWhereInput>
     media?: XOR<MediaScalarRelationFilter, MediaWhereInput>
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }
 
   export type PostMediaOrderByWithRelationInput = {
     postId?: SortOrder
     mediaId?: SortOrder
-    post?: PostOrderByWithRelationInput
     media?: MediaOrderByWithRelationInput
+    post?: PostOrderByWithRelationInput
     _relevance?: PostMediaOrderByRelevanceInput
   }
 
@@ -18921,8 +18902,8 @@ export namespace Prisma {
     NOT?: PostMediaWhereInput | PostMediaWhereInput[]
     postId?: StringFilter<"PostMedia"> | string
     mediaId?: StringFilter<"PostMedia"> | string
-    post?: XOR<PostScalarRelationFilter, PostWhereInput>
     media?: XOR<MediaScalarRelationFilter, MediaWhereInput>
+    post?: XOR<PostScalarRelationFilter, PostWhereInput>
   }, "postId_mediaId">
 
   export type PostMediaOrderByWithAggregationInput = {
@@ -19058,134 +19039,134 @@ export namespace Prisma {
   export type UserCreateInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutAuthorInput
     comments?: CommentCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionCreateNestedManyWithoutAuthorInput
-    media?: MediaCreateNestedManyWithoutUploadedByInput
     editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    media?: MediaCreateNestedManyWithoutUploadedByInput
+    posts?: PostCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionCreateNestedManyWithoutAuthorInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
-    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
     editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
+    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutAuthorNestedInput
     comments?: CommentUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
-    media?: MediaUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    media?: MediaUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
-    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
+    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type AccountCreateInput = {
@@ -19490,12 +19471,12 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
-    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
     createdAt?: Date | string
     updatedAt?: Date | string
+    pdfUrl?: string | null
     editor?: UserCreateNestedOneWithoutEditedMagazinesInput
     posts?: PostCreateNestedManyWithoutMagazineInput
   }
@@ -19506,13 +19487,13 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
-    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
     editorId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    pdfUrl?: string | null
     posts?: PostUncheckedCreateNestedManyWithoutMagazineInput
   }
 
@@ -19522,12 +19503,12 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     editor?: UserUpdateOneWithoutEditedMagazinesNestedInput
     posts?: PostUpdateManyWithoutMagazineNestedInput
   }
@@ -19538,13 +19519,13 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
     editorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUncheckedUpdateManyWithoutMagazineNestedInput
   }
 
@@ -19554,13 +19535,13 @@ export namespace Prisma {
     slug: string
     description?: string | null
     coverImageUrl?: string | null
-    pdfUrl?: string | null
     issueNumber?: number | null
     publishedAt?: Date | string | null
     status?: $Enums.MagazineStatus
     editorId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    pdfUrl?: string | null
   }
 
   export type MagazineUpdateManyMutationInput = {
@@ -19569,12 +19550,12 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MagazineUncheckedUpdateManyInput = {
@@ -19583,13 +19564,13 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
     issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
     editorId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostCreateInput = {
@@ -19598,7 +19579,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -19611,18 +19591,19 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    author: UserCreateNestedOneWithoutPostsInput
-    magazine?: MagazineCreateNestedOneWithoutPostsInput
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
+    author: UserCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
+    magazine?: MagazineCreateNestedOneWithoutPostsInput
     media?: PostMediaCreateNestedManyWithoutPostInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogCreateNestedManyWithoutPostInput
   }
 
@@ -19632,7 +19613,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -19648,15 +19628,16 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
   }
 
@@ -19666,7 +19647,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -19679,18 +19659,19 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    author?: UserUpdateOneRequiredWithoutPostsNestedInput
-    magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
+    author?: UserUpdateOneRequiredWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
+    magazine?: MagazineUpdateOneWithoutPostsNestedInput
     media?: PostMediaUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
   }
 
@@ -19700,7 +19681,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -19716,15 +19696,16 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
   }
 
@@ -19734,7 +19715,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -19750,11 +19730,12 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    readMinutes?: number | null
   }
 
   export type PostUpdateManyMutationInput = {
@@ -19763,7 +19744,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -19776,11 +19756,12 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PostUncheckedUpdateManyInput = {
@@ -19789,7 +19770,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -19805,11 +19785,12 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PostTagsCreateInput = {
@@ -19852,10 +19833,10 @@ export namespace Prisma {
     status?: $Enums.CommentStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    post: PostCreateNestedOneWithoutCommentsInput
     author?: UserCreateNestedOneWithoutCommentsInput
     parent?: CommentCreateNestedOneWithoutChildrenInput
     children?: CommentCreateNestedManyWithoutParentInput
+    post: PostCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateInput = {
@@ -19876,10 +19857,10 @@ export namespace Prisma {
     status?: EnumCommentStatusFieldUpdateOperationsInput | $Enums.CommentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
     author?: UserUpdateOneWithoutCommentsNestedInput
     parent?: CommentUpdateOneWithoutChildrenNestedInput
     children?: CommentUpdateManyWithoutParentNestedInput
+    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateInput = {
@@ -19929,8 +19910,8 @@ export namespace Prisma {
     content: string
     title?: string | null
     createdAt?: Date | string
-    post: PostCreateNestedOneWithoutRevisionsInput
     author: UserCreateNestedOneWithoutRevisionsInput
+    post: PostCreateNestedOneWithoutRevisionsInput
   }
 
   export type RevisionUncheckedCreateInput = {
@@ -19947,8 +19928,8 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutRevisionsNestedInput
     author?: UserUpdateOneRequiredWithoutRevisionsNestedInput
+    post?: PostUpdateOneRequiredWithoutRevisionsNestedInput
   }
 
   export type RevisionUncheckedUpdateInput = {
@@ -20059,8 +20040,8 @@ export namespace Prisma {
   }
 
   export type PostMediaCreateInput = {
-    post: PostCreateNestedOneWithoutMediaInput
     media: MediaCreateNestedOneWithoutPostsInput
+    post: PostCreateNestedOneWithoutMediaInput
   }
 
   export type PostMediaUncheckedCreateInput = {
@@ -20069,8 +20050,8 @@ export namespace Prisma {
   }
 
   export type PostMediaUpdateInput = {
-    post?: PostUpdateOneRequiredWithoutMediaNestedInput
     media?: MediaUpdateOneRequiredWithoutPostsNestedInput
+    post?: PostUpdateOneRequiredWithoutMediaNestedInput
   }
 
   export type PostMediaUncheckedUpdateInput = {
@@ -20257,29 +20238,6 @@ export namespace Prisma {
     notIn?: $Enums.UserRole[]
     not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-  }
 
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
@@ -20298,28 +20256,16 @@ export namespace Prisma {
     none?: AccountWhereInput
   }
 
-  export type SessionListRelationFilter = {
-    every?: SessionWhereInput
-    some?: SessionWhereInput
-    none?: SessionWhereInput
-  }
-
-  export type PostListRelationFilter = {
-    every?: PostWhereInput
-    some?: PostWhereInput
-    none?: PostWhereInput
-  }
-
   export type CommentListRelationFilter = {
     every?: CommentWhereInput
     some?: CommentWhereInput
     none?: CommentWhereInput
   }
 
-  export type RevisionListRelationFilter = {
-    every?: RevisionWhereInput
-    some?: RevisionWhereInput
-    none?: RevisionWhereInput
+  export type MagazineListRelationFilter = {
+    every?: MagazineWhereInput
+    some?: MagazineWhereInput
+    none?: MagazineWhereInput
   }
 
   export type MediaListRelationFilter = {
@@ -20328,10 +20274,22 @@ export namespace Prisma {
     none?: MediaWhereInput
   }
 
-  export type MagazineListRelationFilter = {
-    every?: MagazineWhereInput
-    some?: MagazineWhereInput
-    none?: MagazineWhereInput
+  export type PostListRelationFilter = {
+    every?: PostWhereInput
+    some?: PostWhereInput
+    none?: PostWhereInput
+  }
+
+  export type RevisionListRelationFilter = {
+    every?: RevisionWhereInput
+    some?: RevisionWhereInput
+    none?: RevisionWhereInput
+  }
+
+  export type SessionListRelationFilter = {
+    every?: SessionWhereInput
+    some?: SessionWhereInput
+    none?: SessionWhereInput
   }
 
   export type SortOrderInput = {
@@ -20343,19 +20301,11 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type SessionOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type PostOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type CommentOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
-  export type RevisionOrderByRelationAggregateInput = {
+  export type MagazineOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -20363,7 +20313,15 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type MagazineOrderByRelationAggregateInput = {
+  export type PostOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type RevisionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SessionOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -20376,7 +20334,6 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
@@ -20386,34 +20343,37 @@ export namespace Prisma {
     socialLinks?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    username?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
     role?: SortOrder
     bio?: SortOrder
     avatarUrl?: SortOrder
+    socialLinks?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    username?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    username?: SortOrder
     email?: SortOrder
     emailVerified?: SortOrder
     image?: SortOrder
     role?: SortOrder
     bio?: SortOrder
     avatarUrl?: SortOrder
+    socialLinks?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    username?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -20474,32 +20434,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
-  }
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedJsonNullableFilter<$PrismaModel>
-    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -20768,13 +20702,13 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrder
     coverImageUrl?: SortOrder
-    pdfUrl?: SortOrder
     issueNumber?: SortOrder
     publishedAt?: SortOrder
     status?: SortOrder
     editorId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pdfUrl?: SortOrder
   }
 
   export type MagazineAvgOrderByAggregateInput = {
@@ -20787,13 +20721,13 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrder
     coverImageUrl?: SortOrder
-    pdfUrl?: SortOrder
     issueNumber?: SortOrder
     publishedAt?: SortOrder
     status?: SortOrder
     editorId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pdfUrl?: SortOrder
   }
 
   export type MagazineMinOrderByAggregateInput = {
@@ -20802,13 +20736,13 @@ export namespace Prisma {
     slug?: SortOrder
     description?: SortOrder
     coverImageUrl?: SortOrder
-    pdfUrl?: SortOrder
     issueNumber?: SortOrder
     publishedAt?: SortOrder
     status?: SortOrder
     editorId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    pdfUrl?: SortOrder
   }
 
   export type MagazineSumOrderByAggregateInput = {
@@ -20899,7 +20833,6 @@ export namespace Prisma {
     slug?: SortOrder
     excerpt?: SortOrder
     content?: SortOrder
-    readMinutes?: SortOrder
     type?: SortOrder
     coverImageUrl?: SortOrder
     status?: SortOrder
@@ -20920,12 +20853,13 @@ export namespace Prisma {
     settings?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    readMinutes?: SortOrder
   }
 
   export type PostAvgOrderByAggregateInput = {
-    readMinutes?: SortOrder
     views?: SortOrder
     likes?: SortOrder
+    readMinutes?: SortOrder
   }
 
   export type PostMaxOrderByAggregateInput = {
@@ -20934,7 +20868,6 @@ export namespace Prisma {
     slug?: SortOrder
     excerpt?: SortOrder
     content?: SortOrder
-    readMinutes?: SortOrder
     type?: SortOrder
     coverImageUrl?: SortOrder
     status?: SortOrder
@@ -20950,8 +20883,12 @@ export namespace Prisma {
     metaTitle?: SortOrder
     metaDescription?: SortOrder
     metaKeywords?: SortOrder
+    slugHistory?: SortOrder
+    seoSchema?: SortOrder
+    settings?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    readMinutes?: SortOrder
   }
 
   export type PostMinOrderByAggregateInput = {
@@ -20960,7 +20897,6 @@ export namespace Prisma {
     slug?: SortOrder
     excerpt?: SortOrder
     content?: SortOrder
-    readMinutes?: SortOrder
     type?: SortOrder
     coverImageUrl?: SortOrder
     status?: SortOrder
@@ -20976,14 +20912,18 @@ export namespace Prisma {
     metaTitle?: SortOrder
     metaDescription?: SortOrder
     metaKeywords?: SortOrder
+    slugHistory?: SortOrder
+    seoSchema?: SortOrder
+    settings?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    readMinutes?: SortOrder
   }
 
   export type PostSumOrderByAggregateInput = {
-    readMinutes?: SortOrder
     views?: SortOrder
     likes?: SortOrder
+    readMinutes?: SortOrder
   }
 
   export type EnumPostTypeWithAggregatesFilter<$PrismaModel = never> = {
@@ -21324,39 +21264,11 @@ export namespace Prisma {
     connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
-  export type SessionCreateNestedManyWithoutUserInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-  }
-
-  export type PostCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-  }
-
   export type CommentCreateNestedManyWithoutAuthorInput = {
     create?: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput> | CommentCreateWithoutAuthorInput[] | CommentUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutAuthorInput | CommentCreateOrConnectWithoutAuthorInput[]
     createMany?: CommentCreateManyAuthorInputEnvelope
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
-  export type RevisionCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
-    createMany?: RevisionCreateManyAuthorInputEnvelope
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-  }
-
-  export type MediaCreateNestedManyWithoutUploadedByInput = {
-    create?: XOR<MediaCreateWithoutUploadedByInput, MediaUncheckedCreateWithoutUploadedByInput> | MediaCreateWithoutUploadedByInput[] | MediaUncheckedCreateWithoutUploadedByInput[]
-    connectOrCreate?: MediaCreateOrConnectWithoutUploadedByInput | MediaCreateOrConnectWithoutUploadedByInput[]
-    createMany?: MediaCreateManyUploadedByInputEnvelope
-    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
   }
 
   export type MagazineCreateNestedManyWithoutEditorInput = {
@@ -21366,25 +21278,39 @@ export namespace Prisma {
     connect?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
   }
 
-  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+  export type MediaCreateNestedManyWithoutUploadedByInput = {
+    create?: XOR<MediaCreateWithoutUploadedByInput, MediaUncheckedCreateWithoutUploadedByInput> | MediaCreateWithoutUploadedByInput[] | MediaUncheckedCreateWithoutUploadedByInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutUploadedByInput | MediaCreateOrConnectWithoutUploadedByInput[]
+    createMany?: MediaCreateManyUploadedByInputEnvelope
+    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
   }
 
-  export type SessionUncheckedCreateNestedManyWithoutUserInput = {
+  export type PostCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
+    createMany?: PostCreateManyAuthorInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  }
+
+  export type RevisionCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
+    createMany?: RevisionCreateManyAuthorInputEnvelope
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+  }
+
+  export type SessionCreateNestedManyWithoutUserInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     createMany?: SessionCreateManyUserInputEnvelope
     connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
-  export type PostUncheckedCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  export type AccountUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
   }
 
   export type CommentUncheckedCreateNestedManyWithoutAuthorInput = {
@@ -21394,11 +21320,11 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type RevisionUncheckedCreateNestedManyWithoutAuthorInput = {
-    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
-    createMany?: RevisionCreateManyAuthorInputEnvelope
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+  export type MagazineUncheckedCreateNestedManyWithoutEditorInput = {
+    create?: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput> | MagazineCreateWithoutEditorInput[] | MagazineUncheckedCreateWithoutEditorInput[]
+    connectOrCreate?: MagazineCreateOrConnectWithoutEditorInput | MagazineCreateOrConnectWithoutEditorInput[]
+    createMany?: MagazineCreateManyEditorInputEnvelope
+    connect?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
   }
 
   export type MediaUncheckedCreateNestedManyWithoutUploadedByInput = {
@@ -21408,11 +21334,25 @@ export namespace Prisma {
     connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
   }
 
-  export type MagazineUncheckedCreateNestedManyWithoutEditorInput = {
-    create?: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput> | MagazineCreateWithoutEditorInput[] | MagazineUncheckedCreateWithoutEditorInput[]
-    connectOrCreate?: MagazineCreateOrConnectWithoutEditorInput | MagazineCreateOrConnectWithoutEditorInput[]
-    createMany?: MagazineCreateManyEditorInputEnvelope
-    connect?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
+  export type PostUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
+    createMany?: PostCreateManyAuthorInputEnvelope
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+  }
+
+  export type RevisionUncheckedCreateNestedManyWithoutAuthorInput = {
+    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
+    createMany?: RevisionCreateManyAuthorInputEnvelope
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+  }
+
+  export type SessionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -21449,34 +21389,6 @@ export namespace Prisma {
     deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
-  export type SessionUpdateManyWithoutUserNestedInput = {
-    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
-    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: SessionCreateManyUserInputEnvelope
-    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
-    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
-  }
-
-  export type PostUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutAuthorInput | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutAuthorInput | PostUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
-  }
-
   export type CommentUpdateManyWithoutAuthorNestedInput = {
     create?: XOR<CommentCreateWithoutAuthorInput, CommentUncheckedCreateWithoutAuthorInput> | CommentCreateWithoutAuthorInput[] | CommentUncheckedCreateWithoutAuthorInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutAuthorInput | CommentCreateOrConnectWithoutAuthorInput[]
@@ -21489,34 +21401,6 @@ export namespace Prisma {
     update?: CommentUpdateWithWhereUniqueWithoutAuthorInput | CommentUpdateWithWhereUniqueWithoutAuthorInput[]
     updateMany?: CommentUpdateManyWithWhereWithoutAuthorInput | CommentUpdateManyWithWhereWithoutAuthorInput[]
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
-  }
-
-  export type RevisionUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
-    upsert?: RevisionUpsertWithWhereUniqueWithoutAuthorInput | RevisionUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: RevisionCreateManyAuthorInputEnvelope
-    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    update?: RevisionUpdateWithWhereUniqueWithoutAuthorInput | RevisionUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: RevisionUpdateManyWithWhereWithoutAuthorInput | RevisionUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
-  }
-
-  export type MediaUpdateManyWithoutUploadedByNestedInput = {
-    create?: XOR<MediaCreateWithoutUploadedByInput, MediaUncheckedCreateWithoutUploadedByInput> | MediaCreateWithoutUploadedByInput[] | MediaUncheckedCreateWithoutUploadedByInput[]
-    connectOrCreate?: MediaCreateOrConnectWithoutUploadedByInput | MediaCreateOrConnectWithoutUploadedByInput[]
-    upsert?: MediaUpsertWithWhereUniqueWithoutUploadedByInput | MediaUpsertWithWhereUniqueWithoutUploadedByInput[]
-    createMany?: MediaCreateManyUploadedByInputEnvelope
-    set?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
-    disconnect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
-    delete?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
-    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
-    update?: MediaUpdateWithWhereUniqueWithoutUploadedByInput | MediaUpdateWithWhereUniqueWithoutUploadedByInput[]
-    updateMany?: MediaUpdateManyWithWhereWithoutUploadedByInput | MediaUpdateManyWithWhereWithoutUploadedByInput[]
-    deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
   }
 
   export type MagazineUpdateManyWithoutEditorNestedInput = {
@@ -21533,21 +21417,49 @@ export namespace Prisma {
     deleteMany?: MagazineScalarWhereInput | MagazineScalarWhereInput[]
   }
 
-  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
-    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: AccountCreateManyUserInputEnvelope
-    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
-    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
+  export type MediaUpdateManyWithoutUploadedByNestedInput = {
+    create?: XOR<MediaCreateWithoutUploadedByInput, MediaUncheckedCreateWithoutUploadedByInput> | MediaCreateWithoutUploadedByInput[] | MediaUncheckedCreateWithoutUploadedByInput[]
+    connectOrCreate?: MediaCreateOrConnectWithoutUploadedByInput | MediaCreateOrConnectWithoutUploadedByInput[]
+    upsert?: MediaUpsertWithWhereUniqueWithoutUploadedByInput | MediaUpsertWithWhereUniqueWithoutUploadedByInput[]
+    createMany?: MediaCreateManyUploadedByInputEnvelope
+    set?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    disconnect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    delete?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    connect?: MediaWhereUniqueInput | MediaWhereUniqueInput[]
+    update?: MediaUpdateWithWhereUniqueWithoutUploadedByInput | MediaUpdateWithWhereUniqueWithoutUploadedByInput[]
+    updateMany?: MediaUpdateManyWithWhereWithoutUploadedByInput | MediaUpdateManyWithWhereWithoutUploadedByInput[]
+    deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
   }
 
-  export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
+  export type PostUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput | PostUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: PostCreateManyAuthorInputEnvelope
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutAuthorInput | PostUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutAuthorInput | PostUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
+  }
+
+  export type RevisionUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
+    upsert?: RevisionUpsertWithWhereUniqueWithoutAuthorInput | RevisionUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: RevisionCreateManyAuthorInputEnvelope
+    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    update?: RevisionUpdateWithWhereUniqueWithoutAuthorInput | RevisionUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: RevisionUpdateManyWithWhereWithoutAuthorInput | RevisionUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
+  }
+
+  export type SessionUpdateManyWithoutUserNestedInput = {
     create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
     connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
     upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
@@ -21561,18 +21473,18 @@ export namespace Prisma {
     deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
-  export type PostUncheckedUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
-    upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput | PostUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: PostCreateManyAuthorInputEnvelope
-    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
-    update?: PostUpdateWithWhereUniqueWithoutAuthorInput | PostUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: PostUpdateManyWithWhereWithoutAuthorInput | PostUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
+  export type AccountUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<AccountCreateWithoutUserInput, AccountUncheckedCreateWithoutUserInput> | AccountCreateWithoutUserInput[] | AccountUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: AccountCreateOrConnectWithoutUserInput | AccountCreateOrConnectWithoutUserInput[]
+    upsert?: AccountUpsertWithWhereUniqueWithoutUserInput | AccountUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: AccountCreateManyUserInputEnvelope
+    set?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    disconnect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    delete?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    connect?: AccountWhereUniqueInput | AccountWhereUniqueInput[]
+    update?: AccountUpdateWithWhereUniqueWithoutUserInput | AccountUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: AccountUpdateManyWithWhereWithoutUserInput | AccountUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: AccountScalarWhereInput | AccountScalarWhereInput[]
   }
 
   export type CommentUncheckedUpdateManyWithoutAuthorNestedInput = {
@@ -21589,18 +21501,18 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type RevisionUncheckedUpdateManyWithoutAuthorNestedInput = {
-    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
-    upsert?: RevisionUpsertWithWhereUniqueWithoutAuthorInput | RevisionUpsertWithWhereUniqueWithoutAuthorInput[]
-    createMany?: RevisionCreateManyAuthorInputEnvelope
-    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    update?: RevisionUpdateWithWhereUniqueWithoutAuthorInput | RevisionUpdateWithWhereUniqueWithoutAuthorInput[]
-    updateMany?: RevisionUpdateManyWithWhereWithoutAuthorInput | RevisionUpdateManyWithWhereWithoutAuthorInput[]
-    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
+  export type MagazineUncheckedUpdateManyWithoutEditorNestedInput = {
+    create?: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput> | MagazineCreateWithoutEditorInput[] | MagazineUncheckedCreateWithoutEditorInput[]
+    connectOrCreate?: MagazineCreateOrConnectWithoutEditorInput | MagazineCreateOrConnectWithoutEditorInput[]
+    upsert?: MagazineUpsertWithWhereUniqueWithoutEditorInput | MagazineUpsertWithWhereUniqueWithoutEditorInput[]
+    createMany?: MagazineCreateManyEditorInputEnvelope
+    set?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
+    disconnect?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
+    delete?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
+    connect?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
+    update?: MagazineUpdateWithWhereUniqueWithoutEditorInput | MagazineUpdateWithWhereUniqueWithoutEditorInput[]
+    updateMany?: MagazineUpdateManyWithWhereWithoutEditorInput | MagazineUpdateManyWithWhereWithoutEditorInput[]
+    deleteMany?: MagazineScalarWhereInput | MagazineScalarWhereInput[]
   }
 
   export type MediaUncheckedUpdateManyWithoutUploadedByNestedInput = {
@@ -21617,18 +21529,46 @@ export namespace Prisma {
     deleteMany?: MediaScalarWhereInput | MediaScalarWhereInput[]
   }
 
-  export type MagazineUncheckedUpdateManyWithoutEditorNestedInput = {
-    create?: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput> | MagazineCreateWithoutEditorInput[] | MagazineUncheckedCreateWithoutEditorInput[]
-    connectOrCreate?: MagazineCreateOrConnectWithoutEditorInput | MagazineCreateOrConnectWithoutEditorInput[]
-    upsert?: MagazineUpsertWithWhereUniqueWithoutEditorInput | MagazineUpsertWithWhereUniqueWithoutEditorInput[]
-    createMany?: MagazineCreateManyEditorInputEnvelope
-    set?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
-    disconnect?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
-    delete?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
-    connect?: MagazineWhereUniqueInput | MagazineWhereUniqueInput[]
-    update?: MagazineUpdateWithWhereUniqueWithoutEditorInput | MagazineUpdateWithWhereUniqueWithoutEditorInput[]
-    updateMany?: MagazineUpdateManyWithWhereWithoutEditorInput | MagazineUpdateManyWithWhereWithoutEditorInput[]
-    deleteMany?: MagazineScalarWhereInput | MagazineScalarWhereInput[]
+  export type PostUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput> | PostCreateWithoutAuthorInput[] | PostUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: PostCreateOrConnectWithoutAuthorInput | PostCreateOrConnectWithoutAuthorInput[]
+    upsert?: PostUpsertWithWhereUniqueWithoutAuthorInput | PostUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: PostCreateManyAuthorInputEnvelope
+    set?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    disconnect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    delete?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    connect?: PostWhereUniqueInput | PostWhereUniqueInput[]
+    update?: PostUpdateWithWhereUniqueWithoutAuthorInput | PostUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: PostUpdateManyWithWhereWithoutAuthorInput | PostUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
+  }
+
+  export type RevisionUncheckedUpdateManyWithoutAuthorNestedInput = {
+    create?: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput> | RevisionCreateWithoutAuthorInput[] | RevisionUncheckedCreateWithoutAuthorInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutAuthorInput | RevisionCreateOrConnectWithoutAuthorInput[]
+    upsert?: RevisionUpsertWithWhereUniqueWithoutAuthorInput | RevisionUpsertWithWhereUniqueWithoutAuthorInput[]
+    createMany?: RevisionCreateManyAuthorInputEnvelope
+    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    update?: RevisionUpdateWithWhereUniqueWithoutAuthorInput | RevisionUpdateWithWhereUniqueWithoutAuthorInput[]
+    updateMany?: RevisionUpdateManyWithWhereWithoutAuthorInput | RevisionUpdateManyWithWhereWithoutAuthorInput[]
+    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
+  }
+
+  export type SessionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput> | SessionCreateWithoutUserInput[] | SessionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: SessionCreateOrConnectWithoutUserInput | SessionCreateOrConnectWithoutUserInput[]
+    upsert?: SessionUpsertWithWhereUniqueWithoutUserInput | SessionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: SessionCreateManyUserInputEnvelope
+    set?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    disconnect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    delete?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    connect?: SessionWhereUniqueInput | SessionWhereUniqueInput[]
+    update?: SessionUpdateWithWhereUniqueWithoutUserInput | SessionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: SessionUpdateManyWithWhereWithoutUserInput | SessionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: SessionScalarWhereInput | SessionScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutAccountsInput = {
@@ -21871,16 +21811,17 @@ export namespace Prisma {
     deleteMany?: PostScalarWhereInput | PostScalarWhereInput[]
   }
 
+  export type CommentCreateNestedManyWithoutPostInput = {
+    create?: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput> | CommentCreateWithoutPostInput[] | CommentUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: CommentCreateOrConnectWithoutPostInput | CommentCreateOrConnectWithoutPostInput[]
+    createMany?: CommentCreateManyPostInputEnvelope
+    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
+  }
+
   export type UserCreateNestedOneWithoutPostsInput = {
     create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
     connectOrCreate?: UserCreateOrConnectWithoutPostsInput
     connect?: UserWhereUniqueInput
-  }
-
-  export type MagazineCreateNestedOneWithoutPostsInput = {
-    create?: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: MagazineCreateOrConnectWithoutPostsInput
-    connect?: MagazineWhereUniqueInput
   }
 
   export type CategoryCreateNestedOneWithoutPostsInput = {
@@ -21889,25 +21830,10 @@ export namespace Prisma {
     connect?: CategoryWhereUniqueInput
   }
 
-  export type PostTagsCreateNestedManyWithoutPostInput = {
-    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
-    createMany?: PostTagsCreateManyPostInputEnvelope
-    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-  }
-
-  export type CommentCreateNestedManyWithoutPostInput = {
-    create?: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput> | CommentCreateWithoutPostInput[] | CommentUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: CommentCreateOrConnectWithoutPostInput | CommentCreateOrConnectWithoutPostInput[]
-    createMany?: CommentCreateManyPostInputEnvelope
-    connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
-  }
-
-  export type RevisionCreateNestedManyWithoutPostInput = {
-    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
-    createMany?: RevisionCreateManyPostInputEnvelope
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+  export type MagazineCreateNestedOneWithoutPostsInput = {
+    create?: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: MagazineCreateOrConnectWithoutPostsInput
+    connect?: MagazineWhereUniqueInput
   }
 
   export type PostMediaCreateNestedManyWithoutPostInput = {
@@ -21917,18 +21843,25 @@ export namespace Prisma {
     connect?: PostMediaWhereUniqueInput | PostMediaWhereUniqueInput[]
   }
 
+  export type PostTagsCreateNestedManyWithoutPostInput = {
+    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
+    createMany?: PostTagsCreateManyPostInputEnvelope
+    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+  }
+
+  export type RevisionCreateNestedManyWithoutPostInput = {
+    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
+    createMany?: RevisionCreateManyPostInputEnvelope
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+  }
+
   export type ViewLogCreateNestedManyWithoutPostInput = {
     create?: XOR<ViewLogCreateWithoutPostInput, ViewLogUncheckedCreateWithoutPostInput> | ViewLogCreateWithoutPostInput[] | ViewLogUncheckedCreateWithoutPostInput[]
     connectOrCreate?: ViewLogCreateOrConnectWithoutPostInput | ViewLogCreateOrConnectWithoutPostInput[]
     createMany?: ViewLogCreateManyPostInputEnvelope
     connect?: ViewLogWhereUniqueInput | ViewLogWhereUniqueInput[]
-  }
-
-  export type PostTagsUncheckedCreateNestedManyWithoutPostInput = {
-    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
-    createMany?: PostTagsCreateManyPostInputEnvelope
-    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
   }
 
   export type CommentUncheckedCreateNestedManyWithoutPostInput = {
@@ -21938,18 +21871,25 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
-  export type RevisionUncheckedCreateNestedManyWithoutPostInput = {
-    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
-    createMany?: RevisionCreateManyPostInputEnvelope
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-  }
-
   export type PostMediaUncheckedCreateNestedManyWithoutPostInput = {
     create?: XOR<PostMediaCreateWithoutPostInput, PostMediaUncheckedCreateWithoutPostInput> | PostMediaCreateWithoutPostInput[] | PostMediaUncheckedCreateWithoutPostInput[]
     connectOrCreate?: PostMediaCreateOrConnectWithoutPostInput | PostMediaCreateOrConnectWithoutPostInput[]
     createMany?: PostMediaCreateManyPostInputEnvelope
     connect?: PostMediaWhereUniqueInput | PostMediaWhereUniqueInput[]
+  }
+
+  export type PostTagsUncheckedCreateNestedManyWithoutPostInput = {
+    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
+    createMany?: PostTagsCreateManyPostInputEnvelope
+    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+  }
+
+  export type RevisionUncheckedCreateNestedManyWithoutPostInput = {
+    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
+    createMany?: RevisionCreateManyPostInputEnvelope
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
   }
 
   export type ViewLogUncheckedCreateNestedManyWithoutPostInput = {
@@ -21983,48 +21923,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type UserUpdateOneRequiredWithoutPostsNestedInput = {
-    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
-    upsert?: UserUpsertWithoutPostsInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
-  }
-
-  export type MagazineUpdateOneWithoutPostsNestedInput = {
-    create?: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: MagazineCreateOrConnectWithoutPostsInput
-    upsert?: MagazineUpsertWithoutPostsInput
-    disconnect?: MagazineWhereInput | boolean
-    delete?: MagazineWhereInput | boolean
-    connect?: MagazineWhereUniqueInput
-    update?: XOR<XOR<MagazineUpdateToOneWithWhereWithoutPostsInput, MagazineUpdateWithoutPostsInput>, MagazineUncheckedUpdateWithoutPostsInput>
-  }
-
-  export type CategoryUpdateOneWithoutPostsNestedInput = {
-    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
-    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
-    upsert?: CategoryUpsertWithoutPostsInput
-    disconnect?: CategoryWhereInput | boolean
-    delete?: CategoryWhereInput | boolean
-    connect?: CategoryWhereUniqueInput
-    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutPostsInput, CategoryUpdateWithoutPostsInput>, CategoryUncheckedUpdateWithoutPostsInput>
-  }
-
-  export type PostTagsUpdateManyWithoutPostNestedInput = {
-    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
-    upsert?: PostTagsUpsertWithWhereUniqueWithoutPostInput | PostTagsUpsertWithWhereUniqueWithoutPostInput[]
-    createMany?: PostTagsCreateManyPostInputEnvelope
-    set?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    disconnect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    delete?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    update?: PostTagsUpdateWithWhereUniqueWithoutPostInput | PostTagsUpdateWithWhereUniqueWithoutPostInput[]
-    updateMany?: PostTagsUpdateManyWithWhereWithoutPostInput | PostTagsUpdateManyWithWhereWithoutPostInput[]
-    deleteMany?: PostTagsScalarWhereInput | PostTagsScalarWhereInput[]
-  }
-
   export type CommentUpdateManyWithoutPostNestedInput = {
     create?: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput> | CommentCreateWithoutPostInput[] | CommentUncheckedCreateWithoutPostInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutPostInput | CommentCreateOrConnectWithoutPostInput[]
@@ -22039,18 +21937,32 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type RevisionUpdateManyWithoutPostNestedInput = {
-    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
-    upsert?: RevisionUpsertWithWhereUniqueWithoutPostInput | RevisionUpsertWithWhereUniqueWithoutPostInput[]
-    createMany?: RevisionCreateManyPostInputEnvelope
-    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    update?: RevisionUpdateWithWhereUniqueWithoutPostInput | RevisionUpdateWithWhereUniqueWithoutPostInput[]
-    updateMany?: RevisionUpdateManyWithWhereWithoutPostInput | RevisionUpdateManyWithWhereWithoutPostInput[]
-    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
+  export type UserUpdateOneRequiredWithoutPostsNestedInput = {
+    create?: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPostsInput
+    upsert?: UserUpsertWithoutPostsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPostsInput, UserUpdateWithoutPostsInput>, UserUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type CategoryUpdateOneWithoutPostsNestedInput = {
+    create?: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutPostsInput
+    upsert?: CategoryUpsertWithoutPostsInput
+    disconnect?: CategoryWhereInput | boolean
+    delete?: CategoryWhereInput | boolean
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutPostsInput, CategoryUpdateWithoutPostsInput>, CategoryUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type MagazineUpdateOneWithoutPostsNestedInput = {
+    create?: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
+    connectOrCreate?: MagazineCreateOrConnectWithoutPostsInput
+    upsert?: MagazineUpsertWithoutPostsInput
+    disconnect?: MagazineWhereInput | boolean
+    delete?: MagazineWhereInput | boolean
+    connect?: MagazineWhereUniqueInput
+    update?: XOR<XOR<MagazineUpdateToOneWithWhereWithoutPostsInput, MagazineUpdateWithoutPostsInput>, MagazineUncheckedUpdateWithoutPostsInput>
   }
 
   export type PostMediaUpdateManyWithoutPostNestedInput = {
@@ -22067,6 +21979,34 @@ export namespace Prisma {
     deleteMany?: PostMediaScalarWhereInput | PostMediaScalarWhereInput[]
   }
 
+  export type PostTagsUpdateManyWithoutPostNestedInput = {
+    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
+    upsert?: PostTagsUpsertWithWhereUniqueWithoutPostInput | PostTagsUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: PostTagsCreateManyPostInputEnvelope
+    set?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    disconnect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    delete?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    update?: PostTagsUpdateWithWhereUniqueWithoutPostInput | PostTagsUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: PostTagsUpdateManyWithWhereWithoutPostInput | PostTagsUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: PostTagsScalarWhereInput | PostTagsScalarWhereInput[]
+  }
+
+  export type RevisionUpdateManyWithoutPostNestedInput = {
+    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
+    upsert?: RevisionUpsertWithWhereUniqueWithoutPostInput | RevisionUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: RevisionCreateManyPostInputEnvelope
+    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    update?: RevisionUpdateWithWhereUniqueWithoutPostInput | RevisionUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: RevisionUpdateManyWithWhereWithoutPostInput | RevisionUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
+  }
+
   export type ViewLogUpdateManyWithoutPostNestedInput = {
     create?: XOR<ViewLogCreateWithoutPostInput, ViewLogUncheckedCreateWithoutPostInput> | ViewLogCreateWithoutPostInput[] | ViewLogUncheckedCreateWithoutPostInput[]
     connectOrCreate?: ViewLogCreateOrConnectWithoutPostInput | ViewLogCreateOrConnectWithoutPostInput[]
@@ -22079,20 +22019,6 @@ export namespace Prisma {
     update?: ViewLogUpdateWithWhereUniqueWithoutPostInput | ViewLogUpdateWithWhereUniqueWithoutPostInput[]
     updateMany?: ViewLogUpdateManyWithWhereWithoutPostInput | ViewLogUpdateManyWithWhereWithoutPostInput[]
     deleteMany?: ViewLogScalarWhereInput | ViewLogScalarWhereInput[]
-  }
-
-  export type PostTagsUncheckedUpdateManyWithoutPostNestedInput = {
-    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
-    upsert?: PostTagsUpsertWithWhereUniqueWithoutPostInput | PostTagsUpsertWithWhereUniqueWithoutPostInput[]
-    createMany?: PostTagsCreateManyPostInputEnvelope
-    set?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    disconnect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    delete?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
-    update?: PostTagsUpdateWithWhereUniqueWithoutPostInput | PostTagsUpdateWithWhereUniqueWithoutPostInput[]
-    updateMany?: PostTagsUpdateManyWithWhereWithoutPostInput | PostTagsUpdateManyWithWhereWithoutPostInput[]
-    deleteMany?: PostTagsScalarWhereInput | PostTagsScalarWhereInput[]
   }
 
   export type CommentUncheckedUpdateManyWithoutPostNestedInput = {
@@ -22109,20 +22035,6 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type RevisionUncheckedUpdateManyWithoutPostNestedInput = {
-    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
-    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
-    upsert?: RevisionUpsertWithWhereUniqueWithoutPostInput | RevisionUpsertWithWhereUniqueWithoutPostInput[]
-    createMany?: RevisionCreateManyPostInputEnvelope
-    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
-    update?: RevisionUpdateWithWhereUniqueWithoutPostInput | RevisionUpdateWithWhereUniqueWithoutPostInput[]
-    updateMany?: RevisionUpdateManyWithWhereWithoutPostInput | RevisionUpdateManyWithWhereWithoutPostInput[]
-    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
-  }
-
   export type PostMediaUncheckedUpdateManyWithoutPostNestedInput = {
     create?: XOR<PostMediaCreateWithoutPostInput, PostMediaUncheckedCreateWithoutPostInput> | PostMediaCreateWithoutPostInput[] | PostMediaUncheckedCreateWithoutPostInput[]
     connectOrCreate?: PostMediaCreateOrConnectWithoutPostInput | PostMediaCreateOrConnectWithoutPostInput[]
@@ -22135,6 +22047,34 @@ export namespace Prisma {
     update?: PostMediaUpdateWithWhereUniqueWithoutPostInput | PostMediaUpdateWithWhereUniqueWithoutPostInput[]
     updateMany?: PostMediaUpdateManyWithWhereWithoutPostInput | PostMediaUpdateManyWithWhereWithoutPostInput[]
     deleteMany?: PostMediaScalarWhereInput | PostMediaScalarWhereInput[]
+  }
+
+  export type PostTagsUncheckedUpdateManyWithoutPostNestedInput = {
+    create?: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput> | PostTagsCreateWithoutPostInput[] | PostTagsUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: PostTagsCreateOrConnectWithoutPostInput | PostTagsCreateOrConnectWithoutPostInput[]
+    upsert?: PostTagsUpsertWithWhereUniqueWithoutPostInput | PostTagsUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: PostTagsCreateManyPostInputEnvelope
+    set?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    disconnect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    delete?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    connect?: PostTagsWhereUniqueInput | PostTagsWhereUniqueInput[]
+    update?: PostTagsUpdateWithWhereUniqueWithoutPostInput | PostTagsUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: PostTagsUpdateManyWithWhereWithoutPostInput | PostTagsUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: PostTagsScalarWhereInput | PostTagsScalarWhereInput[]
+  }
+
+  export type RevisionUncheckedUpdateManyWithoutPostNestedInput = {
+    create?: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput> | RevisionCreateWithoutPostInput[] | RevisionUncheckedCreateWithoutPostInput[]
+    connectOrCreate?: RevisionCreateOrConnectWithoutPostInput | RevisionCreateOrConnectWithoutPostInput[]
+    upsert?: RevisionUpsertWithWhereUniqueWithoutPostInput | RevisionUpsertWithWhereUniqueWithoutPostInput[]
+    createMany?: RevisionCreateManyPostInputEnvelope
+    set?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    disconnect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    delete?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    connect?: RevisionWhereUniqueInput | RevisionWhereUniqueInput[]
+    update?: RevisionUpdateWithWhereUniqueWithoutPostInput | RevisionUpdateWithWhereUniqueWithoutPostInput[]
+    updateMany?: RevisionUpdateManyWithWhereWithoutPostInput | RevisionUpdateManyWithWhereWithoutPostInput[]
+    deleteMany?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
   }
 
   export type ViewLogUncheckedUpdateManyWithoutPostNestedInput = {
@@ -22179,12 +22119,6 @@ export namespace Prisma {
     update?: XOR<XOR<TagUpdateToOneWithWhereWithoutPostsInput, TagUpdateWithoutPostsInput>, TagUncheckedUpdateWithoutPostsInput>
   }
 
-  export type PostCreateNestedOneWithoutCommentsInput = {
-    create?: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: PostCreateOrConnectWithoutCommentsInput
-    connect?: PostWhereUniqueInput
-  }
-
   export type UserCreateNestedOneWithoutCommentsInput = {
     create?: XOR<UserCreateWithoutCommentsInput, UserUncheckedCreateWithoutCommentsInput>
     connectOrCreate?: UserCreateOrConnectWithoutCommentsInput
@@ -22204,6 +22138,12 @@ export namespace Prisma {
     connect?: CommentWhereUniqueInput | CommentWhereUniqueInput[]
   }
 
+  export type PostCreateNestedOneWithoutCommentsInput = {
+    create?: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: PostCreateOrConnectWithoutCommentsInput
+    connect?: PostWhereUniqueInput
+  }
+
   export type CommentUncheckedCreateNestedManyWithoutParentInput = {
     create?: XOR<CommentCreateWithoutParentInput, CommentUncheckedCreateWithoutParentInput> | CommentCreateWithoutParentInput[] | CommentUncheckedCreateWithoutParentInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutParentInput | CommentCreateOrConnectWithoutParentInput[]
@@ -22213,14 +22153,6 @@ export namespace Prisma {
 
   export type EnumCommentStatusFieldUpdateOperationsInput = {
     set?: $Enums.CommentStatus
-  }
-
-  export type PostUpdateOneRequiredWithoutCommentsNestedInput = {
-    create?: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
-    connectOrCreate?: PostCreateOrConnectWithoutCommentsInput
-    upsert?: PostUpsertWithoutCommentsInput
-    connect?: PostWhereUniqueInput
-    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutCommentsInput, PostUpdateWithoutCommentsInput>, PostUncheckedUpdateWithoutCommentsInput>
   }
 
   export type UserUpdateOneWithoutCommentsNestedInput = {
@@ -22257,6 +22189,14 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
+  export type PostUpdateOneRequiredWithoutCommentsNestedInput = {
+    create?: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
+    connectOrCreate?: PostCreateOrConnectWithoutCommentsInput
+    upsert?: PostUpsertWithoutCommentsInput
+    connect?: PostWhereUniqueInput
+    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutCommentsInput, PostUpdateWithoutCommentsInput>, PostUncheckedUpdateWithoutCommentsInput>
+  }
+
   export type CommentUncheckedUpdateManyWithoutParentNestedInput = {
     create?: XOR<CommentCreateWithoutParentInput, CommentUncheckedCreateWithoutParentInput> | CommentCreateWithoutParentInput[] | CommentUncheckedCreateWithoutParentInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutParentInput | CommentCreateOrConnectWithoutParentInput[]
@@ -22271,24 +22211,16 @@ export namespace Prisma {
     deleteMany?: CommentScalarWhereInput | CommentScalarWhereInput[]
   }
 
-  export type PostCreateNestedOneWithoutRevisionsInput = {
-    create?: XOR<PostCreateWithoutRevisionsInput, PostUncheckedCreateWithoutRevisionsInput>
-    connectOrCreate?: PostCreateOrConnectWithoutRevisionsInput
-    connect?: PostWhereUniqueInput
-  }
-
   export type UserCreateNestedOneWithoutRevisionsInput = {
     create?: XOR<UserCreateWithoutRevisionsInput, UserUncheckedCreateWithoutRevisionsInput>
     connectOrCreate?: UserCreateOrConnectWithoutRevisionsInput
     connect?: UserWhereUniqueInput
   }
 
-  export type PostUpdateOneRequiredWithoutRevisionsNestedInput = {
+  export type PostCreateNestedOneWithoutRevisionsInput = {
     create?: XOR<PostCreateWithoutRevisionsInput, PostUncheckedCreateWithoutRevisionsInput>
     connectOrCreate?: PostCreateOrConnectWithoutRevisionsInput
-    upsert?: PostUpsertWithoutRevisionsInput
     connect?: PostWhereUniqueInput
-    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutRevisionsInput, PostUpdateWithoutRevisionsInput>, PostUncheckedUpdateWithoutRevisionsInput>
   }
 
   export type UserUpdateOneRequiredWithoutRevisionsNestedInput = {
@@ -22297,6 +22229,14 @@ export namespace Prisma {
     upsert?: UserUpsertWithoutRevisionsInput
     connect?: UserWhereUniqueInput
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutRevisionsInput, UserUpdateWithoutRevisionsInput>, UserUncheckedUpdateWithoutRevisionsInput>
+  }
+
+  export type PostUpdateOneRequiredWithoutRevisionsNestedInput = {
+    create?: XOR<PostCreateWithoutRevisionsInput, PostUncheckedCreateWithoutRevisionsInput>
+    connectOrCreate?: PostCreateOrConnectWithoutRevisionsInput
+    upsert?: PostUpsertWithoutRevisionsInput
+    connect?: PostWhereUniqueInput
+    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutRevisionsInput, PostUpdateWithoutRevisionsInput>, PostUncheckedUpdateWithoutRevisionsInput>
   }
 
   export type UserCreateNestedOneWithoutMediaInput = {
@@ -22361,24 +22301,16 @@ export namespace Prisma {
     deleteMany?: PostMediaScalarWhereInput | PostMediaScalarWhereInput[]
   }
 
-  export type PostCreateNestedOneWithoutMediaInput = {
-    create?: XOR<PostCreateWithoutMediaInput, PostUncheckedCreateWithoutMediaInput>
-    connectOrCreate?: PostCreateOrConnectWithoutMediaInput
-    connect?: PostWhereUniqueInput
-  }
-
   export type MediaCreateNestedOneWithoutPostsInput = {
     create?: XOR<MediaCreateWithoutPostsInput, MediaUncheckedCreateWithoutPostsInput>
     connectOrCreate?: MediaCreateOrConnectWithoutPostsInput
     connect?: MediaWhereUniqueInput
   }
 
-  export type PostUpdateOneRequiredWithoutMediaNestedInput = {
+  export type PostCreateNestedOneWithoutMediaInput = {
     create?: XOR<PostCreateWithoutMediaInput, PostUncheckedCreateWithoutMediaInput>
     connectOrCreate?: PostCreateOrConnectWithoutMediaInput
-    upsert?: PostUpsertWithoutMediaInput
     connect?: PostWhereUniqueInput
-    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutMediaInput, PostUpdateWithoutMediaInput>, PostUncheckedUpdateWithoutMediaInput>
   }
 
   export type MediaUpdateOneRequiredWithoutPostsNestedInput = {
@@ -22387,6 +22319,14 @@ export namespace Prisma {
     upsert?: MediaUpsertWithoutPostsInput
     connect?: MediaWhereUniqueInput
     update?: XOR<XOR<MediaUpdateToOneWithWhereWithoutPostsInput, MediaUpdateWithoutPostsInput>, MediaUncheckedUpdateWithoutPostsInput>
+  }
+
+  export type PostUpdateOneRequiredWithoutMediaNestedInput = {
+    create?: XOR<PostCreateWithoutMediaInput, PostUncheckedCreateWithoutMediaInput>
+    connectOrCreate?: PostCreateOrConnectWithoutMediaInput
+    upsert?: PostUpsertWithoutMediaInput
+    connect?: PostWhereUniqueInput
+    update?: XOR<XOR<PostUpdateToOneWithWhereWithoutMediaInput, PostUpdateWithoutMediaInput>, PostUncheckedUpdateWithoutMediaInput>
   }
 
   export type PostCreateNestedOneWithoutViewLogsInput = {
@@ -22542,29 +22482,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumUserRoleFilter<$PrismaModel>
     _max?: NestedEnumUserRoleFilter<$PrismaModel>
-  }
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
-    path?: string
-    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
-    string_contains?: string | StringFieldRefInput<$PrismaModel>
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
-    lt?: InputJsonValue
-    lte?: InputJsonValue
-    gt?: InputJsonValue
-    gte?: InputJsonValue
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -22788,113 +22705,15 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type SessionCreateWithoutUserInput = {
-    id?: string
-    sessionToken: string
-    expires: Date | string
-  }
-
-  export type SessionUncheckedCreateWithoutUserInput = {
-    id?: string
-    sessionToken: string
-    expires: Date | string
-  }
-
-  export type SessionCreateOrConnectWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type SessionCreateManyUserInputEnvelope = {
-    data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PostCreateWithoutAuthorInput = {
-    id?: string
-    title: string
-    slug: string
-    excerpt?: string | null
-    content: string
-    readMinutes?: number | null
-    type?: $Enums.PostType
-    coverImageUrl?: string | null
-    status?: $Enums.PostStatus
-    visibility?: $Enums.PostVisibility
-    isFeatured?: boolean
-    scheduledAt?: Date | string | null
-    publishedAt?: Date | string | null
-    views?: number
-    likes?: number
-    metaTitle?: string | null
-    metaDescription?: string | null
-    metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    magazine?: MagazineCreateNestedOneWithoutPostsInput
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
-    comments?: CommentCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
-    media?: PostMediaCreateNestedManyWithoutPostInput
-    viewLogs?: ViewLogCreateNestedManyWithoutPostInput
-  }
-
-  export type PostUncheckedCreateWithoutAuthorInput = {
-    id?: string
-    title: string
-    slug: string
-    excerpt?: string | null
-    content: string
-    readMinutes?: number | null
-    type?: $Enums.PostType
-    coverImageUrl?: string | null
-    status?: $Enums.PostStatus
-    visibility?: $Enums.PostVisibility
-    isFeatured?: boolean
-    scheduledAt?: Date | string | null
-    publishedAt?: Date | string | null
-    magazineId?: string | null
-    categoryId?: string | null
-    views?: number
-    likes?: number
-    metaTitle?: string | null
-    metaDescription?: string | null
-    metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
-    comments?: CommentUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
-    media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
-    viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
-  }
-
-  export type PostCreateOrConnectWithoutAuthorInput = {
-    where: PostWhereUniqueInput
-    create: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput>
-  }
-
-  export type PostCreateManyAuthorInputEnvelope = {
-    data: PostCreateManyAuthorInput | PostCreateManyAuthorInput[]
-    skipDuplicates?: boolean
-  }
-
   export type CommentCreateWithoutAuthorInput = {
     id?: string
     content: string
     status?: $Enums.CommentStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    post: PostCreateNestedOneWithoutCommentsInput
     parent?: CommentCreateNestedOneWithoutChildrenInput
     children?: CommentCreateNestedManyWithoutParentInput
+    post: PostCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateWithoutAuthorInput = {
@@ -22918,29 +22737,43 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type RevisionCreateWithoutAuthorInput = {
+  export type MagazineCreateWithoutEditorInput = {
     id?: string
-    content: string
     title?: string | null
+    slug: string
+    description?: string | null
+    coverImageUrl?: string | null
+    issueNumber?: number | null
+    publishedAt?: Date | string | null
+    status?: $Enums.MagazineStatus
     createdAt?: Date | string
-    post: PostCreateNestedOneWithoutRevisionsInput
+    updatedAt?: Date | string
+    pdfUrl?: string | null
+    posts?: PostCreateNestedManyWithoutMagazineInput
   }
 
-  export type RevisionUncheckedCreateWithoutAuthorInput = {
+  export type MagazineUncheckedCreateWithoutEditorInput = {
     id?: string
-    postId: string
-    content: string
     title?: string | null
+    slug: string
+    description?: string | null
+    coverImageUrl?: string | null
+    issueNumber?: number | null
+    publishedAt?: Date | string | null
+    status?: $Enums.MagazineStatus
     createdAt?: Date | string
+    updatedAt?: Date | string
+    pdfUrl?: string | null
+    posts?: PostUncheckedCreateNestedManyWithoutMagazineInput
   }
 
-  export type RevisionCreateOrConnectWithoutAuthorInput = {
-    where: RevisionWhereUniqueInput
-    create: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput>
+  export type MagazineCreateOrConnectWithoutEditorInput = {
+    where: MagazineWhereUniqueInput
+    create: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput>
   }
 
-  export type RevisionCreateManyAuthorInputEnvelope = {
-    data: RevisionCreateManyAuthorInput | RevisionCreateManyAuthorInput[]
+  export type MagazineCreateManyEditorInputEnvelope = {
+    data: MagazineCreateManyEditorInput | MagazineCreateManyEditorInput[]
     skipDuplicates?: boolean
   }
 
@@ -22974,43 +22807,127 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type MagazineCreateWithoutEditorInput = {
+  export type PostCreateWithoutAuthorInput = {
     id?: string
-    title?: string | null
+    title: string
     slug: string
-    description?: string | null
+    excerpt?: string | null
+    content: string
+    type?: $Enums.PostType
     coverImageUrl?: string | null
-    pdfUrl?: string | null
-    issueNumber?: number | null
+    status?: $Enums.PostStatus
+    visibility?: $Enums.PostVisibility
+    isFeatured?: boolean
+    scheduledAt?: Date | string | null
     publishedAt?: Date | string | null
-    status?: $Enums.MagazineStatus
+    views?: number
+    likes?: number
+    metaTitle?: string | null
+    metaDescription?: string | null
+    metaKeywords?: string | null
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    posts?: PostCreateNestedManyWithoutMagazineInput
+    readMinutes?: number | null
+    comments?: CommentCreateNestedManyWithoutPostInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
+    magazine?: MagazineCreateNestedOneWithoutPostsInput
+    media?: PostMediaCreateNestedManyWithoutPostInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
+    viewLogs?: ViewLogCreateNestedManyWithoutPostInput
   }
 
-  export type MagazineUncheckedCreateWithoutEditorInput = {
+  export type PostUncheckedCreateWithoutAuthorInput = {
     id?: string
-    title?: string | null
+    title: string
     slug: string
-    description?: string | null
+    excerpt?: string | null
+    content: string
+    type?: $Enums.PostType
     coverImageUrl?: string | null
-    pdfUrl?: string | null
-    issueNumber?: number | null
+    status?: $Enums.PostStatus
+    visibility?: $Enums.PostVisibility
+    isFeatured?: boolean
+    scheduledAt?: Date | string | null
     publishedAt?: Date | string | null
-    status?: $Enums.MagazineStatus
+    magazineId?: string | null
+    categoryId?: string | null
+    views?: number
+    likes?: number
+    metaTitle?: string | null
+    metaDescription?: string | null
+    metaKeywords?: string | null
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    posts?: PostUncheckedCreateNestedManyWithoutMagazineInput
+    readMinutes?: number | null
+    comments?: CommentUncheckedCreateNestedManyWithoutPostInput
+    media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
+    viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
   }
 
-  export type MagazineCreateOrConnectWithoutEditorInput = {
-    where: MagazineWhereUniqueInput
-    create: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput>
+  export type PostCreateOrConnectWithoutAuthorInput = {
+    where: PostWhereUniqueInput
+    create: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput>
   }
 
-  export type MagazineCreateManyEditorInputEnvelope = {
-    data: MagazineCreateManyEditorInput | MagazineCreateManyEditorInput[]
+  export type PostCreateManyAuthorInputEnvelope = {
+    data: PostCreateManyAuthorInput | PostCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type RevisionCreateWithoutAuthorInput = {
+    id?: string
+    content: string
+    title?: string | null
+    createdAt?: Date | string
+    post: PostCreateNestedOneWithoutRevisionsInput
+  }
+
+  export type RevisionUncheckedCreateWithoutAuthorInput = {
+    id?: string
+    postId: string
+    content: string
+    title?: string | null
+    createdAt?: Date | string
+  }
+
+  export type RevisionCreateOrConnectWithoutAuthorInput = {
+    where: RevisionWhereUniqueInput
+    create: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type RevisionCreateManyAuthorInputEnvelope = {
+    data: RevisionCreateManyAuthorInput | RevisionCreateManyAuthorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SessionCreateWithoutUserInput = {
+    id?: string
+    sessionToken: string
+    expires: Date | string
+  }
+
+  export type SessionUncheckedCreateWithoutUserInput = {
+    id?: string
+    sessionToken: string
+    expires: Date | string
+  }
+
+  export type SessionCreateOrConnectWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type SessionCreateManyUserInputEnvelope = {
+    data: SessionCreateManyUserInput | SessionCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -23048,80 +22965,6 @@ export namespace Prisma {
     session_state?: StringNullableFilter<"Account"> | string | null
   }
 
-  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
-    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
-  }
-
-  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
-    where: SessionWhereUniqueInput
-    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
-  }
-
-  export type SessionUpdateManyWithWhereWithoutUserInput = {
-    where: SessionScalarWhereInput
-    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type SessionScalarWhereInput = {
-    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    OR?: SessionScalarWhereInput[]
-    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
-    id?: StringFilter<"Session"> | string
-    sessionToken?: StringFilter<"Session"> | string
-    userId?: StringFilter<"Session"> | string
-    expires?: DateTimeFilter<"Session"> | Date | string
-  }
-
-  export type PostUpsertWithWhereUniqueWithoutAuthorInput = {
-    where: PostWhereUniqueInput
-    update: XOR<PostUpdateWithoutAuthorInput, PostUncheckedUpdateWithoutAuthorInput>
-    create: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput>
-  }
-
-  export type PostUpdateWithWhereUniqueWithoutAuthorInput = {
-    where: PostWhereUniqueInput
-    data: XOR<PostUpdateWithoutAuthorInput, PostUncheckedUpdateWithoutAuthorInput>
-  }
-
-  export type PostUpdateManyWithWhereWithoutAuthorInput = {
-    where: PostScalarWhereInput
-    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutAuthorInput>
-  }
-
-  export type PostScalarWhereInput = {
-    AND?: PostScalarWhereInput | PostScalarWhereInput[]
-    OR?: PostScalarWhereInput[]
-    NOT?: PostScalarWhereInput | PostScalarWhereInput[]
-    id?: StringFilter<"Post"> | string
-    title?: StringFilter<"Post"> | string
-    slug?: StringFilter<"Post"> | string
-    excerpt?: StringNullableFilter<"Post"> | string | null
-    content?: StringFilter<"Post"> | string
-    readMinutes?: IntNullableFilter<"Post"> | number | null
-    type?: EnumPostTypeFilter<"Post"> | $Enums.PostType
-    coverImageUrl?: StringNullableFilter<"Post"> | string | null
-    status?: EnumPostStatusFilter<"Post"> | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFilter<"Post"> | $Enums.PostVisibility
-    isFeatured?: BoolFilter<"Post"> | boolean
-    scheduledAt?: DateTimeNullableFilter<"Post"> | Date | string | null
-    publishedAt?: DateTimeNullableFilter<"Post"> | Date | string | null
-    authorId?: StringFilter<"Post"> | string
-    magazineId?: StringNullableFilter<"Post"> | string | null
-    categoryId?: StringNullableFilter<"Post"> | string | null
-    views?: IntFilter<"Post"> | number
-    likes?: IntFilter<"Post"> | number
-    metaTitle?: StringNullableFilter<"Post"> | string | null
-    metaDescription?: StringNullableFilter<"Post"> | string | null
-    metaKeywords?: StringNullableFilter<"Post"> | string | null
-    slugHistory?: JsonNullableFilter<"Post">
-    seoSchema?: JsonNullableFilter<"Post">
-    settings?: JsonNullableFilter<"Post">
-    createdAt?: DateTimeFilter<"Post"> | Date | string
-    updatedAt?: DateTimeFilter<"Post"> | Date | string
-  }
-
   export type CommentUpsertWithWhereUniqueWithoutAuthorInput = {
     where: CommentWhereUniqueInput
     update: XOR<CommentUpdateWithoutAuthorInput, CommentUncheckedUpdateWithoutAuthorInput>
@@ -23152,32 +22995,38 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Comment"> | Date | string
   }
 
-  export type RevisionUpsertWithWhereUniqueWithoutAuthorInput = {
-    where: RevisionWhereUniqueInput
-    update: XOR<RevisionUpdateWithoutAuthorInput, RevisionUncheckedUpdateWithoutAuthorInput>
-    create: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput>
+  export type MagazineUpsertWithWhereUniqueWithoutEditorInput = {
+    where: MagazineWhereUniqueInput
+    update: XOR<MagazineUpdateWithoutEditorInput, MagazineUncheckedUpdateWithoutEditorInput>
+    create: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput>
   }
 
-  export type RevisionUpdateWithWhereUniqueWithoutAuthorInput = {
-    where: RevisionWhereUniqueInput
-    data: XOR<RevisionUpdateWithoutAuthorInput, RevisionUncheckedUpdateWithoutAuthorInput>
+  export type MagazineUpdateWithWhereUniqueWithoutEditorInput = {
+    where: MagazineWhereUniqueInput
+    data: XOR<MagazineUpdateWithoutEditorInput, MagazineUncheckedUpdateWithoutEditorInput>
   }
 
-  export type RevisionUpdateManyWithWhereWithoutAuthorInput = {
-    where: RevisionScalarWhereInput
-    data: XOR<RevisionUpdateManyMutationInput, RevisionUncheckedUpdateManyWithoutAuthorInput>
+  export type MagazineUpdateManyWithWhereWithoutEditorInput = {
+    where: MagazineScalarWhereInput
+    data: XOR<MagazineUpdateManyMutationInput, MagazineUncheckedUpdateManyWithoutEditorInput>
   }
 
-  export type RevisionScalarWhereInput = {
-    AND?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
-    OR?: RevisionScalarWhereInput[]
-    NOT?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
-    id?: StringFilter<"Revision"> | string
-    postId?: StringFilter<"Revision"> | string
-    authorId?: StringFilter<"Revision"> | string
-    content?: StringFilter<"Revision"> | string
-    title?: StringNullableFilter<"Revision"> | string | null
-    createdAt?: DateTimeFilter<"Revision"> | Date | string
+  export type MagazineScalarWhereInput = {
+    AND?: MagazineScalarWhereInput | MagazineScalarWhereInput[]
+    OR?: MagazineScalarWhereInput[]
+    NOT?: MagazineScalarWhereInput | MagazineScalarWhereInput[]
+    id?: StringFilter<"Magazine"> | string
+    title?: StringNullableFilter<"Magazine"> | string | null
+    slug?: StringFilter<"Magazine"> | string
+    description?: StringNullableFilter<"Magazine"> | string | null
+    coverImageUrl?: StringNullableFilter<"Magazine"> | string | null
+    issueNumber?: IntNullableFilter<"Magazine"> | number | null
+    publishedAt?: DateTimeNullableFilter<"Magazine"> | Date | string | null
+    status?: EnumMagazineStatusFilter<"Magazine"> | $Enums.MagazineStatus
+    editorId?: StringNullableFilter<"Magazine"> | string | null
+    createdAt?: DateTimeFilter<"Magazine"> | Date | string
+    updatedAt?: DateTimeFilter<"Magazine"> | Date | string
+    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
   }
 
   export type MediaUpsertWithWhereUniqueWithoutUploadedByInput = {
@@ -23209,80 +23058,148 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Media"> | Date | string
   }
 
-  export type MagazineUpsertWithWhereUniqueWithoutEditorInput = {
-    where: MagazineWhereUniqueInput
-    update: XOR<MagazineUpdateWithoutEditorInput, MagazineUncheckedUpdateWithoutEditorInput>
-    create: XOR<MagazineCreateWithoutEditorInput, MagazineUncheckedCreateWithoutEditorInput>
+  export type PostUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: PostWhereUniqueInput
+    update: XOR<PostUpdateWithoutAuthorInput, PostUncheckedUpdateWithoutAuthorInput>
+    create: XOR<PostCreateWithoutAuthorInput, PostUncheckedCreateWithoutAuthorInput>
   }
 
-  export type MagazineUpdateWithWhereUniqueWithoutEditorInput = {
-    where: MagazineWhereUniqueInput
-    data: XOR<MagazineUpdateWithoutEditorInput, MagazineUncheckedUpdateWithoutEditorInput>
+  export type PostUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: PostWhereUniqueInput
+    data: XOR<PostUpdateWithoutAuthorInput, PostUncheckedUpdateWithoutAuthorInput>
   }
 
-  export type MagazineUpdateManyWithWhereWithoutEditorInput = {
-    where: MagazineScalarWhereInput
-    data: XOR<MagazineUpdateManyMutationInput, MagazineUncheckedUpdateManyWithoutEditorInput>
+  export type PostUpdateManyWithWhereWithoutAuthorInput = {
+    where: PostScalarWhereInput
+    data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutAuthorInput>
   }
 
-  export type MagazineScalarWhereInput = {
-    AND?: MagazineScalarWhereInput | MagazineScalarWhereInput[]
-    OR?: MagazineScalarWhereInput[]
-    NOT?: MagazineScalarWhereInput | MagazineScalarWhereInput[]
-    id?: StringFilter<"Magazine"> | string
-    title?: StringNullableFilter<"Magazine"> | string | null
-    slug?: StringFilter<"Magazine"> | string
-    description?: StringNullableFilter<"Magazine"> | string | null
-    coverImageUrl?: StringNullableFilter<"Magazine"> | string | null
-    pdfUrl?: StringNullableFilter<"Magazine"> | string | null
-    issueNumber?: IntNullableFilter<"Magazine"> | number | null
-    publishedAt?: DateTimeNullableFilter<"Magazine"> | Date | string | null
-    status?: EnumMagazineStatusFilter<"Magazine"> | $Enums.MagazineStatus
-    editorId?: StringNullableFilter<"Magazine"> | string | null
-    createdAt?: DateTimeFilter<"Magazine"> | Date | string
-    updatedAt?: DateTimeFilter<"Magazine"> | Date | string
+  export type PostScalarWhereInput = {
+    AND?: PostScalarWhereInput | PostScalarWhereInput[]
+    OR?: PostScalarWhereInput[]
+    NOT?: PostScalarWhereInput | PostScalarWhereInput[]
+    id?: StringFilter<"Post"> | string
+    title?: StringFilter<"Post"> | string
+    slug?: StringFilter<"Post"> | string
+    excerpt?: StringNullableFilter<"Post"> | string | null
+    content?: StringFilter<"Post"> | string
+    type?: EnumPostTypeFilter<"Post"> | $Enums.PostType
+    coverImageUrl?: StringNullableFilter<"Post"> | string | null
+    status?: EnumPostStatusFilter<"Post"> | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFilter<"Post"> | $Enums.PostVisibility
+    isFeatured?: BoolFilter<"Post"> | boolean
+    scheduledAt?: DateTimeNullableFilter<"Post"> | Date | string | null
+    publishedAt?: DateTimeNullableFilter<"Post"> | Date | string | null
+    authorId?: StringFilter<"Post"> | string
+    magazineId?: StringNullableFilter<"Post"> | string | null
+    categoryId?: StringNullableFilter<"Post"> | string | null
+    views?: IntFilter<"Post"> | number
+    likes?: IntFilter<"Post"> | number
+    metaTitle?: StringNullableFilter<"Post"> | string | null
+    metaDescription?: StringNullableFilter<"Post"> | string | null
+    metaKeywords?: StringNullableFilter<"Post"> | string | null
+    slugHistory?: StringNullableFilter<"Post"> | string | null
+    seoSchema?: StringNullableFilter<"Post"> | string | null
+    settings?: StringNullableFilter<"Post"> | string | null
+    createdAt?: DateTimeFilter<"Post"> | Date | string
+    updatedAt?: DateTimeFilter<"Post"> | Date | string
+    readMinutes?: IntNullableFilter<"Post"> | number | null
+  }
+
+  export type RevisionUpsertWithWhereUniqueWithoutAuthorInput = {
+    where: RevisionWhereUniqueInput
+    update: XOR<RevisionUpdateWithoutAuthorInput, RevisionUncheckedUpdateWithoutAuthorInput>
+    create: XOR<RevisionCreateWithoutAuthorInput, RevisionUncheckedCreateWithoutAuthorInput>
+  }
+
+  export type RevisionUpdateWithWhereUniqueWithoutAuthorInput = {
+    where: RevisionWhereUniqueInput
+    data: XOR<RevisionUpdateWithoutAuthorInput, RevisionUncheckedUpdateWithoutAuthorInput>
+  }
+
+  export type RevisionUpdateManyWithWhereWithoutAuthorInput = {
+    where: RevisionScalarWhereInput
+    data: XOR<RevisionUpdateManyMutationInput, RevisionUncheckedUpdateManyWithoutAuthorInput>
+  }
+
+  export type RevisionScalarWhereInput = {
+    AND?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
+    OR?: RevisionScalarWhereInput[]
+    NOT?: RevisionScalarWhereInput | RevisionScalarWhereInput[]
+    id?: StringFilter<"Revision"> | string
+    postId?: StringFilter<"Revision"> | string
+    authorId?: StringFilter<"Revision"> | string
+    content?: StringFilter<"Revision"> | string
+    title?: StringNullableFilter<"Revision"> | string | null
+    createdAt?: DateTimeFilter<"Revision"> | Date | string
+  }
+
+  export type SessionUpsertWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    update: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+    create: XOR<SessionCreateWithoutUserInput, SessionUncheckedCreateWithoutUserInput>
+  }
+
+  export type SessionUpdateWithWhereUniqueWithoutUserInput = {
+    where: SessionWhereUniqueInput
+    data: XOR<SessionUpdateWithoutUserInput, SessionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type SessionUpdateManyWithWhereWithoutUserInput = {
+    where: SessionScalarWhereInput
+    data: XOR<SessionUpdateManyMutationInput, SessionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type SessionScalarWhereInput = {
+    AND?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    OR?: SessionScalarWhereInput[]
+    NOT?: SessionScalarWhereInput | SessionScalarWhereInput[]
+    id?: StringFilter<"Session"> | string
+    sessionToken?: StringFilter<"Session"> | string
+    userId?: StringFilter<"Session"> | string
+    expires?: DateTimeFilter<"Session"> | Date | string
   }
 
   export type UserCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutAuthorInput
+    username?: string | null
     comments?: CommentCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionCreateNestedManyWithoutAuthorInput
-    media?: MediaCreateNestedManyWithoutUploadedByInput
     editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    media?: MediaCreateNestedManyWithoutUploadedByInput
+    posts?: PostCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionCreateNestedManyWithoutAuthorInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutAccountsInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    username?: string | null
     comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
-    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
     editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
+    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutAccountsInput = {
@@ -23304,85 +23221,85 @@ export namespace Prisma {
   export type UserUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutAuthorNestedInput
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: CommentUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
-    media?: MediaUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    media?: MediaUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutAccountsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
-    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
+    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateWithoutSessionsInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutAuthorInput
     comments?: CommentCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionCreateNestedManyWithoutAuthorInput
-    media?: MediaCreateNestedManyWithoutUploadedByInput
     editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    media?: MediaCreateNestedManyWithoutUploadedByInput
+    posts?: PostCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionCreateNestedManyWithoutAuthorInput
   }
 
   export type UserUncheckedCreateWithoutSessionsInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
-    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
     editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
+    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
   }
 
   export type UserCreateOrConnectWithoutSessionsInput = {
@@ -23404,43 +23321,43 @@ export namespace Prisma {
   export type UserUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutAuthorNestedInput
     comments?: CommentUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
-    media?: MediaUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    media?: MediaUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSessionsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
-    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
+    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
   }
 
   export type CategoryCreateWithoutChildrenInput = {
@@ -23496,7 +23413,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -23509,17 +23425,18 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    readMinutes?: number | null
+    comments?: CommentCreateNestedManyWithoutPostInput
     author: UserCreateNestedOneWithoutPostsInput
     magazine?: MagazineCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
-    comments?: CommentCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
     media?: PostMediaCreateNestedManyWithoutPostInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogCreateNestedManyWithoutPostInput
   }
 
@@ -23529,7 +23446,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -23544,15 +23460,16 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
   }
 
@@ -23680,43 +23597,43 @@ export namespace Prisma {
   export type UserCreateWithoutEditedMagazinesInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutAuthorInput
     comments?: CommentCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionCreateNestedManyWithoutAuthorInput
     media?: MediaCreateNestedManyWithoutUploadedByInput
+    posts?: PostCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionCreateNestedManyWithoutAuthorInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEditedMagazinesInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
     media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
+    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutEditedMagazinesInput = {
@@ -23730,7 +23647,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -23743,17 +23659,18 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    readMinutes?: number | null
+    comments?: CommentCreateNestedManyWithoutPostInput
     author: UserCreateNestedOneWithoutPostsInput
     category?: CategoryCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
-    comments?: CommentCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
     media?: PostMediaCreateNestedManyWithoutPostInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogCreateNestedManyWithoutPostInput
   }
 
@@ -23763,7 +23680,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -23778,15 +23694,16 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
   }
 
@@ -23814,43 +23731,43 @@ export namespace Prisma {
   export type UserUpdateWithoutEditedMagazinesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutAuthorNestedInput
     comments?: CommentUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
     media?: MediaUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEditedMagazinesInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
     media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PostUpsertWithWhereUniqueWithoutMagazineInput = {
@@ -23867,127 +23784,6 @@ export namespace Prisma {
   export type PostUpdateManyWithWhereWithoutMagazineInput = {
     where: PostScalarWhereInput
     data: XOR<PostUpdateManyMutationInput, PostUncheckedUpdateManyWithoutMagazineInput>
-  }
-
-  export type UserCreateWithoutPostsInput = {
-    id?: string
-    name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    role?: $Enums.UserRole
-    bio?: string | null
-    avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    comments?: CommentCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionCreateNestedManyWithoutAuthorInput
-    media?: MediaCreateNestedManyWithoutUploadedByInput
-    editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
-  }
-
-  export type UserUncheckedCreateWithoutPostsInput = {
-    id?: string
-    name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    role?: $Enums.UserRole
-    bio?: string | null
-    avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
-    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
-    editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
-  }
-
-  export type UserCreateOrConnectWithoutPostsInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
-  }
-
-  export type MagazineCreateWithoutPostsInput = {
-    id?: string
-    title?: string | null
-    slug: string
-    description?: string | null
-    coverImageUrl?: string | null
-    pdfUrl?: string | null
-    issueNumber?: number | null
-    publishedAt?: Date | string | null
-    status?: $Enums.MagazineStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    editor?: UserCreateNestedOneWithoutEditedMagazinesInput
-  }
-
-  export type MagazineUncheckedCreateWithoutPostsInput = {
-    id?: string
-    title?: string | null
-    slug: string
-    description?: string | null
-    coverImageUrl?: string | null
-    pdfUrl?: string | null
-    issueNumber?: number | null
-    publishedAt?: Date | string | null
-    status?: $Enums.MagazineStatus
-    editorId?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type MagazineCreateOrConnectWithoutPostsInput = {
-    where: MagazineWhereUniqueInput
-    create: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
-  }
-
-  export type CategoryCreateWithoutPostsInput = {
-    id?: string
-    name: string
-    slug: string
-    parent?: CategoryCreateNestedOneWithoutChildrenInput
-    children?: CategoryCreateNestedManyWithoutParentInput
-  }
-
-  export type CategoryUncheckedCreateWithoutPostsInput = {
-    id?: string
-    name: string
-    slug: string
-    parentId?: string | null
-    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
-  }
-
-  export type CategoryCreateOrConnectWithoutPostsInput = {
-    where: CategoryWhereUniqueInput
-    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
-  }
-
-  export type PostTagsCreateWithoutPostInput = {
-    tag: TagCreateNestedOneWithoutPostsInput
-  }
-
-  export type PostTagsUncheckedCreateWithoutPostInput = {
-    tagId: string
-  }
-
-  export type PostTagsCreateOrConnectWithoutPostInput = {
-    where: PostTagsWhereUniqueInput
-    create: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput>
-  }
-
-  export type PostTagsCreateManyPostInputEnvelope = {
-    data: PostTagsCreateManyPostInput | PostTagsCreateManyPostInput[]
-    skipDuplicates?: boolean
   }
 
   export type CommentCreateWithoutPostInput = {
@@ -24022,6 +23818,145 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type UserCreateWithoutPostsInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
+    role?: $Enums.UserRole
+    bio?: string | null
+    avatarUrl?: string | null
+    socialLinks?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    media?: MediaCreateNestedManyWithoutUploadedByInput
+    revisions?: RevisionCreateNestedManyWithoutAuthorInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPostsInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
+    role?: $Enums.UserRole
+    bio?: string | null
+    avatarUrl?: string | null
+    socialLinks?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPostsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
+  }
+
+  export type CategoryCreateWithoutPostsInput = {
+    id?: string
+    name: string
+    slug: string
+    parent?: CategoryCreateNestedOneWithoutChildrenInput
+    children?: CategoryCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryUncheckedCreateWithoutPostsInput = {
+    id?: string
+    name: string
+    slug: string
+    parentId?: string | null
+    children?: CategoryUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type CategoryCreateOrConnectWithoutPostsInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutPostsInput, CategoryUncheckedCreateWithoutPostsInput>
+  }
+
+  export type MagazineCreateWithoutPostsInput = {
+    id?: string
+    title?: string | null
+    slug: string
+    description?: string | null
+    coverImageUrl?: string | null
+    issueNumber?: number | null
+    publishedAt?: Date | string | null
+    status?: $Enums.MagazineStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pdfUrl?: string | null
+    editor?: UserCreateNestedOneWithoutEditedMagazinesInput
+  }
+
+  export type MagazineUncheckedCreateWithoutPostsInput = {
+    id?: string
+    title?: string | null
+    slug: string
+    description?: string | null
+    coverImageUrl?: string | null
+    issueNumber?: number | null
+    publishedAt?: Date | string | null
+    status?: $Enums.MagazineStatus
+    editorId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pdfUrl?: string | null
+  }
+
+  export type MagazineCreateOrConnectWithoutPostsInput = {
+    where: MagazineWhereUniqueInput
+    create: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
+  }
+
+  export type PostMediaCreateWithoutPostInput = {
+    media: MediaCreateNestedOneWithoutPostsInput
+  }
+
+  export type PostMediaUncheckedCreateWithoutPostInput = {
+    mediaId: string
+  }
+
+  export type PostMediaCreateOrConnectWithoutPostInput = {
+    where: PostMediaWhereUniqueInput
+    create: XOR<PostMediaCreateWithoutPostInput, PostMediaUncheckedCreateWithoutPostInput>
+  }
+
+  export type PostMediaCreateManyPostInputEnvelope = {
+    data: PostMediaCreateManyPostInput | PostMediaCreateManyPostInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PostTagsCreateWithoutPostInput = {
+    tag: TagCreateNestedOneWithoutPostsInput
+  }
+
+  export type PostTagsUncheckedCreateWithoutPostInput = {
+    tagId: string
+  }
+
+  export type PostTagsCreateOrConnectWithoutPostInput = {
+    where: PostTagsWhereUniqueInput
+    create: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput>
+  }
+
+  export type PostTagsCreateManyPostInputEnvelope = {
+    data: PostTagsCreateManyPostInput | PostTagsCreateManyPostInput[]
+    skipDuplicates?: boolean
+  }
+
   export type RevisionCreateWithoutPostInput = {
     id?: string
     content: string
@@ -24045,24 +23980,6 @@ export namespace Prisma {
 
   export type RevisionCreateManyPostInputEnvelope = {
     data: RevisionCreateManyPostInput | RevisionCreateManyPostInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PostMediaCreateWithoutPostInput = {
-    media: MediaCreateNestedOneWithoutPostsInput
-  }
-
-  export type PostMediaUncheckedCreateWithoutPostInput = {
-    mediaId: string
-  }
-
-  export type PostMediaCreateOrConnectWithoutPostInput = {
-    where: PostMediaWhereUniqueInput
-    create: XOR<PostMediaCreateWithoutPostInput, PostMediaUncheckedCreateWithoutPostInput>
-  }
-
-  export type PostMediaCreateManyPostInputEnvelope = {
-    data: PostMediaCreateManyPostInput | PostMediaCreateManyPostInput[]
     skipDuplicates?: boolean
   }
 
@@ -24090,6 +24007,22 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CommentUpsertWithWhereUniqueWithoutPostInput = {
+    where: CommentWhereUniqueInput
+    update: XOR<CommentUpdateWithoutPostInput, CommentUncheckedUpdateWithoutPostInput>
+    create: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput>
+  }
+
+  export type CommentUpdateWithWhereUniqueWithoutPostInput = {
+    where: CommentWhereUniqueInput
+    data: XOR<CommentUpdateWithoutPostInput, CommentUncheckedUpdateWithoutPostInput>
+  }
+
+  export type CommentUpdateManyWithWhereWithoutPostInput = {
+    where: CommentScalarWhereInput
+    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutPostInput>
+  }
+
   export type UserUpsertWithoutPostsInput = {
     update: XOR<UserUpdateWithoutPostsInput, UserUncheckedUpdateWithoutPostsInput>
     create: XOR<UserCreateWithoutPostsInput, UserUncheckedCreateWithoutPostsInput>
@@ -24104,84 +24037,43 @@ export namespace Prisma {
   export type UserUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
     comments?: CommentUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
-    media?: MediaUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    media?: MediaUpdateManyWithoutUploadedByNestedInput
+    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPostsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
     comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
-    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
     editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
-  }
-
-  export type MagazineUpsertWithoutPostsInput = {
-    update: XOR<MagazineUpdateWithoutPostsInput, MagazineUncheckedUpdateWithoutPostsInput>
-    create: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
-    where?: MagazineWhereInput
-  }
-
-  export type MagazineUpdateToOneWithWhereWithoutPostsInput = {
-    where?: MagazineWhereInput
-    data: XOR<MagazineUpdateWithoutPostsInput, MagazineUncheckedUpdateWithoutPostsInput>
-  }
-
-  export type MagazineUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    editor?: UserUpdateOneWithoutEditedMagazinesNestedInput
-  }
-
-  export type MagazineUncheckedUpdateWithoutPostsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
-    editorId?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CategoryUpsertWithoutPostsInput = {
@@ -24211,52 +24103,45 @@ export namespace Prisma {
     children?: CategoryUncheckedUpdateManyWithoutParentNestedInput
   }
 
-  export type PostTagsUpsertWithWhereUniqueWithoutPostInput = {
-    where: PostTagsWhereUniqueInput
-    update: XOR<PostTagsUpdateWithoutPostInput, PostTagsUncheckedUpdateWithoutPostInput>
-    create: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput>
+  export type MagazineUpsertWithoutPostsInput = {
+    update: XOR<MagazineUpdateWithoutPostsInput, MagazineUncheckedUpdateWithoutPostsInput>
+    create: XOR<MagazineCreateWithoutPostsInput, MagazineUncheckedCreateWithoutPostsInput>
+    where?: MagazineWhereInput
   }
 
-  export type PostTagsUpdateWithWhereUniqueWithoutPostInput = {
-    where: PostTagsWhereUniqueInput
-    data: XOR<PostTagsUpdateWithoutPostInput, PostTagsUncheckedUpdateWithoutPostInput>
+  export type MagazineUpdateToOneWithWhereWithoutPostsInput = {
+    where?: MagazineWhereInput
+    data: XOR<MagazineUpdateWithoutPostsInput, MagazineUncheckedUpdateWithoutPostsInput>
   }
 
-  export type PostTagsUpdateManyWithWhereWithoutPostInput = {
-    where: PostTagsScalarWhereInput
-    data: XOR<PostTagsUpdateManyMutationInput, PostTagsUncheckedUpdateManyWithoutPostInput>
+  export type MagazineUpdateWithoutPostsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    editor?: UserUpdateOneWithoutEditedMagazinesNestedInput
   }
 
-  export type CommentUpsertWithWhereUniqueWithoutPostInput = {
-    where: CommentWhereUniqueInput
-    update: XOR<CommentUpdateWithoutPostInput, CommentUncheckedUpdateWithoutPostInput>
-    create: XOR<CommentCreateWithoutPostInput, CommentUncheckedCreateWithoutPostInput>
-  }
-
-  export type CommentUpdateWithWhereUniqueWithoutPostInput = {
-    where: CommentWhereUniqueInput
-    data: XOR<CommentUpdateWithoutPostInput, CommentUncheckedUpdateWithoutPostInput>
-  }
-
-  export type CommentUpdateManyWithWhereWithoutPostInput = {
-    where: CommentScalarWhereInput
-    data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutPostInput>
-  }
-
-  export type RevisionUpsertWithWhereUniqueWithoutPostInput = {
-    where: RevisionWhereUniqueInput
-    update: XOR<RevisionUpdateWithoutPostInput, RevisionUncheckedUpdateWithoutPostInput>
-    create: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput>
-  }
-
-  export type RevisionUpdateWithWhereUniqueWithoutPostInput = {
-    where: RevisionWhereUniqueInput
-    data: XOR<RevisionUpdateWithoutPostInput, RevisionUncheckedUpdateWithoutPostInput>
-  }
-
-  export type RevisionUpdateManyWithWhereWithoutPostInput = {
-    where: RevisionScalarWhereInput
-    data: XOR<RevisionUpdateManyMutationInput, RevisionUncheckedUpdateManyWithoutPostInput>
+  export type MagazineUncheckedUpdateWithoutPostsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
+    editorId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type PostMediaUpsertWithWhereUniqueWithoutPostInput = {
@@ -24281,6 +24166,38 @@ export namespace Prisma {
     NOT?: PostMediaScalarWhereInput | PostMediaScalarWhereInput[]
     postId?: StringFilter<"PostMedia"> | string
     mediaId?: StringFilter<"PostMedia"> | string
+  }
+
+  export type PostTagsUpsertWithWhereUniqueWithoutPostInput = {
+    where: PostTagsWhereUniqueInput
+    update: XOR<PostTagsUpdateWithoutPostInput, PostTagsUncheckedUpdateWithoutPostInput>
+    create: XOR<PostTagsCreateWithoutPostInput, PostTagsUncheckedCreateWithoutPostInput>
+  }
+
+  export type PostTagsUpdateWithWhereUniqueWithoutPostInput = {
+    where: PostTagsWhereUniqueInput
+    data: XOR<PostTagsUpdateWithoutPostInput, PostTagsUncheckedUpdateWithoutPostInput>
+  }
+
+  export type PostTagsUpdateManyWithWhereWithoutPostInput = {
+    where: PostTagsScalarWhereInput
+    data: XOR<PostTagsUpdateManyMutationInput, PostTagsUncheckedUpdateManyWithoutPostInput>
+  }
+
+  export type RevisionUpsertWithWhereUniqueWithoutPostInput = {
+    where: RevisionWhereUniqueInput
+    update: XOR<RevisionUpdateWithoutPostInput, RevisionUncheckedUpdateWithoutPostInput>
+    create: XOR<RevisionCreateWithoutPostInput, RevisionUncheckedCreateWithoutPostInput>
+  }
+
+  export type RevisionUpdateWithWhereUniqueWithoutPostInput = {
+    where: RevisionWhereUniqueInput
+    data: XOR<RevisionUpdateWithoutPostInput, RevisionUncheckedUpdateWithoutPostInput>
+  }
+
+  export type RevisionUpdateManyWithWhereWithoutPostInput = {
+    where: RevisionScalarWhereInput
+    data: XOR<RevisionUpdateManyMutationInput, RevisionUncheckedUpdateManyWithoutPostInput>
   }
 
   export type ViewLogUpsertWithWhereUniqueWithoutPostInput = {
@@ -24316,7 +24233,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -24329,17 +24245,18 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    author: UserCreateNestedOneWithoutPostsInput
-    magazine?: MagazineCreateNestedOneWithoutPostsInput
-    category?: CategoryCreateNestedOneWithoutPostsInput
+    readMinutes?: number | null
     comments?: CommentCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
+    author: UserCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
+    magazine?: MagazineCreateNestedOneWithoutPostsInput
     media?: PostMediaCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogCreateNestedManyWithoutPostInput
   }
 
@@ -24349,7 +24266,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -24365,14 +24281,15 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    readMinutes?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
   }
 
@@ -24415,7 +24332,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -24428,17 +24344,18 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    author?: UserUpdateOneRequiredWithoutPostsNestedInput
-    magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    category?: CategoryUpdateOneWithoutPostsNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
+    author?: UserUpdateOneRequiredWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
+    magazine?: MagazineUpdateOneWithoutPostsNestedInput
     media?: PostMediaUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
   }
 
@@ -24448,7 +24365,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -24464,14 +24380,15 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
   }
 
@@ -24498,117 +24415,46 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
   }
 
-  export type PostCreateWithoutCommentsInput = {
-    id?: string
-    title: string
-    slug: string
-    excerpt?: string | null
-    content: string
-    readMinutes?: number | null
-    type?: $Enums.PostType
-    coverImageUrl?: string | null
-    status?: $Enums.PostStatus
-    visibility?: $Enums.PostVisibility
-    isFeatured?: boolean
-    scheduledAt?: Date | string | null
-    publishedAt?: Date | string | null
-    views?: number
-    likes?: number
-    metaTitle?: string | null
-    metaDescription?: string | null
-    metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    author: UserCreateNestedOneWithoutPostsInput
-    magazine?: MagazineCreateNestedOneWithoutPostsInput
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
-    media?: PostMediaCreateNestedManyWithoutPostInput
-    viewLogs?: ViewLogCreateNestedManyWithoutPostInput
-  }
-
-  export type PostUncheckedCreateWithoutCommentsInput = {
-    id?: string
-    title: string
-    slug: string
-    excerpt?: string | null
-    content: string
-    readMinutes?: number | null
-    type?: $Enums.PostType
-    coverImageUrl?: string | null
-    status?: $Enums.PostStatus
-    visibility?: $Enums.PostVisibility
-    isFeatured?: boolean
-    scheduledAt?: Date | string | null
-    publishedAt?: Date | string | null
-    authorId: string
-    magazineId?: string | null
-    categoryId?: string | null
-    views?: number
-    likes?: number
-    metaTitle?: string | null
-    metaDescription?: string | null
-    metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
-    media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
-    viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
-  }
-
-  export type PostCreateOrConnectWithoutCommentsInput = {
-    where: PostWhereUniqueInput
-    create: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
-  }
-
   export type UserCreateWithoutCommentsInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
+    editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    media?: MediaCreateNestedManyWithoutUploadedByInput
     posts?: PostCreateNestedManyWithoutAuthorInput
     revisions?: RevisionCreateNestedManyWithoutAuthorInput
-    media?: MediaCreateNestedManyWithoutUploadedByInput
-    editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentsInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+    editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
     posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
-    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
-    editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutCommentsInput = {
@@ -24622,9 +24468,9 @@ export namespace Prisma {
     status?: $Enums.CommentStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    post: PostCreateNestedOneWithoutCommentsInput
     author?: UserCreateNestedOneWithoutCommentsInput
     parent?: CommentCreateNestedOneWithoutChildrenInput
+    post: PostCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateWithoutChildrenInput = {
@@ -24649,9 +24495,9 @@ export namespace Prisma {
     status?: $Enums.CommentStatus
     createdAt?: Date | string
     updatedAt?: Date | string
-    post: PostCreateNestedOneWithoutCommentsInput
     author?: UserCreateNestedOneWithoutCommentsInput
     children?: CommentCreateNestedManyWithoutParentInput
+    post: PostCreateNestedOneWithoutCommentsInput
   }
 
   export type CommentUncheckedCreateWithoutParentInput = {
@@ -24675,81 +24521,75 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PostUpsertWithoutCommentsInput = {
-    update: XOR<PostUpdateWithoutCommentsInput, PostUncheckedUpdateWithoutCommentsInput>
+  export type PostCreateWithoutCommentsInput = {
+    id?: string
+    title: string
+    slug: string
+    excerpt?: string | null
+    content: string
+    type?: $Enums.PostType
+    coverImageUrl?: string | null
+    status?: $Enums.PostStatus
+    visibility?: $Enums.PostVisibility
+    isFeatured?: boolean
+    scheduledAt?: Date | string | null
+    publishedAt?: Date | string | null
+    views?: number
+    likes?: number
+    metaTitle?: string | null
+    metaDescription?: string | null
+    metaKeywords?: string | null
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    readMinutes?: number | null
+    author: UserCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
+    magazine?: MagazineCreateNestedOneWithoutPostsInput
+    media?: PostMediaCreateNestedManyWithoutPostInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
+    viewLogs?: ViewLogCreateNestedManyWithoutPostInput
+  }
+
+  export type PostUncheckedCreateWithoutCommentsInput = {
+    id?: string
+    title: string
+    slug: string
+    excerpt?: string | null
+    content: string
+    type?: $Enums.PostType
+    coverImageUrl?: string | null
+    status?: $Enums.PostStatus
+    visibility?: $Enums.PostVisibility
+    isFeatured?: boolean
+    scheduledAt?: Date | string | null
+    publishedAt?: Date | string | null
+    authorId: string
+    magazineId?: string | null
+    categoryId?: string | null
+    views?: number
+    likes?: number
+    metaTitle?: string | null
+    metaDescription?: string | null
+    metaKeywords?: string | null
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    readMinutes?: number | null
+    media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
+    viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
+  }
+
+  export type PostCreateOrConnectWithoutCommentsInput = {
+    where: PostWhereUniqueInput
     create: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
-    where?: PostWhereInput
-  }
-
-  export type PostUpdateToOneWithWhereWithoutCommentsInput = {
-    where?: PostWhereInput
-    data: XOR<PostUpdateWithoutCommentsInput, PostUncheckedUpdateWithoutCommentsInput>
-  }
-
-  export type PostUpdateWithoutCommentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
-    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    views?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    author?: UserUpdateOneRequiredWithoutPostsNestedInput
-    magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
-    media?: PostMediaUpdateManyWithoutPostNestedInput
-    viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
-  }
-
-  export type PostUncheckedUpdateWithoutCommentsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
-    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    authorId?: StringFieldUpdateOperationsInput | string
-    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
-    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
-    views?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
-    media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
-    viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type UserUpsertWithoutCommentsInput = {
@@ -24766,43 +24606,43 @@ export namespace Prisma {
   export type UserUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
+    editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    media?: MediaUpdateManyWithoutUploadedByNestedInput
     posts?: PostUpdateManyWithoutAuthorNestedInput
     revisions?: RevisionUpdateManyWithoutAuthorNestedInput
-    media?: MediaUpdateManyWithoutUploadedByNestedInput
-    editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentsInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
+    editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
+    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
     posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
-    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
-    editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CommentUpsertWithoutChildrenInput = {
@@ -24822,9 +24662,9 @@ export namespace Prisma {
     status?: EnumCommentStatusFieldUpdateOperationsInput | $Enums.CommentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
     author?: UserUpdateOneWithoutCommentsNestedInput
     parent?: CommentUpdateOneWithoutChildrenNestedInput
+    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateWithoutChildrenInput = {
@@ -24854,13 +24694,136 @@ export namespace Prisma {
     data: XOR<CommentUpdateManyMutationInput, CommentUncheckedUpdateManyWithoutParentInput>
   }
 
+  export type PostUpsertWithoutCommentsInput = {
+    update: XOR<PostUpdateWithoutCommentsInput, PostUncheckedUpdateWithoutCommentsInput>
+    create: XOR<PostCreateWithoutCommentsInput, PostUncheckedCreateWithoutCommentsInput>
+    where?: PostWhereInput
+  }
+
+  export type PostUpdateToOneWithWhereWithoutCommentsInput = {
+    where?: PostWhereInput
+    data: XOR<PostUpdateWithoutCommentsInput, PostUncheckedUpdateWithoutCommentsInput>
+  }
+
+  export type PostUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    author?: UserUpdateOneRequiredWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
+    magazine?: MagazineUpdateOneWithoutPostsNestedInput
+    media?: PostMediaUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
+    viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
+  }
+
+  export type PostUncheckedUpdateWithoutCommentsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
+    viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
+  }
+
+  export type UserCreateWithoutRevisionsInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
+    role?: $Enums.UserRole
+    bio?: string | null
+    avatarUrl?: string | null
+    socialLinks?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username?: string | null
+    accounts?: AccountCreateNestedManyWithoutUserInput
+    comments?: CommentCreateNestedManyWithoutAuthorInput
+    editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    media?: MediaCreateNestedManyWithoutUploadedByInput
+    posts?: PostCreateNestedManyWithoutAuthorInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutRevisionsInput = {
+    id?: string
+    name?: string | null
+    email?: string | null
+    emailVerified?: Date | string | null
+    image?: string | null
+    role?: $Enums.UserRole
+    bio?: string | null
+    avatarUrl?: string | null
+    socialLinks?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    username?: string | null
+    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
+    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
+    editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
+    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutRevisionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutRevisionsInput, UserUncheckedCreateWithoutRevisionsInput>
+  }
+
   export type PostCreateWithoutRevisionsInput = {
     id?: string
     title: string
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -24873,17 +24836,18 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    author: UserCreateNestedOneWithoutPostsInput
-    magazine?: MagazineCreateNestedOneWithoutPostsInput
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentCreateNestedManyWithoutPostInput
+    author: UserCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
+    magazine?: MagazineCreateNestedOneWithoutPostsInput
     media?: PostMediaCreateNestedManyWithoutPostInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogCreateNestedManyWithoutPostInput
   }
 
@@ -24893,7 +24857,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -24909,14 +24872,15 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
     media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
     viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
   }
 
@@ -24925,51 +24889,57 @@ export namespace Prisma {
     create: XOR<PostCreateWithoutRevisionsInput, PostUncheckedCreateWithoutRevisionsInput>
   }
 
-  export type UserCreateWithoutRevisionsInput = {
-    id?: string
-    name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    role?: $Enums.UserRole
-    bio?: string | null
-    avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutAuthorInput
-    comments?: CommentCreateNestedManyWithoutAuthorInput
-    media?: MediaCreateNestedManyWithoutUploadedByInput
-    editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
-  }
-
-  export type UserUncheckedCreateWithoutRevisionsInput = {
-    id?: string
-    name?: string | null
-    username?: string | null
-    email?: string | null
-    emailVerified?: Date | string | null
-    image?: string | null
-    role?: $Enums.UserRole
-    bio?: string | null
-    avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
-    comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
-    media?: MediaUncheckedCreateNestedManyWithoutUploadedByInput
-    editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
-  }
-
-  export type UserCreateOrConnectWithoutRevisionsInput = {
-    where: UserWhereUniqueInput
+  export type UserUpsertWithoutRevisionsInput = {
+    update: XOR<UserUpdateWithoutRevisionsInput, UserUncheckedUpdateWithoutRevisionsInput>
     create: XOR<UserCreateWithoutRevisionsInput, UserUncheckedCreateWithoutRevisionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutRevisionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutRevisionsInput, UserUncheckedUpdateWithoutRevisionsInput>
+  }
+
+  export type UserUpdateWithoutRevisionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUpdateManyWithoutUserNestedInput
+    comments?: CommentUpdateManyWithoutAuthorNestedInput
+    editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    media?: MediaUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutRevisionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    bio?: NullableStringFieldUpdateOperationsInput | string | null
+    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
+    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
+    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
+    editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
+    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
+    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PostUpsertWithoutRevisionsInput = {
@@ -24989,7 +24959,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -25002,17 +24971,18 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    author?: UserUpdateOneRequiredWithoutPostsNestedInput
-    magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUpdateManyWithoutPostNestedInput
+    author?: UserUpdateOneRequiredWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
+    magazine?: MagazineUpdateOneWithoutPostsNestedInput
     media?: PostMediaUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
   }
 
@@ -25022,7 +24992,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -25038,110 +25007,58 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
     media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
-  }
-
-  export type UserUpsertWithoutRevisionsInput = {
-    update: XOR<UserUpdateWithoutRevisionsInput, UserUncheckedUpdateWithoutRevisionsInput>
-    create: XOR<UserCreateWithoutRevisionsInput, UserUncheckedCreateWithoutRevisionsInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutRevisionsInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutRevisionsInput, UserUncheckedUpdateWithoutRevisionsInput>
-  }
-
-  export type UserUpdateWithoutRevisionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
-    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutAuthorNestedInput
-    comments?: CommentUpdateManyWithoutAuthorNestedInput
-    media?: MediaUpdateManyWithoutUploadedByNestedInput
-    editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutRevisionsInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    image?: NullableStringFieldUpdateOperationsInput | string | null
-    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
-    bio?: NullableStringFieldUpdateOperationsInput | string | null
-    avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
-    media?: MediaUncheckedUpdateManyWithoutUploadedByNestedInput
-    editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
   }
 
   export type UserCreateWithoutMediaInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountCreateNestedManyWithoutUserInput
-    sessions?: SessionCreateNestedManyWithoutUserInput
-    posts?: PostCreateNestedManyWithoutAuthorInput
     comments?: CommentCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionCreateNestedManyWithoutAuthorInput
     editedMagazines?: MagazineCreateNestedManyWithoutEditorInput
+    posts?: PostCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionCreateNestedManyWithoutAuthorInput
+    sessions?: SessionCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMediaInput = {
     id?: string
     name?: string | null
-    username?: string | null
     email?: string | null
     emailVerified?: Date | string | null
     image?: string | null
     role?: $Enums.UserRole
     bio?: string | null
     avatarUrl?: string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    username?: string | null
     accounts?: AccountUncheckedCreateNestedManyWithoutUserInput
-    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
-    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
     comments?: CommentUncheckedCreateNestedManyWithoutAuthorInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
     editedMagazines?: MagazineUncheckedCreateNestedManyWithoutEditorInput
+    posts?: PostUncheckedCreateNestedManyWithoutAuthorInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutAuthorInput
+    sessions?: SessionUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMediaInput = {
@@ -25181,43 +25098,43 @@ export namespace Prisma {
   export type UserUpdateWithoutMediaInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUpdateManyWithoutUserNestedInput
-    sessions?: SessionUpdateManyWithoutUserNestedInput
-    posts?: PostUpdateManyWithoutAuthorNestedInput
     comments?: CommentUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
     editedMagazines?: MagazineUpdateManyWithoutEditorNestedInput
+    posts?: PostUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMediaInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
-    username?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     image?: NullableStringFieldUpdateOperationsInput | string | null
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     avatarUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    socialLinks?: NullableJsonNullValueInput | InputJsonValue
+    socialLinks?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    username?: NullableStringFieldUpdateOperationsInput | string | null
     accounts?: AccountUncheckedUpdateManyWithoutUserNestedInput
-    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
-    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
     comments?: CommentUncheckedUpdateManyWithoutAuthorNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
     editedMagazines?: MagazineUncheckedUpdateManyWithoutEditorNestedInput
+    posts?: PostUncheckedUpdateManyWithoutAuthorNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutAuthorNestedInput
+    sessions?: SessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type PostMediaUpsertWithWhereUniqueWithoutMediaInput = {
@@ -25234,77 +25151,6 @@ export namespace Prisma {
   export type PostMediaUpdateManyWithWhereWithoutMediaInput = {
     where: PostMediaScalarWhereInput
     data: XOR<PostMediaUpdateManyMutationInput, PostMediaUncheckedUpdateManyWithoutMediaInput>
-  }
-
-  export type PostCreateWithoutMediaInput = {
-    id?: string
-    title: string
-    slug: string
-    excerpt?: string | null
-    content: string
-    readMinutes?: number | null
-    type?: $Enums.PostType
-    coverImageUrl?: string | null
-    status?: $Enums.PostStatus
-    visibility?: $Enums.PostVisibility
-    isFeatured?: boolean
-    scheduledAt?: Date | string | null
-    publishedAt?: Date | string | null
-    views?: number
-    likes?: number
-    metaTitle?: string | null
-    metaDescription?: string | null
-    metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    author: UserCreateNestedOneWithoutPostsInput
-    magazine?: MagazineCreateNestedOneWithoutPostsInput
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
-    comments?: CommentCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
-    viewLogs?: ViewLogCreateNestedManyWithoutPostInput
-  }
-
-  export type PostUncheckedCreateWithoutMediaInput = {
-    id?: string
-    title: string
-    slug: string
-    excerpt?: string | null
-    content: string
-    readMinutes?: number | null
-    type?: $Enums.PostType
-    coverImageUrl?: string | null
-    status?: $Enums.PostStatus
-    visibility?: $Enums.PostVisibility
-    isFeatured?: boolean
-    scheduledAt?: Date | string | null
-    publishedAt?: Date | string | null
-    authorId: string
-    magazineId?: string | null
-    categoryId?: string | null
-    views?: number
-    likes?: number
-    metaTitle?: string | null
-    metaDescription?: string | null
-    metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
-    comments?: CommentUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
-    viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
-  }
-
-  export type PostCreateOrConnectWithoutMediaInput = {
-    where: PostWhereUniqueInput
-    create: XOR<PostCreateWithoutMediaInput, PostUncheckedCreateWithoutMediaInput>
   }
 
   export type MediaCreateWithoutPostsInput = {
@@ -25332,81 +25178,75 @@ export namespace Prisma {
     create: XOR<MediaCreateWithoutPostsInput, MediaUncheckedCreateWithoutPostsInput>
   }
 
-  export type PostUpsertWithoutMediaInput = {
-    update: XOR<PostUpdateWithoutMediaInput, PostUncheckedUpdateWithoutMediaInput>
+  export type PostCreateWithoutMediaInput = {
+    id?: string
+    title: string
+    slug: string
+    excerpt?: string | null
+    content: string
+    type?: $Enums.PostType
+    coverImageUrl?: string | null
+    status?: $Enums.PostStatus
+    visibility?: $Enums.PostVisibility
+    isFeatured?: boolean
+    scheduledAt?: Date | string | null
+    publishedAt?: Date | string | null
+    views?: number
+    likes?: number
+    metaTitle?: string | null
+    metaDescription?: string | null
+    metaKeywords?: string | null
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    readMinutes?: number | null
+    comments?: CommentCreateNestedManyWithoutPostInput
+    author: UserCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
+    magazine?: MagazineCreateNestedOneWithoutPostsInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
+    viewLogs?: ViewLogCreateNestedManyWithoutPostInput
+  }
+
+  export type PostUncheckedCreateWithoutMediaInput = {
+    id?: string
+    title: string
+    slug: string
+    excerpt?: string | null
+    content: string
+    type?: $Enums.PostType
+    coverImageUrl?: string | null
+    status?: $Enums.PostStatus
+    visibility?: $Enums.PostVisibility
+    isFeatured?: boolean
+    scheduledAt?: Date | string | null
+    publishedAt?: Date | string | null
+    authorId: string
+    magazineId?: string | null
+    categoryId?: string | null
+    views?: number
+    likes?: number
+    metaTitle?: string | null
+    metaDescription?: string | null
+    metaKeywords?: string | null
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    readMinutes?: number | null
+    comments?: CommentUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
+    viewLogs?: ViewLogUncheckedCreateNestedManyWithoutPostInput
+  }
+
+  export type PostCreateOrConnectWithoutMediaInput = {
+    where: PostWhereUniqueInput
     create: XOR<PostCreateWithoutMediaInput, PostUncheckedCreateWithoutMediaInput>
-    where?: PostWhereInput
-  }
-
-  export type PostUpdateToOneWithWhereWithoutMediaInput = {
-    where?: PostWhereInput
-    data: XOR<PostUpdateWithoutMediaInput, PostUncheckedUpdateWithoutMediaInput>
-  }
-
-  export type PostUpdateWithoutMediaInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
-    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    views?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    author?: UserUpdateOneRequiredWithoutPostsNestedInput
-    magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
-    comments?: CommentUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
-    viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
-  }
-
-  export type PostUncheckedUpdateWithoutMediaInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
-    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    authorId?: StringFieldUpdateOperationsInput | string
-    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
-    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
-    views?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
-    viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type MediaUpsertWithoutPostsInput = {
@@ -25440,13 +25280,89 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PostUpsertWithoutMediaInput = {
+    update: XOR<PostUpdateWithoutMediaInput, PostUncheckedUpdateWithoutMediaInput>
+    create: XOR<PostCreateWithoutMediaInput, PostUncheckedCreateWithoutMediaInput>
+    where?: PostWhereInput
+  }
+
+  export type PostUpdateToOneWithWhereWithoutMediaInput = {
+    where?: PostWhereInput
+    data: XOR<PostUpdateWithoutMediaInput, PostUncheckedUpdateWithoutMediaInput>
+  }
+
+  export type PostUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUpdateManyWithoutPostNestedInput
+    author?: UserUpdateOneRequiredWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
+    magazine?: MagazineUpdateOneWithoutPostsNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
+    viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
+  }
+
+  export type PostUncheckedUpdateWithoutMediaInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    slug?: StringFieldUpdateOperationsInput | string
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorId?: StringFieldUpdateOperationsInput | string
+    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
+    viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
+  }
+
   export type PostCreateWithoutViewLogsInput = {
     id?: string
     title: string
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -25459,18 +25375,19 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    author: UserCreateNestedOneWithoutPostsInput
-    magazine?: MagazineCreateNestedOneWithoutPostsInput
-    category?: CategoryCreateNestedOneWithoutPostsInput
-    tags?: PostTagsCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentCreateNestedManyWithoutPostInput
-    revisions?: RevisionCreateNestedManyWithoutPostInput
+    author: UserCreateNestedOneWithoutPostsInput
+    category?: CategoryCreateNestedOneWithoutPostsInput
+    magazine?: MagazineCreateNestedOneWithoutPostsInput
     media?: PostMediaCreateNestedManyWithoutPostInput
+    tags?: PostTagsCreateNestedManyWithoutPostInput
+    revisions?: RevisionCreateNestedManyWithoutPostInput
   }
 
   export type PostUncheckedCreateWithoutViewLogsInput = {
@@ -25479,7 +25396,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -25495,15 +25411,16 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    readMinutes?: number | null
     comments?: CommentUncheckedCreateNestedManyWithoutPostInput
-    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
     media?: PostMediaUncheckedCreateNestedManyWithoutPostInput
+    tags?: PostTagsUncheckedCreateNestedManyWithoutPostInput
+    revisions?: RevisionUncheckedCreateNestedManyWithoutPostInput
   }
 
   export type PostCreateOrConnectWithoutViewLogsInput = {
@@ -25528,7 +25445,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -25541,18 +25457,19 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    author?: UserUpdateOneRequiredWithoutPostsNestedInput
-    magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
+    author?: UserUpdateOneRequiredWithoutPostsNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
+    magazine?: MagazineUpdateOneWithoutPostsNestedInput
     media?: PostMediaUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
   }
 
   export type PostUncheckedUpdateWithoutViewLogsInput = {
@@ -25561,7 +25478,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -25577,15 +25493,16 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
   }
 
   export type AccountCreateManyUserInput = {
@@ -25602,10 +25519,37 @@ export namespace Prisma {
     session_state?: string | null
   }
 
-  export type SessionCreateManyUserInput = {
+  export type CommentCreateManyAuthorInput = {
     id?: string
-    sessionToken: string
-    expires: Date | string
+    postId: string
+    content: string
+    parentId?: string | null
+    status?: $Enums.CommentStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MagazineCreateManyEditorInput = {
+    id?: string
+    title?: string | null
+    slug: string
+    description?: string | null
+    coverImageUrl?: string | null
+    issueNumber?: number | null
+    publishedAt?: Date | string | null
+    status?: $Enums.MagazineStatus
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    pdfUrl?: string | null
+  }
+
+  export type MediaCreateManyUploadedByInput = {
+    id?: string
+    url: string
+    altText?: string | null
+    caption?: string | null
+    type?: $Enums.MediaType
+    createdAt?: Date | string
   }
 
   export type PostCreateManyAuthorInput = {
@@ -25614,7 +25558,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -25629,21 +25572,12 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
-  }
-
-  export type CommentCreateManyAuthorInput = {
-    id?: string
-    postId: string
-    content: string
-    parentId?: string | null
-    status?: $Enums.CommentStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    readMinutes?: number | null
   }
 
   export type RevisionCreateManyAuthorInput = {
@@ -25654,27 +25588,10 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type MediaCreateManyUploadedByInput = {
+  export type SessionCreateManyUserInput = {
     id?: string
-    url: string
-    altText?: string | null
-    caption?: string | null
-    type?: $Enums.MediaType
-    createdAt?: Date | string
-  }
-
-  export type MagazineCreateManyEditorInput = {
-    id?: string
-    title?: string | null
-    slug: string
-    description?: string | null
-    coverImageUrl?: string | null
-    pdfUrl?: string | null
-    issueNumber?: number | null
-    publishedAt?: Date | string | null
-    status?: $Enums.MagazineStatus
-    createdAt?: Date | string
-    updatedAt?: Date | string
+    sessionToken: string
+    expires: Date | string
   }
 
   export type AccountUpdateWithoutUserInput = {
@@ -25719,127 +25636,15 @@ export namespace Prisma {
     session_state?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
-  export type SessionUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SessionUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type SessionUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    sessionToken?: StringFieldUpdateOperationsInput | string
-    expires?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostUpdateWithoutAuthorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
-    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    views?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    category?: CategoryUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
-    comments?: CommentUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
-    media?: PostMediaUpdateManyWithoutPostNestedInput
-    viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
-  }
-
-  export type PostUncheckedUpdateWithoutAuthorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
-    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
-    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
-    views?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
-    comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
-    media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
-    viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
-  }
-
-  export type PostUncheckedUpdateManyWithoutAuthorInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    title?: StringFieldUpdateOperationsInput | string
-    slug?: StringFieldUpdateOperationsInput | string
-    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
-    content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
-    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
-    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
-    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
-    isFeatured?: BoolFieldUpdateOperationsInput | boolean
-    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
-    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
-    views?: IntFieldUpdateOperationsInput | number
-    likes?: IntFieldUpdateOperationsInput | number
-    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
-    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
-    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type CommentUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
     status?: EnumCommentStatusFieldUpdateOperationsInput | $Enums.CommentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
     parent?: CommentUpdateOneWithoutChildrenNestedInput
     children?: CommentUpdateManyWithoutParentNestedInput
+    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateWithoutAuthorInput = {
@@ -25863,28 +25668,48 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type RevisionUpdateWithoutAuthorInput = {
+  export type MagazineUpdateWithoutEditorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutRevisionsNestedInput
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUpdateManyWithoutMagazineNestedInput
   }
 
-  export type RevisionUncheckedUpdateWithoutAuthorInput = {
+  export type MagazineUncheckedUpdateWithoutEditorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    postId?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    posts?: PostUncheckedUpdateManyWithoutMagazineNestedInput
   }
 
-  export type RevisionUncheckedUpdateManyWithoutAuthorInput = {
+  export type MagazineUncheckedUpdateManyWithoutEditorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    postId?: StringFieldUpdateOperationsInput | string
-    content?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
+    slug?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type MediaUpdateWithoutUploadedByInput = {
@@ -25916,48 +25741,140 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type MagazineUpdateWithoutEditorInput = {
+  export type PostUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    posts?: PostUpdateManyWithoutMagazineNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUpdateManyWithoutPostNestedInput
+    category?: CategoryUpdateOneWithoutPostsNestedInput
+    magazine?: MagazineUpdateOneWithoutPostsNestedInput
+    media?: PostMediaUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
+    viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
   }
 
-  export type MagazineUncheckedUpdateWithoutEditorInput = {
+  export type PostUncheckedUpdateWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
+    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    posts?: PostUncheckedUpdateManyWithoutMagazineNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
+    media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
+    viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
   }
 
-  export type MagazineUncheckedUpdateManyWithoutEditorInput = {
+  export type PostUncheckedUpdateManyWithoutAuthorInput = {
     id?: StringFieldUpdateOperationsInput | string
-    title?: NullableStringFieldUpdateOperationsInput | string | null
+    title?: StringFieldUpdateOperationsInput | string
     slug?: StringFieldUpdateOperationsInput | string
-    description?: NullableStringFieldUpdateOperationsInput | string | null
+    excerpt?: NullableStringFieldUpdateOperationsInput | string | null
+    content?: StringFieldUpdateOperationsInput | string
+    type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    pdfUrl?: NullableStringFieldUpdateOperationsInput | string | null
-    issueNumber?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
+    visibility?: EnumPostVisibilityFieldUpdateOperationsInput | $Enums.PostVisibility
+    isFeatured?: BoolFieldUpdateOperationsInput | boolean
+    scheduledAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     publishedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    status?: EnumMagazineStatusFieldUpdateOperationsInput | $Enums.MagazineStatus
+    magazineId?: NullableStringFieldUpdateOperationsInput | string | null
+    categoryId?: NullableStringFieldUpdateOperationsInput | string | null
+    views?: IntFieldUpdateOperationsInput | number
+    likes?: IntFieldUpdateOperationsInput | number
+    metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
+    metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
+    metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type RevisionUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    post?: PostUpdateOneRequiredWithoutRevisionsNestedInput
+  }
+
+  export type RevisionUncheckedUpdateWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type RevisionUncheckedUpdateManyWithoutAuthorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    postId?: StringFieldUpdateOperationsInput | string
+    content?: StringFieldUpdateOperationsInput | string
+    title?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SessionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sessionToken?: StringFieldUpdateOperationsInput | string
+    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SessionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sessionToken?: StringFieldUpdateOperationsInput | string
+    expires?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SessionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    sessionToken?: StringFieldUpdateOperationsInput | string
+    expires?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryCreateManyParentInput = {
@@ -25972,7 +25889,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -25987,11 +25903,12 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    readMinutes?: number | null
   }
 
   export type CategoryUpdateWithoutParentInput = {
@@ -26022,7 +25939,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -26035,17 +25951,18 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUpdateManyWithoutPostNestedInput
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
     magazine?: MagazineUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
-    comments?: CommentUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
     media?: PostMediaUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
   }
 
@@ -26055,7 +25972,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -26070,15 +25986,16 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
   }
 
@@ -26088,7 +26005,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -26103,11 +26019,12 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type PostTagsCreateManyTagInput = {
@@ -26132,7 +26049,6 @@ export namespace Prisma {
     slug: string
     excerpt?: string | null
     content: string
-    readMinutes?: number | null
     type?: $Enums.PostType
     coverImageUrl?: string | null
     status?: $Enums.PostStatus
@@ -26147,11 +26063,12 @@ export namespace Prisma {
     metaTitle?: string | null
     metaDescription?: string | null
     metaKeywords?: string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: string | null
+    seoSchema?: string | null
+    settings?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    readMinutes?: number | null
   }
 
   export type PostUpdateWithoutMagazineInput = {
@@ -26160,7 +26077,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -26173,17 +26089,18 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
+    comments?: CommentUpdateManyWithoutPostNestedInput
     author?: UserUpdateOneRequiredWithoutPostsNestedInput
     category?: CategoryUpdateOneWithoutPostsNestedInput
-    tags?: PostTagsUpdateManyWithoutPostNestedInput
-    comments?: CommentUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUpdateManyWithoutPostNestedInput
     media?: PostMediaUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUpdateManyWithoutPostNestedInput
   }
 
@@ -26193,7 +26110,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -26208,15 +26124,16 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     comments?: CommentUncheckedUpdateManyWithoutPostNestedInput
-    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     media?: PostMediaUncheckedUpdateManyWithoutPostNestedInput
+    tags?: PostTagsUncheckedUpdateManyWithoutPostNestedInput
+    revisions?: RevisionUncheckedUpdateManyWithoutPostNestedInput
     viewLogs?: ViewLogUncheckedUpdateManyWithoutPostNestedInput
   }
 
@@ -26226,7 +26143,6 @@ export namespace Prisma {
     slug?: StringFieldUpdateOperationsInput | string
     excerpt?: NullableStringFieldUpdateOperationsInput | string | null
     content?: StringFieldUpdateOperationsInput | string
-    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
     type?: EnumPostTypeFieldUpdateOperationsInput | $Enums.PostType
     coverImageUrl?: NullableStringFieldUpdateOperationsInput | string | null
     status?: EnumPostStatusFieldUpdateOperationsInput | $Enums.PostStatus
@@ -26241,15 +26157,12 @@ export namespace Prisma {
     metaTitle?: NullableStringFieldUpdateOperationsInput | string | null
     metaDescription?: NullableStringFieldUpdateOperationsInput | string | null
     metaKeywords?: NullableStringFieldUpdateOperationsInput | string | null
-    slugHistory?: NullableJsonNullValueInput | InputJsonValue
-    seoSchema?: NullableJsonNullValueInput | InputJsonValue
-    settings?: NullableJsonNullValueInput | InputJsonValue
+    slugHistory?: NullableStringFieldUpdateOperationsInput | string | null
+    seoSchema?: NullableStringFieldUpdateOperationsInput | string | null
+    settings?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostTagsCreateManyPostInput = {
-    tagId: string
+    readMinutes?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type CommentCreateManyPostInput = {
@@ -26262,6 +26175,14 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
+  export type PostMediaCreateManyPostInput = {
+    mediaId: string
+  }
+
+  export type PostTagsCreateManyPostInput = {
+    tagId: string
+  }
+
   export type RevisionCreateManyPostInput = {
     id?: string
     authorId: string
@@ -26270,27 +26191,11 @@ export namespace Prisma {
     createdAt?: Date | string
   }
 
-  export type PostMediaCreateManyPostInput = {
-    mediaId: string
-  }
-
   export type ViewLogCreateManyPostInput = {
     id?: string
     viewerIp?: string | null
     userAgent?: string | null
     viewedAt?: Date | string
-  }
-
-  export type PostTagsUpdateWithoutPostInput = {
-    tag?: TagUpdateOneRequiredWithoutPostsNestedInput
-  }
-
-  export type PostTagsUncheckedUpdateWithoutPostInput = {
-    tagId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type PostTagsUncheckedUpdateManyWithoutPostInput = {
-    tagId?: StringFieldUpdateOperationsInput | string
   }
 
   export type CommentUpdateWithoutPostInput = {
@@ -26325,6 +26230,30 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PostMediaUpdateWithoutPostInput = {
+    media?: MediaUpdateOneRequiredWithoutPostsNestedInput
+  }
+
+  export type PostMediaUncheckedUpdateWithoutPostInput = {
+    mediaId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PostMediaUncheckedUpdateManyWithoutPostInput = {
+    mediaId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PostTagsUpdateWithoutPostInput = {
+    tag?: TagUpdateOneRequiredWithoutPostsNestedInput
+  }
+
+  export type PostTagsUncheckedUpdateWithoutPostInput = {
+    tagId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PostTagsUncheckedUpdateManyWithoutPostInput = {
+    tagId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type RevisionUpdateWithoutPostInput = {
     id?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
@@ -26347,18 +26276,6 @@ export namespace Prisma {
     content?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type PostMediaUpdateWithoutPostInput = {
-    media?: MediaUpdateOneRequiredWithoutPostsNestedInput
-  }
-
-  export type PostMediaUncheckedUpdateWithoutPostInput = {
-    mediaId?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type PostMediaUncheckedUpdateManyWithoutPostInput = {
-    mediaId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ViewLogUpdateWithoutPostInput = {
@@ -26398,9 +26315,9 @@ export namespace Prisma {
     status?: EnumCommentStatusFieldUpdateOperationsInput | $Enums.CommentStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
     author?: UserUpdateOneWithoutCommentsNestedInput
     children?: CommentUpdateManyWithoutParentNestedInput
+    post?: PostUpdateOneRequiredWithoutCommentsNestedInput
   }
 
   export type CommentUncheckedUpdateWithoutParentInput = {
