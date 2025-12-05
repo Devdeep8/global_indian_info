@@ -1,7 +1,7 @@
+// MainHeader.tsx
 "use client";
 import React from "react";
 import {
-  Search,
   User,
   Menu,
   ChevronDown,
@@ -9,7 +9,6 @@ import {
   Settings,
   UserCircle,
   NewspaperIcon,
-  Globe,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -20,7 +19,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
 import { ModeToggle } from "./mode-toggle";
@@ -28,88 +26,72 @@ import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
 
-const MainHeader = () => {
-  const { data: session, status } = useSession();
+// --- 1. PRESENTATIONAL UI COMPONENT ---
+// This component only renders the UI based on the props it receives.
+// It contains no logic of its own.
 
-  // Derive values from session - no need for separate state!
-  const isLoading = status === "loading";
-  const isLoggedIn = status === "authenticated";
-  const user = session?.user;
-  const pathname = usePathname();
-  const siteName = "Global Indian Info";
+type NavItem = {
+  label: string;
+  href: string;
+  isActive: boolean;
+};
 
-  const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Services", href: "/services" },
-    { label: "Contact", href: "/contact" },
-  ];
+type MainHeaderViewProps = {
+  siteName: string;
+  navItems: NavItem[];
+  isLoading: boolean;
+  isLoggedIn: boolean;
+  user: any | undefined;
+  onSignOut: () => void;
+  onProfileClick: () => void;
+  onSettingsClick: () => void;
+  onAdminPanelClick: () => void;
+  onWriterPanelClick: () => void;
+};
 
-  const handleSignOut = () => {
-    signOut({ callbackUrl: "/" });
-  };
-
-  const isActiveTab = (href: string) => {
-    if (href == "/") {
-      return pathname === "/";
-    }
-    return pathname.startsWith(href);
-  };
-
+const MainHeaderView: React.FC<MainHeaderViewProps> = ({
+  siteName,
+  navItems,
+  isLoading,
+  isLoggedIn,
+  user,
+  onSignOut,
+  onProfileClick,
+  onSettingsClick,
+  onAdminPanelClick,
+  onWriterPanelClick,
+}) => {
   return (
-    <header className=" ">
-      <div className="container mx-auto  px-4">
-           {/* Site Name/Logo */}
+    <header className="">
+      <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <img 
+            <img
               src="/global_indians.png"
-              alt="Global Indian Info Logo"
+              alt={`${siteName} Logo`}
               className="h-10 w-auto"
             />
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
-            <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
-              Home
-            </Link>
-            <Link href="/news" className="text-sm font-medium hover:text-primary transition-colors">
-              News
-            </Link>
-            <Link href="/category/global-indians" className="text-sm font-medium hover:text-primary transition-colors">
-              Global Indians
-            </Link>
-            <Link href="/business" className="text-sm font-medium hover:text-primary transition-colors">
-              Business
-            </Link>
-            <Link href="/culture" className="text-sm font-medium hover:text-primary transition-colors">
-              Culture
-            </Link>
-            <Link href="/diaspora" className="text-sm font-medium hover:text-primary transition-colors">
-              Diaspora
-            </Link>
-            <Link href="/success-stories" className="text-sm font-medium hover:text-primary transition-colors">
-              Success Stories
-            </Link>
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "text-sm font-medium hover:text-primary transition-colors",
+                  item.isActive ? "text-primary" : "text-foreground"
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
           </nav>
 
-
-
-          {/* Right Section: Search + User Nav */}
+          {/* Right Section: User Nav */}
           <div className="flex items-center gap-4 justify-end">
-            {/* Search Bar */}
-            {/* <div className="relative hidden sm:block">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search News..."
-                className="w-[100px] lg:w-[200px] pl-8 bg-background"
-              />
-            </div> */}
-
-            {/* User Navigation */}
             {isLoading ? (
               <div className="h-8 w-8 rounded-full bg-muted animate-pulse" />
             ) : isLoggedIn && user ? (
@@ -127,7 +109,6 @@ const MainHeader = () => {
                         <User className="h-4 w-4 text-primary" />
                       )}
                     </div>
-
                     <ChevronDown className="h-4 w-4 text-muted-foreground" />
                   </Button>
                 </DropdownMenuTrigger>
@@ -143,30 +124,30 @@ const MainHeader = () => {
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={ () => window.location.href= `/profile/${user?.username}`} className="cursor-pointer">
-                    <UserCircle  className="mr-2 h-4 w-4" />
+                  <DropdownMenuItem onClick={onProfileClick} className="cursor-pointer">
+                    <UserCircle className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem className="cursor-pointer">
+                  <DropdownMenuItem onClick={onSettingsClick} className="cursor-pointer">
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   {(user as any).role === "ADMIN" && (
-                    <DropdownMenuItem onClick={() => window.location.href = "/admin"} className="cursor-pointer">
+                    <DropdownMenuItem onClick={onAdminPanelClick} className="cursor-pointer">
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Admin Panel</span>
                     </DropdownMenuItem>
                   )}
                   {((user as any).role === "WRITER" || (user as any).role === "ADMIN") && (
-                    <DropdownMenuItem onClick={() => window.location.href = "/writer"} className="cursor-pointer">
+                    <DropdownMenuItem onClick={onWriterPanelClick} className="cursor-pointer">
                       <NewspaperIcon className="mr-2 h-4 w-4" />
                       <span>Writer Panel</span>
                     </DropdownMenuItem>
                   )}
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
-                    onClick={handleSignOut}
+                    onClick={onSignOut}
                     className="cursor-pointer text-destructive focus:text-destructive"
                   >
                     <LogOut className="mr-2 h-4 w-4" />
@@ -186,12 +167,89 @@ const MainHeader = () => {
             <Button variant="ghost" size="icon" className="md:hidden">
               <Menu className="h-5 w-5" />
             </Button>
-            <ModeToggle/>
+            <ModeToggle />
           </div>
         </div>
       </div>
-      <Separator/>
+      <Separator />
     </header>
+  );
+};
+
+
+// --- 2. LOGIC COMPONENT (CONTAINER) ---
+// This component handles all the logic, state, and data fetching.
+// It then renders the UI component, passing data and functions as props.
+
+const MainHeader = () => {
+  const { data: session, status } = useSession();
+  const pathname = usePathname();
+
+  // --- State and Data ---
+  const siteName = "Global Indian Info";
+
+  // Derived state from the session hook
+  const isLoading = status === "loading";
+  const isLoggedIn = status === "authenticated";
+  const user = session?.user;
+
+  // Define navigation structure
+  const navItemsConfig = [
+    { label: "Home", href: "/" },
+    { label: "News", href: "/news" },
+    { label: "Magazine", href: "/magazine" },
+    // { label: "Global Indians", href: "/category/global-indians" },
+    { label: "Business", href: "/business" },
+    { label: "Culture", href: "/culture" },
+    { label: "Diaspora", href: "/diaspora" },
+    { label: "Success Stories", href: "/success-stories" },
+  ];
+
+  // Prepare nav items with active state for the view component
+  const navItems = navItemsConfig.map(item => ({
+    ...item,
+    isActive: item.href === "/" ? pathname === "/" : pathname.startsWith(item.href),
+  }));
+
+  // --- Event Handlers ---
+  const handleSignOut = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
+  const handleProfileClick = () => {
+    if (user?.username) {
+      window.location.href = `/profile/${user.username}`;
+    }
+  };
+  
+  const handleSettingsClick = () => {
+    // Placeholder for settings navigation logic
+    console.log("Navigate to Settings");
+    // Example: window.location.href = '/settings';
+  };
+
+  const handleAdminPanelClick = () => {
+    window.location.href = "/admin";
+  };
+
+  const handleWriterPanelClick = () => {
+    window.location.href = "/writer";
+  };
+
+  // --- Render the UI Component, passing logic and data as props ---
+  return (
+    <MainHeaderView
+      siteName={siteName}
+      navItems={navItems}
+      isLoading={isLoading}
+      isLoggedIn={isLoggedIn}
+      user={user}
+      onSignOut={handleSignOut}
+      onProfileClick={handleProfileClick}
+      onSettingsClick={handleSettingsClick}
+      onAdminPanelClick={handleAdminPanelClick}
+      onWriterPanelClick={handleWriterPanelClick}
+    />
   );
 };
 
