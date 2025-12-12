@@ -1,6 +1,5 @@
 // app/(main-group)/layout.tsx
 import { NamePromptDialog } from "@/app/(main-pages)/_components/new-dialog-prompt";
-import CategoriesTabs from "@/components/layout/categories-tabs";
 import MainHeader from "@/components/layout/Header";
 
 export default function MainLayout({

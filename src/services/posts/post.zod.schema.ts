@@ -64,6 +64,7 @@ export const updatePostSchema = z.object({
 
   tags: z.array(z.string()).optional(),
 
-  scheduledAt: z.string().datetime().optional(),
-  publishedAt: z.string().datetime().optional(),
+  scheduledAt: z.string().datetime().nullable().optional(),
+  publishedAt: z.string().datetime().nullable().optional(),
+  coverImageUrl: z.string().nullable().optional(),
 });

@@ -6,12 +6,15 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { Badge } from "@/components/ui/badge";
 import { PlusCircle } from "lucide-react";
+import ArticleItemActions from "./_components/article-item-actions";
 
 export default async function WriterPage() {
   const session = await auth();
   if (!session?.user?.id) return null;
 
-  const { articles } = await ArticleService.getAllArticles(1, 10, { authorId: session.user.id });
+  const { articles } = await ArticleService.getAllArticles(1, 10, {
+    authorId: session.user.id,
+  });
 
   return (
     <main className="p-6 space-y-6">
@@ -37,18 +40,30 @@ export default async function WriterPage() {
                     {format(new Date(article.createdAt), "PPP")}
                   </p>
                 </div>
-                <Badge variant={article.status === "PUBLISHED" ? "default" : "secondary"}>
-                  {article.status}
-                </Badge>
+
+                <div className="flex flex-col items-end gap-2">
+                  <Badge
+                    variant={
+                      article.status === "PUBLISHED" ? "default" : "secondary"
+                    }
+                  >
+                    {article.status}
+                  </Badge>
+                  <ArticleItemActions articleId={article.id} />
+                </div>
               </div>
             </CardHeader>
             <CardContent>
-              <p className="text-sm text-muted-foreground line-clamp-2">{article.excerpt}</p>
+              <p className="text-sm text-muted-foreground line-clamp-2">
+                {article.excerpt}
+              </p>
             </CardContent>
           </Card>
         ))}
         {articles.length === 0 && (
-          <p className="text-muted-foreground">You haven't created any posts yet.</p>
+          <p className="text-muted-foreground">
+            You haven't created any posts yet.
+          </p>
         )}
       </div>
     </main>

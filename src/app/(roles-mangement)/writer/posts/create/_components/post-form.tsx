@@ -52,21 +52,44 @@ const PostSchema = z.object({
 export default function CreatePostForm({
   categories,
   user,
+  initialData,
 }: {
   categories: any[];
   user: any;
+  initialData?: any;
 }) {
   const form = useForm<z.infer<typeof PostSchema>>({
     resolver: zodResolver(PostSchema),
     defaultValues: {
-      type: "ARTICLE",
-      status: "DRAFT",
-      visibility: "PUBLIC",
+      title: initialData?.title || "",
+      slug: initialData?.slug || "",
+      excerpt: initialData?.excerpt || "",
+      content: initialData?.content || "",
+      type: initialData?.type || "ARTICLE",
+      status: initialData?.status || "DRAFT",
+      visibility: initialData?.visibility || "PUBLIC",
+      coverImageUrl: initialData?.coverImageUrl || "",
+      categoryId: initialData?.categoryId || null,
+      tags: initialData?.tags
+        ? initialData.tags.map((t: any) => t.tag.name).join(", ")
+        : "",
     },
   });
 
   const [loading, setLoading] = useState(false);
-  const [slugEdited, setSlugEdited] = useState(false);
+  const [slugEdited, setSlugEdited] = useState(!!initialData);
+  const [imageDimensions, setImageDimensions] = useState<string | null>(null);
+
+  // Load image dimensions if initial image exists
+  /* useEffect(() => {
+    if (initialData?.coverImageUrl) {
+        const img = new Image();
+        img.src = initialData.coverImageUrl;
+        img.onload = () => {
+            setImageDimensions(`${img.width}x${img.height}`);
+        };
+    }
+  }, [initialData]); */
 
   // ------------------------------
   // SLUGIFY FUNCTION
@@ -138,24 +161,33 @@ export default function CreatePostForm({
       excerpt: values.excerpt || "",
       categoryId: values.categoryId || null,
       coverImageUrl: values.coverImageUrl || null,
-      scheduledAt: null,
-      publishedAt: null,
-      magazineId: null,
       authorId: user.id,
     };
 
-    const res = await fetch("/api/posts/articles", {
-      method: "POST",
-      body: JSON.stringify(payload),
-    });
+    const res = await fetch(
+      initialData
+        ? `/api/posts/articles/${initialData.id}`
+        : "/api/posts/articles",
+      {
+        method: initialData ? "PATCH" : "POST",
+        body: JSON.stringify(payload),
+      }
+    );
 
     const data = await res.json();
     console.log("POST RESPONSE:", data);
 
     if (data.success) {
-      toast.success("Post created successfully!");
+      toast.success(
+        initialData
+          ? "Post updated successfully!"
+          : "Post created successfully!"
+      );
     } else {
-      toast.error(data.error || "Failed to create post.");
+      toast.error(
+        data.error ||
+          (initialData ? "Failed to update post." : "Failed to create post.")
+      );
     }
 
     setLoading(false);
@@ -246,8 +278,13 @@ export default function CreatePostForm({
                 <img
                   src={field.value}
                   alt="Preview"
-                  className="w-full h-48 object-cover rounded-md mb-3"
+                  className="w-full h-48 object-contain bg-slate-100 rounded-md mb-3"
                 />
+              )}
+              {field.value && (
+                <p className="text-xs text-muted-foreground mb-2">
+                  Current Image URL: {field.value}
+                </p>
               )}
 
               <FormControl>
@@ -389,7 +426,13 @@ export default function CreatePostForm({
 
         {/* SUBMIT */}
         <Button type="submit" disabled={loading}>
-          {loading ? "Creating..." : "Create Post"}
+          {loading
+            ? initialData
+              ? "Updating..."
+              : "Creating..."
+            : initialData
+            ? "Update Post"
+            : "Create Post"}
         </Button>
       </form>
     </Form>

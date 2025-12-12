@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useSession, signOut } from "next-auth/react";
@@ -25,6 +26,7 @@ import { ModeToggle } from "./mode-toggle";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Separator } from "../ui/separator";
+import { GoogleTranslate } from "../ui/google-translate";
 
 // --- 1. PRESENTATIONAL UI COMPONENT ---
 // This component only renders the UI based on the props it receives.
@@ -124,23 +126,36 @@ const MainHeaderView: React.FC<MainHeaderViewProps> = ({
                     </div>
                   </DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={onProfileClick} className="cursor-pointer">
+                  <DropdownMenuItem
+                    onClick={onProfileClick}
+                    className="cursor-pointer"
+                  >
                     <UserCircle className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                   </DropdownMenuItem>
-                  <DropdownMenuItem onClick={onSettingsClick} className="cursor-pointer">
+                  <DropdownMenuItem
+                    onClick={onSettingsClick}
+                    className="cursor-pointer"
+                  >
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                   </DropdownMenuItem>
                   <DropdownMenuSeparator />
                   {(user as any).role === "ADMIN" && (
-                    <DropdownMenuItem onClick={onAdminPanelClick} className="cursor-pointer">
+                    <DropdownMenuItem
+                      onClick={onAdminPanelClick}
+                      className="cursor-pointer"
+                    >
                       <Settings className="mr-2 h-4 w-4" />
                       <span>Admin Panel</span>
                     </DropdownMenuItem>
                   )}
-                  {((user as any).role === "WRITER" || (user as any).role === "ADMIN") && (
-                    <DropdownMenuItem onClick={onWriterPanelClick} className="cursor-pointer">
+                  {((user as any).role === "WRITER" ||
+                    (user as any).role === "ADMIN") && (
+                    <DropdownMenuItem
+                      onClick={onWriterPanelClick}
+                      className="cursor-pointer"
+                    >
                       <NewspaperIcon className="mr-2 h-4 w-4" />
                       <span>Writer Panel</span>
                     </DropdownMenuItem>
@@ -163,10 +178,31 @@ const MainHeaderView: React.FC<MainHeaderViewProps> = ({
               </Link>
             )}
 
-            {/* Mobile Menu Button */}
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="h-5 w-5" />
-            </Button>
+            {/* Mobile Menu */}
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon" className="md:hidden">
+                  <Menu className="h-5 w-5" />
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="left" className="w-[300px] sm:w-[400px]">
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className={cn(
+                        "text-lg font-medium hover:text-primary transition-colors",
+                        item.isActive ? "text-primary" : "text-foreground"
+                      )}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </nav>
+              </SheetContent>
+            </Sheet>
+            <GoogleTranslate />
             <ModeToggle />
           </div>
         </div>
@@ -175,7 +211,6 @@ const MainHeaderView: React.FC<MainHeaderViewProps> = ({
     </header>
   );
 };
-
 
 // --- 2. LOGIC COMPONENT (CONTAINER) ---
 // This component handles all the logic, state, and data fetching.
@@ -196,19 +231,21 @@ const MainHeader = () => {
   // Define navigation structure
   const navItemsConfig = [
     { label: "Home", href: "/" },
-    { label: "News", href: "/news" },
-    { label: "Magazine", href: "/magazine" },
-    // { label: "Global Indians", href: "/category/global-indians" },
-    { label: "Business", href: "/business" },
-    { label: "Culture", href: "/culture" },
-    { label: "Diaspora", href: "/diaspora" },
-    { label: "Success Stories", href: "/success-stories" },
+    { label: "Cover Stories", href: "/category/cover-stories" },
+    { label: "Youth", href: "/category/youth" },
+    { label: "Market Place", href: "/category/market-place" },
+    { label: "Campus Life", href: "/category/campus-life" },
+    { label: "Work Life", href: "/category/work-life" },
+    { label: "Cuisine", href: "/category/cuisine" },
+    { label: "Culture", href: "/category/culture" },
+    { label: "Giving Back", href: "/category/giving-back" },
   ];
 
   // Prepare nav items with active state for the view component
-  const navItems = navItemsConfig.map(item => ({
+  const navItems = navItemsConfig.map((item) => ({
     ...item,
-    isActive: item.href === "/" ? pathname === "/" : pathname.startsWith(item.href),
+    isActive:
+      item.href === "/" ? pathname === "/" : pathname.startsWith(item.href),
   }));
 
   // --- Event Handlers ---
@@ -221,7 +258,7 @@ const MainHeader = () => {
       window.location.href = `/profile/${user.username}`;
     }
   };
-  
+
   const handleSettingsClick = () => {
     // Placeholder for settings navigation logic
     console.log("Navigate to Settings");

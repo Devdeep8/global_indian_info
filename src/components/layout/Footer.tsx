@@ -24,6 +24,8 @@ const quickLinks: LinkItem[] = [
   { label: "About Us", href: "/about" },
   { label: "Important Links", href: "/important-links" },
   { label: "Contact", href: "/contact" },
+  { label: "Opportunities", href: "/opportunities" },
+  { label: "Publisher's Corner", href: "/publishers-corner" },
 ];
 
 const socialLinks: LinkItem[] = [
